@@ -2,30 +2,35 @@
 
 // FUNCTIONS TO COUNT SPRITES WOULD GO IN THIS FILE
 
-void	all_parameters(t_map *file)
+/* The bitmap should be at the bottom of the file, so by the time
+** the program finds it, all the other parameters should’ve already
+** been parsed and registered.
+** If not specified, the default rgb values for the floor and the
+** ceiling are (0, 0, 0) 
+*/
+void	all_parameters(t_file *file)
 {
-  /* The bitmap should be at the bottom of the file, so by the time
-   * the program finds it, all the other parameters should’ve already
-   * been parsed and registered.
-   * If not specified, the default rgb values for the floor and the
-   * ceiling are (0, 0, 0) */
   if (file->resolution_x == 0 || file->resolution_y == 0 ||
-      file->no == 0 || file->so == 0 || file->ea == 0 || file->we == 0 ||
-      file->sprt == 0)
+      file->no == 0 || file->so == 0 || file->ea == 0 || file->we == 0
+      || file->sprt == 0)
     ft_exit("Missing parameters in the map file");
 }
 
-void	get_map_dimensions(char *line, int fd, int len, t_map *map)
+/* 
+** - Reads every line until EOF (when read == 0) 
+** - Checks for incorrect elements in the map
+** - Records the length of the longest line in 
+** - Counts the number of lines
+*/
+void	get_map_dimensions(char *line, int fd, short read, t_map *map)
 {
   int x_copy;
 
-  /* Reads every line until EOF (when len == 0) */
-  while (len > 0)
+  while (read > 0)
     {
       x_copy = 0;
       while (line[x_copy] != '\0')
 	{
-	  /* Checks for incorrect elements in the map */
 	  if (!(line[x_copy] == ' ' || line[x_copy] == '1' ||
 		line[x_copy] == '0' || line[x_copy] == '2' ||
 		line[x_copy] == 'N' || line[x_copy] == 'S' ||
@@ -33,16 +38,13 @@ void	get_map_dimensions(char *line, int fd, int len, t_map *map)
 	    ft_exit("Invalid elements in the bitmap");
 	  x_copy++;
 	}
-      /* Records the length of the longest line in y */
       map->x = x_copy > map->x ? x_copy : map->x;
-      /* Counts the number of lines */
       map->y++;
-      /* Reads next line */
-      len = get_next_line(fd, line);
+      read = get_next_line(fd, &line);
     }
 }
 
-static t_camera	set_dir_plane(double dirX, double dirY,
+static t_camera	*set_dir_plane(double dirX, double dirY,
 			      double planeX, double planeY)
 {
 	t_camera *camera;

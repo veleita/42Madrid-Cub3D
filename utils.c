@@ -1,12 +1,12 @@
 #include "cub3D.h"
 
-void remove_space(char *line, int *it)
+void	 remove_space(char *line, int *it)
 {
   while (line[*it] == ' ' || line[*it] == '\f' || line[*it] == '\t')
     (*it)++;
 }
 
-short ft_strcmp(const char *s1, const char *s2)
+short 	ft_strcmp(const char *s1, const char *s2)
 {
   while (*s1 || *s2)
     {
@@ -18,7 +18,7 @@ short ft_strcmp(const char *s1, const char *s2)
   return (0);
 }
 
-size_t ft_strlen(const char *s)
+size_t	 ft_strlen(const char *s)
 {
   size_t ret;
 
@@ -31,13 +31,13 @@ size_t ft_strlen(const char *s)
   return (ret);
 }
 
-char *ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	 *ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
   size_t	iterator;
 
   /* The function returns a null string if haystack is null */
   if (haystack == 0)
-    return (null);
+    return (0);
   /* The function returns the haystack string if the first character
    * in needle is ’\0’ */
   if (*needle == '\0')
@@ -56,25 +56,21 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
   return (0);
 }
 
-void ft_bzero(void *s, size_t n)
+void 	ft_bzero(void *s, size_t n)
 {
-  size_t iterator;
+  char *ps;
 
-  iterator = -1;
-  while (++iterator < n)
-    s[iterator] = 0;
+  ps = (char*)s;
+  while (n-- > 0)
+    *(ps++) = 0;
 }
 
-short ft_isdigit(int c)
+short 	ft_isdigit(int c)
 {
-  return ((0 <= c && c <= 9)? 1 : 0);
+  return (('0' <= c && c <= '9')? 1 : 0);
 }
 
-short ft_isalpha(int c)
+short 	ft_isalpha(int c)
 {
   return ((('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) ? 1 : 0);
-}
-
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
 }

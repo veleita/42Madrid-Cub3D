@@ -1,13 +1,9 @@
 #include "cub3D.h"
 
 int main(int argc, char **argv)
-{
-  int	fd;
- 
-  /* Store the map file into the file descriptor (fd) */
-  fd = open(argv[1], O_RDONLY);
+{ 
   /* Initializates main variables */
-  init(fd);
+  init(argv[1]);
   /* Event hooks info
    * https://harm-smits.github.io/42docs/libs/minilibx/events.html
    *

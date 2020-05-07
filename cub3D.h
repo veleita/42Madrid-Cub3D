@@ -1,11 +1,29 @@
-/* For the mlx functions: */
-#include <mlx.h>
-/* For the read and write functions */
+/*
+** |------HEADERS------|
+/* 
+** For the mlx functions: 
+*/
+//x#include <mlx.h>
+/* 
+** For the open function: 
+*/
+#include <fcntl.h>
+/* 
+** For the read and write functions:
+*/
 #include <unistd.h>
-/* For the printf function (debugging and testing purposes) */
+/* 
+** For the exit function:
+*/
+#include <stdlib.h>
+/* 
+** For the printf function (debugging and testing purposes):
+*/
 #include <stdio.h>
 
-/* -------------------------------------------------------STRUCTS--- */
+/*
+** |------STRUCTS------| 
+*/
 typedef struct	s_color
 {
   int 		r;
@@ -26,6 +44,7 @@ typedef struct	s_camera
 typedef struct	s_map
 {
   char		*file_name;
+  int		map_line;
   int		x;
   int		y;
   t_camera	*camera;
@@ -53,7 +72,7 @@ typedef struct	s_img
   int		endian;
   int		bpp;
   int		size_line;
-}		t_map;
+}		t_img;
 
 typedef struct	s_texture
 {
@@ -108,7 +127,7 @@ typedef struct	s_key
   short		right;
 }		t_key;
 
-typedef struct	s_var
+typedef struct	s_var //this struct is probably unnecesary
 {
   void		*mlx;
   void		*win;
@@ -119,46 +138,82 @@ typedef struct	s_var
   t_key		*key;
 }		t_var;
 
-/* -----------------------------------------------------FUNCTIONS--- */
-// Try to avoid passing the entire var struct
-/* read_map.c */
-t_map		read_file(int fd); // ok
-void		fill_map(char *line, int **map, int x);
-int		**create_map(char *file_name, int x, int y);
-t_camera	check_coord(char coord, t_map *map, int x, t_var *var);// here + t_map wtf
-/* render.c */
-void		render(t_var *var);//here
-/* raycasting.c */
-void		get_side_dist(int x, t_var *var);// here
-
-void		get_hit(t_var *var);// here
-void		get_wall(t_var *var);// here
-void		get_wall_hit(t_var *var);// here
-/* print_world.c */
-void		print_column(t_var *var, int x, int texture_x);// here
-char		*select_texture(t_var *var);// here
-/* utils.c */
+/*
+** |------FUNCTIONS------| 
+** 
+** init.c 
+*/
+void		init(char *file_name);
+/* 
+** read_file.c 
+*/
+t_file		*init_file(char *file_name); // ok
+/* 
+** read_map.c 
+*/
+void		read_map(char *line, int fd, int len, t_map *map);
+/* 
+** parse_map.c 
+*/
+void		all_parameters(t_file *file);
+void		get_map_dimensions(char *line, int fd, short read,
+				   t_map *map);
+t_camera	*check_coord(char coord, int pos_x, int pos_y);
+/* 
+** exit.c 
+*/
+void		ft_exit(char *error);
+/*
+** get_next_line.c
+*/
+short		get_next_line(int fd, char **line);
+/*
+** gnl_utils.c
+*/
+char		*ft_strdup(const char *s1);
+char		*ft_strjoin(char const *s1, char const *s2);
+short		ft_strchr(char *s, char c);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+/* 
+** utils.c 
+*/
 void		remove_space(char *line, int *it);// used
-short		ft_strcmp(const char *s1, const char *s2);//
 size_t		ft_strlen(const char *s);// used
-char		*ft_strnstr(const char *haystack, const char *needle,
-			    size_t len);//
 void		ft_bzero(void *s, size_t n);// used
 short		ft_isdigit(int c);// used
 short		ft_isalpha(int c);// used
+//char		*ft_strnstr(const char *haystack, const char *needle,
+//			    size_t len);//
+//short		ft_strcmp(const char *s1, const char *s2);//
+/*
+void		fill_map(char *line, int **map, int x);
+int		**create_map(char *file_name, int x, int y);
+/* /* render.c 
+*void		render(t_var *var);//here
+* raycasting.c
+*void		get_side_dist(int x, t_var *var);// here
+*
+*void		get_hit(t_var *var);// here
+*void		get_wall(t_var *var);// here
+*void		get_wall_hit(t_var *var);// here
+** print_world.c
+*void		print_column(t_var *var, int x, int texture_x);// here
+*char		*select_texture(t_var *var);// here
+*/
+/*
 void		*ft_memcpy(void *dst, const void *src, size_t n);
 char		*ft_strdup(const char *s1);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_strjoin(char const *s1, char const *s2);
 int		ft_strchr(char *s, char c);
 int		get_next_line(int fd, char **line);// used
-/* movement.c */
+/* movement.c
 void		vertical_movement(t_var *var, double movement_speed,
 				  double dirX, double dirY);
 void		horizontal_movement(t_var *var, double movement_speed,
 				    double planeX, double planeY);
 void		rotation(t_var *var, double rotation_speed);
-/* keys.c */
+/* keys.c
 short		key_pressed(int key_code, t_var *var);// here
 short		key_released(int key_code, t_var *var);// here
 int		move_player(t_var *var);// what did this do????
+*/
