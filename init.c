@@ -1,13 +1,10 @@
 #include "cub3D.h"
 
 /*
-** - Allocate memory for the var struct
-** - Connect to the graphical server
-** - Open a new window
-** - Create a new image
-** - Sets the address of the image (which is an int array) so we can
-**   write on it to edit the image, which is empty for now (bzero)
-** - Fill the var->file struct with the info in the fd
+** L30: Sets the address of the image (which is an int array) so we can
+** 	write on it to edit the image, which is empty for now (bzero)
+**
+** L33: Fill the var->file struct with the info in the fd
 */
 void init(char *file_name)
 {
@@ -16,10 +13,7 @@ void init(char *file_name)
   if (!(var = (t_var*)malloc(sizeof(t_var))))
     ft_exit ("Failed to allocate memory for the var struct (init.c)");
   if (!(var->mlx = mlx_init()))
-    {
-      free(var);
-      ft_exit ("Failed to establish connection with mlx (init.c)");
-    }
+    ft_exit ("Failed to establish connection with mlx (init.c)");
   if (!(var->win = mlx_new_window(var->mlx, var->file.resolution_x,
 				  var->file.resolution_y, "cub3D")))
     {

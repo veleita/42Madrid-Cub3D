@@ -3,7 +3,7 @@
 /* 
 ** For the mlx functions: 
 */
-//x#include <mlx.h>
+//#include <mlx.h>
 /* 
 ** For the open function: 
 */
@@ -24,13 +24,6 @@
 /*
 ** |------STRUCTS------| 
 */
-typedef struct	s_color
-{
-  int 		r;
-  int 		g;
-  int 		b;
-}		t_color;
-
 typedef struct	s_camera
 {
   double	pos_x;
@@ -43,13 +36,23 @@ typedef struct	s_camera
 
 typedef struct	s_map
 {
-  char		*file_name;
+  const char	*file_name;
   int		map_line;
   int		x;
   int		y;
   t_camera	*camera;
   int		**map;
 }		t_map;
+
+/*
+** The rgb values in the s_color struct are integers from 0 to 255 
+*/
+typedef struct	s_color
+{
+  unsigned char	r;
+  unsigned char	g;
+  unsigned char	b;
+}		t_color;
 
 typedef struct	s_file
 {
@@ -60,8 +63,8 @@ typedef struct	s_file
   char		*ea;
   char		*we;
   char		*sprt;
-  t_color 	*floor_rgb;
-  t_color	*ceiling_rgb;
+  t_color 	floor_rgb;
+  t_color	ceiling_rgb;
   t_map		*map;
  }		t_file;
 
@@ -117,14 +120,17 @@ typedef struct	s_ray
 # define RIGHT_KEY 124
 # define ESC_KEY 53
 
+/*
+** All the following unsigned chars are meant to be boolean values (0 or 1)
+*/
 typedef struct	s_key
 {
-  short		a;
-  short		w;
-  short		s;
-  short		d;
-  short		left;
-  short		right;
+  unsigned char	a;
+  unsigned char	w;
+  unsigned char	s;
+  unsigned char	d;
+  unsigned char	left;
+  unsigned char	right;
 }		t_key;
 
 typedef struct	s_var //this struct is probably unnecesary
@@ -143,11 +149,11 @@ typedef struct	s_var //this struct is probably unnecesary
 ** 
 ** init.c 
 */
-void		init(char *file_name);
+void		init(const char *file_name);
 /* 
 ** read_file.c 
 */
-t_file		*init_file(char *file_name); // ok
+t_file		*init_file(const char *file_name); // ok
 /* 
 ** read_map.c 
 */
@@ -159,6 +165,10 @@ void		all_parameters(t_file *file);
 void		get_map_dimensions(char *line, int fd, short read,
 				   t_map *map);
 t_camera	*check_coord(char coord, int pos_x, int pos_y);
+/*
+** valid_map.c
+*/
+void		 valid_map(t_map *map, int y, int x);
 /* 
 ** exit.c 
 */

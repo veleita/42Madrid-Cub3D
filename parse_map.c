@@ -17,10 +17,11 @@ void	all_parameters(t_file *file)
 }
 
 /* 
-** - Reads every line until EOF (when read == 0) 
-** - Checks for incorrect elements in the map
-** - Records the length of the longest line in 
-** - Counts the number of lines
+** L29 L43: Reads every line until EOF (when read == 0) 
+** L34: Checks for incorrect elements in the map
+** L41: Records the length of the longest line
+** L42: Counts the number of lines
+** L46: This is a patch i’m sorry
 */
 void	get_map_dimensions(char *line, int fd, short read, t_map *map)
 {
@@ -42,6 +43,8 @@ void	get_map_dimensions(char *line, int fd, short read, t_map *map)
       map->y++;
       read = get_next_line(fd, &line);
     }
+  map->y--;
+  free(line);
 }
 
 static t_camera	*set_dir_plane(double dirX, double dirY,

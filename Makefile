@@ -19,6 +19,7 @@ PARSE_SRC	=	test_main.c \
 			read_file.c \
 			read_map.c \
 			parse_map.c \
+			valid_map.c \
 			exit.c \
 			get_next_line.c \
 			gnl_utils.c \
