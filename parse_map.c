@@ -8,11 +8,12 @@
 ** If not specified, the default rgb values for the floor and the
 ** ceiling are (0, 0, 0) 
 */
-void	all_parameters(t_file *file)
+void	all_parameters(t_parameters *parameters)
 {
-  if (file->resolution_x == 0 || file->resolution_y == 0 ||
-      file->no == 0 || file->so == 0 || file->ea == 0 || file->we == 0
-      || file->sprt == 0)
+  if (parameters->resolution_x == 0 || parameters->resolution_y == 0 ||
+      parameters->no == 0 || parameters->so == 0 ||
+      parameters->ea == 0 || parameters->we == 0 ||
+      parameters->sprt == 0)
     ft_exit("Missing parameters in the map file");
 }
 

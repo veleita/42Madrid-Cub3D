@@ -54,7 +54,7 @@ typedef struct	s_color
   unsigned char	b;
 }		t_color;
 
-typedef struct	s_file
+typedef struct	s_parameters
 {
   int		resolution_x;
   int		resolution_y;
@@ -65,8 +65,13 @@ typedef struct	s_file
   char		*sprt;
   t_color 	floor_rgb;
   t_color	ceiling_rgb;
+}		t_parameters;
+  
+typedef struct	s_file
+{
+  t_parameters	*parameters;
   t_map		*map;
- }		t_file;
+}		t_file;
 
 typedef struct	s_img
 {
@@ -96,16 +101,16 @@ typedef struct	s_ray
   double	dir_y;
   int		map_x;
   int		map_y;
-  double	side_dist_x;
-  double	side_dist_y;
   double	delta_dist_x;
   double	delta_dist_y;
-  double	perp_wall_dist;
+  double	side_dist_x;
+  double	side_dist_y;
   int		step_x;
   int		step_y;
   short		hit;
-  double	wall_hit_x;
   short		side;
+  double	perp_wall_dist;
+  double	wall_hit_x;
   // Not sure if the three following should be int or double values
   int		wall_height;
   int		draw_start;
@@ -150,10 +155,12 @@ typedef struct	s_var //this struct is probably unnecesary
 ** init.c 
 */
 void		init(const char *file_name);
+t_file		*read_file(const char *file_name);
 /* 
 ** read_file.c 
 */
-t_file		*init_file(const char *file_name); // ok
+void		*init_values(t_file *file);
+void		parse_parameters(char *line, int len, int fd, t_file *file);
 /* 
 ** read_map.c 
 */
@@ -161,7 +168,7 @@ void		read_map(char *line, int fd, int len, t_map *map);
 /* 
 ** parse_map.c 
 */
-void		all_parameters(t_file *file);
+void		all_parameters(t_parameters *parameters);
 void		get_map_dimensions(char *line, int fd, short read,
 				   t_map *map);
 t_camera	*check_coord(char coord, int pos_x, int pos_y);
@@ -169,6 +176,21 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y);
 ** valid_map.c
 */
 void		 valid_map(t_map *map, int y, int x);
+/* 
+** render.c
+*/
+void		render(t_parameters *parameters, t_camera *camera,
+		       int **map, t_texture *texture);
+/*
+** raycasting.c
+*/
+void		get_side_dist(int x, double resolution_x, t_ray *ray,
+			      t_camera *camera);
+void		get_hit(t_ray *ray, int **map);
+void		get_wall(t_ray *ray, t_camera *camera,
+			 t_parameters *parameters, t_texture *texture);
+void		get_wall_dist(t_ray *ray, t_camera *camera);
+void		get_wall_height(t_ray *ray, t_parameters *parameters);
 /* 
 ** exit.c 
 */
