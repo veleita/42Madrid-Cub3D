@@ -29,7 +29,7 @@ static void	get_resolution(char *line, t_parameters *parameters, int it)
     50 : parameters->resolution_x;
   parameters->resolution_y = (parameters->resolution_y < 50) ?
     50 : parameters->resolution_y;
-  file->resolution_x = (parameters->resolution_x > 2560) ?
+  parameters->resolution_x = (parameters->resolution_x > 2560) ?
     2560 : parameters->resolution_x;
   parameters->resolution_y = (parameters->resolution_y > 1440) ?
     1440 : parameters->resolution_y;

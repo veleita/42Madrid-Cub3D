@@ -16,6 +16,7 @@ GDB		= -g
 # 			exit.c \
 
 PARSE_SRC	=	test_main.c \
+			init.c \
 			read_file.c \
 			read_map.c \
 			parse_map.c \
@@ -28,6 +29,8 @@ PARSE_SRC	=	test_main.c \
 # all:	$(NAME)
 # 	./$(NAME) maps/map1.cub
 
-parse:	$(SRC) test_main.c cub3D.h
+# TEST THE PARSE FUNCTIONS
+
+parse:	$(PARSE_SRC) cub3D.h
 	$(CC) $(GDB) $(PARSE_SRC) && ./a.out maps/map1.cub
 #	rm a.out

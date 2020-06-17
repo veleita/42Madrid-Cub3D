@@ -159,7 +159,7 @@ t_file		*read_file(const char *file_name);
 /* 
 ** read_file.c 
 */
-void		*init_values(t_file *file);
+void		init_values(t_file *file);
 void		parse_parameters(char *line, int len, int fd, t_file *file);
 /* 
 ** read_map.c 

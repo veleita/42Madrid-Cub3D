@@ -6,22 +6,22 @@ int main(int argc, char **argv)
   int i = 0;
   int j;
   
-  file = init_file(argv[1]);
+  file = read_file(argv[1]);
   
   printf("Resolution x %d\nResolution y %d\n\n",
-	 file->resolution_x, file->resolution_y);
+	 file->parameters->resolution_x, file->parameters->resolution_y);
 
   printf("no %s\nso %s\nea %s\nwe %s\n\n",
-	 file->no, file->so, file->ea, file->we);
+	 file->parameters->no, file->parameters->so,
+	 file->parameters->ea, file->parameters->we);
 
-  printf("sprt %s\n\n", file->sprt);
-
-  printf("no %s\nso %s\nea %s\nwe %s\n\n",
-	 file->no, file->so, file->ea, file->we);
+  printf("sprt %s\n\n", file->parameters->sprt);
 
   printf("Floor %d %d %d\nCeiling %d %d %d\n\n",
-	 file->floor_rgb.r, file->floor_rgb.g, file->floor_rgb.b,
-	 file->ceiling_rgb.r, file->ceiling_rgb.g, file->ceiling_rgb.b);
+	 file->parameters->floor_rgb.r, file->parameters->floor_rgb.g,
+	 file->parameters->floor_rgb.b, file->parameters->ceiling_rgb.r,
+	 file->parameters->ceiling_rgb.g,
+	 file->parameters->ceiling_rgb.b);
 
   printf("Pos x = %f\nPos y = %f\nDir x = %f\nDir y = %f\nPlane x = %f\nPlane y = %f\n\n",
 	 file->map->camera->pos_x, file->map->camera->pos_y,
