@@ -21,10 +21,10 @@
 */
 int main(int argc, char **argv)
 { 
-  init(&argv[1]);
-  mlx_key_hook(var->win, 2, 0, &key_pressed, var);
-  mlx_key_hook(var->win, 3, 0, &key_released, var);
-  mlx_loop_hook(var->mlx, &move_player, var);
-  //mlx_hook(var_win, 17, 0, exit, var);
-  mlx_loop(var->mlx);
+  init(argv[1]);
+/*   mlx_key_hook(var->win, 2, 0, &key_pressed, var); */
+/*   mlx_key_hook(var->win, 3, 0, &key_released, var); */
+/*   mlx_loop_hook(var->mlx, &move_player, var); */
+/*   //mlx_hook(var_win, 17, 0, exit, var); */
+/*   mlx_loop(var->mlx); */
 }

@@ -1,4 +1,5 @@
 #include "cub3D.h"
+#include <math.h>
 
 /*
 ** L22: ray->camera_x is a value in the range (-1, 1)
@@ -21,7 +22,7 @@ void	get_side_dist(int x, double resolution_x, t_ray *ray,
 {
   ray->camera_x = (2 * x / resolution_x) - 1;
   ray->dir_x = camera->dir_x + (camera->plane_x * ray->camera_x);
-  ray->dir_y = camera->fir_y + (camera->plane_y * ray->camera_x);
+  ray->dir_y = camera->dir_y + (camera->plane_y * ray->camera_x);
   ray->delta_dist_x = sqrt(1 + (ray->dir_y * ray->dir_y) /
 			   (ray->dir_x * ray->dir_x));
   ray->delta_dist_y = sqrt(1 + (ray->dir_x * ray->dir_x) /
@@ -62,8 +63,8 @@ void	get_side_dist(int x, double resolution_x, t_ray *ray,
 */
 void	get_hit(t_ray *ray, int **map)
 {
-  ray->step_x = (ray->dir_x < 0) -1 : 1;
-  ray->step_y = (ray->dir_y < 0) -1 : 1;
+  ray->step_x = (ray->dir_x < 0) ? -1 : 1;
+  ray->step_y = (ray->dir_y < 0) ? -1 : 1;
   ray->hit = 0;
   while (ray->hit == 0)
     {

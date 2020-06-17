@@ -11,13 +11,13 @@ void	render(t_parameters *parameters, t_camera *camera, int **map,
   ray->map_x = (int)camera->pos_x;
   ray->map_y = (int)camera->pos_y;
   x = -1;
-  while (++x < x_resolution)
+  while (++x < parameters->resolution_x)
     {
       get_side_dist(x, (double)parameters->resolution_x, ray, camera);
       get_hit(ray, map);
       get_wall(ray, camera, parameters, texture);
       get_wall_dist(ray, camera);
       get_wall_height(ray, parameters);
-      print_column();
+      //      print_column();
     }
 }
