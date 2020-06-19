@@ -179,18 +179,21 @@ void		 valid_map(t_map *map, int y, int x);
 /* 
 ** render.c
 */
-void		render(t_parameters *parameters, t_camera *camera,
-		       int **map, t_texture *texture);
+void		render(t_file *file, t_texture *texture);
 /*
 ** raycasting.c
 */
 void		get_side_dist(int x, double resolution_x, t_ray *ray,
 			      t_camera *camera);
-void		get_hit(t_ray *ray, int **map);
+void		get_hit(t_ray *ray, int **map, int map_max_x, int map_max_y);
 void		get_wall(t_ray *ray, t_camera *camera,
 			 t_parameters *parameters, t_texture *texture);
 void		get_wall_dist(t_ray *ray, t_camera *camera);
 void		get_wall_height(t_ray *ray, t_parameters *parameters);
+/*
+** textures.c
+*/
+t_texture	*create_texture(void);
 /* 
 ** exit.c 
 */

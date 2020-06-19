@@ -26,5 +26,4 @@ int main(int argc, char **argv)
 /*   mlx_key_hook(var->win, 3, 0, &key_released, var); */
 /*   mlx_loop_hook(var->mlx, &move_player, var); */
 /*   //mlx_hook(var_win, 17, 0, exit, var); */
-/*   mlx_loop(var->mlx); */
 }

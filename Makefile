@@ -22,6 +22,7 @@ SRC		= 	main.c \
 			valid_map.c \
 			render.c \
 			raycasting.c \
+			textures.c \
 			exit.c \
 			get_next_line.c \
 			gnl_utils.c \
@@ -42,10 +43,15 @@ all:	$(NAME)
 	./$(NAME) maps/map1.cub
 
 $(NAME):
-	$(CC) $(SRC) $(IFLAGS) $(INCLUDES) $(GDB) -o $(NAME)
+	$(CC) $(GDB) $(SRC) $(IFLAGS) $(INCLUDES) -o $(NAME)
 #	$(CC) $(IFLAGS) $(INCLUDES) $(SRC)-o $(NAME)
 
 # TEST THE PARSE FUNCTIONS
 parse:	$(PARSE_SRC) $(HEADERS)
 	$(CC) $(GDB) $(INCLUDES) $(PARSE_SRC) && ./a.out maps/map1.cub
 	rm a.out
+
+fclean:
+	rm -rf $(NAME)
+
+re: fclean all

@@ -1,9 +1,9 @@
 R 300 400
 
-NO norte
-SO sur
-EA este
-WE oeste
+NO textures/bejito.xpm
+SO textures/case.xpm
+EA textures/greystone.xpm
+WE textures/mossy.xpm
 
 S sprite
 

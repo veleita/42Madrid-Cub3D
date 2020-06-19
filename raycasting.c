@@ -2,19 +2,19 @@
 #include <math.h>
 
 /*
-** L22: ray->camera_x is a value in the range (-1, 1)
+** L23: ray->camera_x is a value in the range (-1, 1)
 **	Negative numbers correspond to the left side of the map,
 **	positive numbers correspond to the right side of the map,
 **	the 0 value corresponds to the center of the map.
 **
-** L23: ray->dir_x/y is the vectorial addition of the view direction
+** L24: ray->dir_x/y is the vectorial addition of the view direction
 **	of the player (camera->dir_x/y) and the plane of the player,
 **	a perpendicular vector scaled by the ray->camera_x value.
 **
-** L25: ray->delta_dist_x/y is the distance travelled by the ray for
+** L26: ray->delta_dist_x/y is the distance travelled by the ray for
 **	each column (delta_dist_x) or line (delta_dist_y) of the map
 **
-** L30: ray->side_dist_x/y is the distance that the ray needs to travel
+** L31: ray->side_dist_x/y is the distance that the ray needs to travel
 **	from the player to the first cell edge it encounters
 */
 void	get_side_dist(int x, double resolution_x, t_ray *ray,
@@ -61,7 +61,7 @@ void	get_side_dist(int x, double resolution_x, t_ray *ray,
 ** L: ray->side is a flag that indicates wether if the edge cell we
 **	are evaluating certical (0) or horizontal (1);
 */
-void	get_hit(t_ray *ray, int **map)
+void	get_hit(t_ray *ray, int **map, int map_max_x, int map_max_y)
 {
   ray->step_x = (ray->dir_x < 0) ? -1 : 1;
   ray->step_y = (ray->dir_y < 0) ? -1 : 1;
@@ -80,7 +80,11 @@ void	get_hit(t_ray *ray, int **map)
 	  ray->map_y += ray->step_y;
 	  ray->side = 1;
 	}
-      if (map[ray->map_y][ray->map_x] == 1)
+      ray->map_x = (ray->map_x < 0) ? 0 : ray->map_x;
+      ray->map_y = (ray->map_y < 0) ? 0 : ray->map_y;
+      ray->map_x = (ray->map_x >= map_max_x) ? (map_max_x - 1) : ray->map_x;
+      ray->map_y = (ray->map_y >= map_max_y) ? (map_max_y - 1) : ray->map_y;
+      if (map[ray->map_y][ray->map_x] != 3)
 	ray->hit = 1;
     }
 }
@@ -92,23 +96,23 @@ void	get_hit(t_ray *ray, int **map)
 **	orientation of the wall
 */
 void	get_wall(t_ray *ray, t_camera *camera,
-		 t_parameters *parameters, t_texture *texture)
+		 t_parameters *params, t_texture *texture)
 {
   if (ray->side == 1)
     {
       ray->wall_hit_x = camera->pos_x + ((ray->map_y - camera->pos_y
 					  + (1 - ray->step_y) / 2)
 					 / ray->dir_y) * ray->dir_x;
-      texture->path = (ray->dir_y < 0) ? parameters->no :
-	parameters->so;
+      texture->path = (ray->dir_y < 0) ? params->so : params->no;
     }
   else
     {
       ray->wall_hit_x = camera->pos_y + ((ray->map_x - camera->pos_x
 					  + (1 - ray->step_x) / 2)
 					 / ray->dir_x) * ray->dir_y;
-      texture->path = (ray->dir_x < 0) ? parameters->we : parameters->ea;
+      texture->path = (ray->dir_x < 0) ? params->ea : params->we;
     }
+  printf("%s\n", texture->path);
 }
 
 /*
