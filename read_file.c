@@ -7,32 +7,32 @@
 ** L28: Sets the minimum resolution value to 50x50
 ** L32: Sets the maximum resolution value to 2560x1440
 */
-static void	get_resolution(char *line, t_parameters *parameters, int it)
+static void	get_resolution(char *line, t_parameters *params, int it)
 {
-  if (parameters->resolution_x != 0 || parameters->resolution_y != 0)
+  if (params->resolution_x != 0 || params->resolution_y != 0)
     ft_exit("Found more than one resolution value");
   remove_space(line, &it);
   while (ft_isdigit(line[it]))
     {
-      parameters->resolution_x = parameters->resolution_x * 10 +
+      params->resolution_x = params->resolution_x * 10 +
 	line[it] - '0';
       it++;
     }
   it++;
   while (ft_isdigit(line[it]))
     {
-      parameters->resolution_y = parameters->resolution_y * 10 +
+      params->resolution_y = params->resolution_y * 10 +
 	line[it] - '0';
       it++;
     }
-  parameters->resolution_x = (parameters->resolution_x < 50) ?
-    50 : parameters->resolution_x;
-  parameters->resolution_y = (parameters->resolution_y < 50) ?
-    50 : parameters->resolution_y;
-  parameters->resolution_x = (parameters->resolution_x > 2560) ?
-    2560 : parameters->resolution_x;
-  parameters->resolution_y = (parameters->resolution_y > 1440) ?
-    1440 : parameters->resolution_y;
+  params->resolution_x = (params->resolution_x < 50) ?
+    50 : params->resolution_x;
+  params->resolution_y = (params->resolution_y < 50) ?
+    50 : params->resolution_y;
+  params->resolution_x = (params->resolution_x > 2560) ?
+    2560 : params->resolution_x;
+  params->resolution_y = (params->resolution_y > 1440) ?
+    1440 : params->resolution_y;
 }
 
 /*
@@ -92,24 +92,24 @@ void	parse_parameters(char *line, int len, int fd, t_file *file)
   it = 0;
   remove_space(line, &it);
   if (line[it] == 'R')
-    get_resolution(line, file->parameters, it + 1);      
+    get_resolution(line, file->params, it + 1);      
   else if (line[it] == 'N' && line[it + 1] == 'O')
-    file->parameters->no = get_path(line, it + 2);
+    file->params->no = get_path(line, it + 2);
   else if (line[it] == 'S' && line[it + 1] == 'O')
-    file->parameters->so = get_path(line, it + 2);
+    file->params->so = get_path(line, it + 2);
   else if (line[it] == 'W' && line[it + 1] == 'E')
-    file->parameters->we = get_path(line, it + 2);
+    file->params->we = get_path(line, it + 2);
   else if (line[it] == 'E' && line[it + 1] == 'A')
-    file->parameters->ea = get_path(line, it + 2);
+    file->params->ea = get_path(line, it + 2);
   else if (line[it] == 'S' && line[it + 1] == ' ')
-    file->parameters->sprt = get_path(line, it + 1);
+    file->params->sprt = get_path(line, it + 1);
   else if (line[it] == 'F')
-    file->parameters->floor_rgb = get_color(line, it + 1);
+    file->params->floor_rgb = get_color(line, it + 1);
   else if (line[it] == 'C')
-    file->parameters->ceiling_rgb = get_color(line, it + 1);
+    file->params->ceiling_rgb = get_color(line, it + 1);
   else if (line[it] == '1')
     {
-      all_parameters(file->parameters);
+      all_parameters(file->params);
       read_map(line, fd, len, file->map);
     }
   free(line);
@@ -119,11 +119,11 @@ void	init_values(t_file *file)
 {
   file->map->map_line = 0;
   file->map->map_line = 0;
-  file->parameters->resolution_x = 0;
-  file->parameters->resolution_y = 0;
-  file->parameters->no = 0;
-  file->parameters->so = 0;
-  file->parameters->ea = 0;
-  file->parameters->we = 0;
-  file->parameters->sprt = 0;
+  file->params->resolution_x = 0;
+  file->params->resolution_y = 0;
+  file->params->no = 0;
+  file->params->so = 0;
+  file->params->ea = 0;
+  file->params->we = 0;
+  file->params->sprt = 0;
 }

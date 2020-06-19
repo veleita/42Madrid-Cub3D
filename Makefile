@@ -1,7 +1,7 @@
 NAME		= cub3D
 
 CC		= gcc
-
+INCLUDES	= -I includes/
 OS		= $(shell uname)
 ifeq ($(OS), Linux)
 	IFLAGS	= -L minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
@@ -12,7 +12,7 @@ endif
 WFLAGS		= -Werror -Wall -Wextra
 GDB		= -g
 
-HEADER		=	cub3D.h
+HEADERS		=	cub3D.h
 
 SRC		= 	main.c \
 			init.c \
@@ -41,10 +41,11 @@ PARSE_SRC	=	test_main.c \
 all:	$(NAME)
 	./$(NAME) maps/map1.cub
 
-$(NAME): $(SRC) $(HEADER)
-	$(CC) $(IFLAGS) $(SRC) -o $(NAME)
+$(NAME):
+	$(CC) $(SRC) $(IFLAGS) $(INCLUDES) $(GDB) -o $(NAME)
+#	$(CC) $(IFLAGS) $(INCLUDES) $(SRC)-o $(NAME)
 
 # TEST THE PARSE FUNCTIONS
-parse:	$(PARSE_SRC) $(HEADER)
-	$(CC) $(GDB) $(PARSE_SRC) && ./a.out maps/map1.cub
+parse:	$(PARSE_SRC) $(HEADERS)
+	$(CC) $(GDB) $(INCLUDES) $(PARSE_SRC) && ./a.out maps/map1.cub
 	rm a.out

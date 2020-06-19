@@ -3,7 +3,7 @@
 /* 
 ** For the mlx functions: 
 */
-#include "mlx.h"
+#include <mlx.h>
 /* 
 ** For the open function: 
 */
