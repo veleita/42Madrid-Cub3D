@@ -23,6 +23,27 @@ t_file	*read_file(const char *file_name)
   return (file);
 }
 
+static t_images	*create_images(void *mlx, t_parameters *params)
+{
+  t_images *images;
+
+  if (!(images = (t_images*)malloc(sizeof(t_images))))
+    ft_exit("Failed to allocate memory for the images struct(init.c)");
+  if (!(images->screen = (t_screen*)malloc(sizeof(t_screen))))
+    ft_exit("Failed to allocate memory for t_screen struct(init.c)");
+  if (!(images->screen->id = mlx_new_image(mlx, params->resolution_x,
+				     params->resolution_y)))
+    ft_exit ("Failed to create image (init.c)");
+  images->screen->addr = (int*)mlx_get_data_addr(images->screen->id,
+					   &images->screen->bpp,
+					   &images->screen->size_line,
+					   &images->screen->endian);
+  ft_bzero(images->screen->addr,
+	   (params->resolution_x * params->resolution_y));
+  if (!(images->texture = (t_texture*)malloc(sizeof(t_texture))))
+    ft_exit("Couldn't allocate memory for t_texture (init.c)");
+  return (images);
+}
 /*
 ** L: Sets the address of the image (which is an int array) so we can
 ** 	write on it to edit the image, which is empty for now (bzero)
@@ -43,20 +64,9 @@ void	init(const char *file_name)
 				  var->file->params->resolution_y,
 				  "cub3D")))
     ft_exit ("Failed to open new window (init.c)");
-  if (!(var->img = (t_img*)malloc(sizeof(t_img))))
-    ft_exit("Failed to allocate memory for the img struct (init.c)");
-  if (!(var->img->id = mlx_new_image(var->mlx,
-				     var->file->params->resolution_x,
-				     var->file->params->resolution_y)))
-    ft_exit ("Failed to create image (init.c)");
-  var->img->addr = (int*)mlx_get_data_addr(var->img->id,
-					   &var->img->bpp,
-					   &var->img->size_line,
-					   &var->img->endian);
-  ft_bzero(var->img->addr,
-	   (var->file->params->resolution_x *
-	    var->file->params->resolution_y));
-  var->texture = create_texture();
-  render(var->file, var->texture);
+  var->images = create_images(var->mlx, var->file->params);
+  render(var->file, var->mlx, var->images);
+  mlx_put_image_to_window(var->mlx, var->win,
+			  var->images->screen->id, 0, 0);
   mlx_loop(var->mlx);
 }

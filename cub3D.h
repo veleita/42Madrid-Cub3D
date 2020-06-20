@@ -73,14 +73,14 @@ typedef struct	s_file
   t_map		*map;
 }		t_file;
 
-typedef struct	s_img
+typedef struct	s_screen
 {
   void		*id;
   int		*addr;
   int		endian;
   int		bpp;
   int		size_line;
-}		t_img;
+}		t_screen;
 
 typedef struct	s_texture
 {
@@ -93,6 +93,12 @@ typedef struct	s_texture
   int		size_line;
   char		*path;
 }		t_texture;
+
+typedef struct	s_images
+{
+  t_screen	*screen;
+  t_texture	*texture;
+}		t_images;
 
 typedef struct	s_ray
 {
@@ -111,6 +117,7 @@ typedef struct	s_ray
   short		side;
   double	perp_wall_dist;
   double	wall_hit_x;
+  int		texture_x;
   // Not sure if the three following should be int or double values
   int		wall_height;
   int		draw_start;
@@ -143,8 +150,7 @@ typedef struct	s_var //this struct is probably unnecesary
   void		*mlx;
   void		*win;
   t_file	*file;
-  t_img		*img;
-  t_texture	*texture;
+  t_images	*images;
   t_ray		*ray;
   t_key		*key;
 }		t_var;
@@ -179,7 +185,7 @@ void		 valid_map(t_map *map, int y, int x);
 /* 
 ** render.c
 */
-void		render(t_file *file, t_texture *texture);
+void		render(t_file *file, void *mlx, t_images *images);
 /*
 ** raycasting.c
 */
@@ -193,8 +199,11 @@ void		get_wall_height(t_ray *ray, t_parameters *parameters);
 /*
 ** textures.c
 */
-t_texture	*create_texture(void);
-/* 
+void		get_texture_addr(t_texture *texture, void *mlx);
+void		get_texture_x(t_ray *ray, t_texture *texture);
+void		print_column(int x, t_ray *ray, t_parameters *params,
+			     t_images *images);
+/*
 ** exit.c 
 */
 void		ft_exit(char *error);
