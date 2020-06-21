@@ -44,18 +44,14 @@ static t_images	*create_images(void *mlx, t_parameters *params)
     ft_exit("Couldn't allocate memory for t_texture (init.c)");
   return (images);
 }
+
 /*
-** L: Sets the address of the image (which is an int array) so we can
-** 	write on it to edit the image, which is empty for now (bzero)
+** L:
 **
 ** L: Fill the var->file struct with the info in the fd
 */
-void	init(const char *file_name)
+void	init(const char *file_name, t_var *var)
 {
-  t_var *var;
-  
-  if (!(var = (t_var*)malloc(sizeof(t_var))))
-    ft_exit ("Failed to allocate memory for the var struct (init.c)");
   var->file = read_file(file_name);
   if (!(var->mlx = mlx_init()))
     ft_exit ("Failed to establish connection with mlx (init.c)");
@@ -65,8 +61,4 @@ void	init(const char *file_name)
 				  "cub3D")))
     ft_exit ("Failed to open new window (init.c)");
   var->images = create_images(var->mlx, var->file->params);
-  render(var->file, var->mlx, var->images);
-  mlx_put_image_to_window(var->mlx, var->win,
-			  var->images->screen->id, 0, 0);
-  mlx_loop(var->mlx);
 }

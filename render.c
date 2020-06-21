@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-void	render(t_file *file, void *mlx, t_images *images)
+void	render(t_file *file, void *mlx, void *win, t_images *images)
 {
   int	x;
   t_ray *ray;
@@ -23,4 +23,5 @@ void	render(t_file *file, void *mlx, t_images *images)
       print_column(x, ray, file->params, images);
       mlx_destroy_image(mlx, images->texture->id);
     }
+  mlx_put_image_to_window(mlx, win, images->screen->id, 0, 0);
 }

@@ -112,7 +112,7 @@ void	get_wall(t_ray *ray, t_camera *camera,
 					 / ray->dir_x) * ray->dir_y;
       texture->path = (ray->dir_x < 0) ? params->ea : params->we;
     }
-  printf("%s\n", texture->path);
+/*   printf("%s\n", texture->path); */
 }
 
 /*

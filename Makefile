@@ -23,6 +23,8 @@ SRC		= 	main.c \
 			render.c \
 			raycasting.c \
 			textures.c \
+			input.c \
+			movement.c \
 			exit.c \
 			get_next_line.c \
 			gnl_utils.c \

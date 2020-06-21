@@ -16,6 +16,10 @@
 ** For the exit function:
 */
 #include <stdlib.h>
+/*
+** For the sqrt and cos functions:
+*/
+#include <math.h>
 /* 
 ** For the printf function (debugging and testing purposes):
 */
@@ -160,7 +164,7 @@ typedef struct	s_var //this struct is probably unnecesary
 ** 
 ** init.c 
 */
-void		init(const char *file_name);
+void		init(const char *file_name, t_var *var);
 t_file		*read_file(const char *file_name);
 /* 
 ** read_file.c 
@@ -181,11 +185,11 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y);
 /*
 ** valid_map.c
 */
-void		 valid_map(t_map *map, int y, int x);
+void		valid_map(t_map *map, int y, int x);
 /* 
 ** render.c
 */
-void		render(t_file *file, void *mlx, t_images *images);
+void		render(t_file *file, void *mlx, void *win, t_images *images);
 /*
 ** raycasting.c
 */
@@ -203,6 +207,21 @@ void		get_texture_addr(t_texture *texture, void *mlx);
 void		get_texture_x(t_ray *ray, t_texture *texture);
 void		print_column(int x, t_ray *ray, t_parameters *params,
 			     t_images *images);
+/*
+** input.c
+*/
+int		key_pressed(int keycode, t_key *key);
+int		key_released(int keycode, t_key *key);
+int		move_player(t_var *var);
+/*
+** movement.c
+*/
+void		rotation(t_camera *camera, double rotation_speed);
+void		horizontal_movement(t_map *map, double movement_speed,
+				    double plane_x, double plane_y);
+void		vertical_movement(t_map *map, double movement_speed,
+				  double dir_x, double dir_y);
+
 /*
 ** exit.c 
 */
