@@ -128,6 +128,7 @@ typedef struct	s_ray
   int		draw_end;
 }		t_ray;
 
+#ifdef _Apple_
 # define A_KEY 0
 # define W_KEY 13
 # define S_KEY 1
@@ -135,6 +136,17 @@ typedef struct	s_ray
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
 # define ESC_KEY 53
+
+#elif defined unix
+# define A_KEY 97
+# define W_KEY 119
+# define S_KEY 115
+# define D_KEY 100
+# define LEFT_KEY 65361
+# define RIGHT_KEY 65363
+# define ESC_KEY 65307
+#endif
+
 
 /*
 ** All the following unsigned chars are meant to be boolean values (0 or 1)

@@ -4,10 +4,10 @@ void	vertical_movement(t_map *map, double movement_speed,
 			  double dir_x, double dir_y)
 {
   if (map->map[(int)(map->camera->pos_x + dir_x * 1)]
-      [(int)map->camera->pos_y] == 0)
+      [(int)map->camera->pos_y] == 3)
     map->camera->pos_x += dir_x * movement_speed;
   if (map->map[(int)map->camera->pos_x]
-      [(int)(map->camera->pos_y + dir_y * 1)] == 0)
+      [(int)(map->camera->pos_y + dir_y * 1)] == 3)
     map->camera->pos_y += dir_y * movement_speed;
 }
 
@@ -16,10 +16,10 @@ void	horizontal_movement(t_map *map, double movement_speed,
 {
   //printf("h");
   if (map->map[(int)(map->camera->pos_x + plane_x * 1)]
-      [(int)map->camera->pos_y] == 0)
+      [(int)map->camera->pos_y] == 3)
     map->camera->pos_x += plane_x * movement_speed;
   if (map->map[(int)map->camera->pos_x]
-      [(int)(map->camera->pos_y + plane_y * 1)] == 0)
+      [(int)(map->camera->pos_y + plane_y * 1)] == 3)
     map->camera->pos_y += plane_y * movement_speed;
   //printf("h");
 }

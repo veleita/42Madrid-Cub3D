@@ -61,4 +61,6 @@ void	init(const char *file_name, t_var *var)
 				  "cub3D")))
     ft_exit ("Failed to open new window (init.c)");
   var->images = create_images(var->mlx, var->file->params);
+  if (!(var->key = (t_key*)malloc(sizeof(t_key))))
+    ft_exit ("Oops error allocating t_key (init.c)");
 }

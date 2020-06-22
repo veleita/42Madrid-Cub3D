@@ -1,5 +1,4 @@
 #include "cub3D.h"
-#include <math.h>
 
 /*
 ** L23: ray->camera_x is a value in the range (-1, 1)

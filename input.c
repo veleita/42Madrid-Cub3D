@@ -56,12 +56,18 @@ int		move_player(t_var *var)
 			-var->file->map->camera->plane_x,
 			-var->file->map->camera->plane_y);
   if (var->key->d == 1)
-    horizontal_movement(var->file->map, movement_speed,
-			var->file->map->camera->plane_x,
-			var->file->map->camera->plane_y);
-  if (var->key->left)
-    rotation(var->file->map->camera, rotation_speed);
-  if (var->key->right)
+    {
+      horizontal_movement(var->file->map, movement_speed,
+			  var->file->map->camera->plane_x,
+			  var->file->map->camera->plane_y);
+      printf("d\n");
+    }
+  if (var->key->left == 1)
+    {
+      rotation(var->file->map->camera, rotation_speed);
+      //printf("hola\n");
+    }
+  if (var->key->right == 1)
     rotation(var->file->map->camera, -rotation_speed);
   render(var->file, var->mlx, var->win, var->images);
   return (1);

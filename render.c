@@ -21,7 +21,7 @@ void	render(t_file *file, void *mlx, void *win, t_images *images)
       get_texture_addr(images->texture, mlx);
       get_texture_x(ray, images->texture);
       print_column(x, ray, file->params, images);
-      mlx_destroy_image(mlx, images->texture->id);
+      //      mlx_destroy_image(mlx, images->texture->id);
     }
   mlx_put_image_to_window(mlx, win, images->screen->id, 0, 0);
 }
