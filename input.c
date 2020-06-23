@@ -44,17 +44,26 @@ int		move_player(t_var *var)
   movement_speed = 0.3;
   rotation_speed = 0.15;
   if (var->key->w == 1)
-    vertical_movement(var->file->map, movement_speed,
-		      var->file->map->camera->dir_x,
-		      var->file->map->camera->dir_y);
+    {
+      vertical_movement(var->file->map, movement_speed,
+			var->file->map->camera->dir_x,
+			var->file->map->camera->dir_y);
+      printf("w\n");
+    }
   if (var->key->s == 1)
-    vertical_movement(var->file->map, movement_speed,
-		      -var->file->map->camera->dir_x,
-		      -var->file->map->camera->dir_y);
+    {
+      vertical_movement(var->file->map, movement_speed,
+			-var->file->map->camera->dir_x,
+			-var->file->map->camera->dir_y);
+      printf("s\n");
+    }
   if (var->key->a == 1)
-    horizontal_movement(var->file->map, movement_speed,
-			-var->file->map->camera->plane_x,
-			-var->file->map->camera->plane_y);
+    {
+      horizontal_movement(var->file->map, movement_speed,
+			  -var->file->map->camera->plane_x,
+			  -var->file->map->camera->plane_y);
+      printf("a\n");
+    }
   if (var->key->d == 1)
     {
       horizontal_movement(var->file->map, movement_speed,
@@ -65,10 +74,13 @@ int		move_player(t_var *var)
   if (var->key->left == 1)
     {
       rotation(var->file->map->camera, rotation_speed);
-      //printf("hola\n");
+      printf("left\n");
     }
   if (var->key->right == 1)
-    rotation(var->file->map->camera, -rotation_speed);
+    {
+      rotation(var->file->map->camera, -rotation_speed);
+      printf("right\n");
+    }
   render(var->file, var->mlx, var->win, var->images);
   return (1);
 }

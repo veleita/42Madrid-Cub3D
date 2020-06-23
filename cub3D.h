@@ -128,7 +128,7 @@ typedef struct	s_ray
   int		draw_end;
 }		t_ray;
 
-#ifdef _Apple_
+#ifdef __APPLE__
 # define A_KEY 0
 # define W_KEY 13
 # define S_KEY 1
@@ -137,7 +137,7 @@ typedef struct	s_ray
 # define RIGHT_KEY 124
 # define ESC_KEY 53
 
-#elif defined unix
+#elif defined __unix__
 # define A_KEY 97
 # define W_KEY 119
 # define S_KEY 115

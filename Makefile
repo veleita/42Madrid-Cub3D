@@ -42,7 +42,7 @@ PARSE_SRC	=	test_main.c \
 			utils.c \
 
 all:	$(NAME)
-	./$(NAME) maps/map1.cub
+	./$(NAME) maps/map2.cub
 
 $(NAME):
 	$(CC) $(GDB) $(SRC) $(IFLAGS) $(INCLUDES) -o $(NAME)
