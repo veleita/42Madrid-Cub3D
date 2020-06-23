@@ -81,7 +81,7 @@ void	get_hit(t_ray *ray, int **map, int map_max_x, int map_max_y)
 	}
       ray->map_x = (ray->map_x < 0) ? 0 : ray->map_x;
       ray->map_y = (ray->map_y < 0) ? 0 : ray->map_y;
-      ray->map_x = (ray->map_x >= map_max_x) ? (map_max_x - 1) : ray->map_x;
+      ray->map_x = (ray->map_x >= map_max_x) ? map_max_x : ray->map_x;
       ray->map_y = (ray->map_y >= map_max_y) ? (map_max_y - 1) : ray->map_y;
       if (map[ray->map_y][ray->map_x] != 3)
 	ray->hit = 1;
@@ -100,14 +100,14 @@ void	get_wall(t_ray *ray, t_camera *camera,
   if (ray->side == 1)
     {
       ray->wall_hit_x = camera->pos_x + ((ray->map_y - camera->pos_y
-					  + (1 - ray->step_y) / 2)
+					  + (1 - ray->step_y) / 2.0)
 					 / ray->dir_y) * ray->dir_x;
       texture->path = (ray->dir_y < 0) ? params->so : params->no;
     }
   else
     {
       ray->wall_hit_x = camera->pos_y + ((ray->map_x - camera->pos_x
-					  + (1 - ray->step_x) / 2)
+					  + (1 - ray->step_x) / 2.0)
 					 / ray->dir_x) * ray->dir_y;
       texture->path = (ray->dir_x < 0) ? params->ea : params->we;
     }
