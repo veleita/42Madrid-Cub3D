@@ -53,14 +53,18 @@ static t_images	*create_images(void *mlx, t_parameters *params)
 void	init(const char *file_name, t_var *var)
 {
   var->file = read_file(file_name);
-  if (!(var->mlx = mlx_init()))
+  if (!(var->id = (t_id*)malloc(sizeof(t_id))))
+    ft_exit ("Failed to allocate memory for t_id (init.c)");
+  if (!(var->id->mlx = mlx_init()))
     ft_exit ("Failed to establish connection with mlx (init.c)");
-  if (!(var->win = mlx_new_window(var->mlx,
+  if (!(var->id->win = mlx_new_window(var->id->mlx,
 				  var->file->params->resolution_x,
 				  var->file->params->resolution_y,
 				  "cub3D")))
     ft_exit ("Failed to open new window (init.c)");
-  var->images = create_images(var->mlx, var->file->params);
+  if (!(var->ray = (t_ray*)malloc(sizeof(t_ray))))
+    ft_exit("Couldn't allocate memory for ray struct");
+  var->images = create_images(var->id->mlx, var->file->params);
   if (!(var->key = (t_key*)malloc(sizeof(t_key))))
     ft_exit ("Oops error allocating t_key (init.c)");
 }

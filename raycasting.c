@@ -19,7 +19,7 @@
 void	get_side_dist(int x, double resolution_x, t_ray *ray,
 		      t_camera *camera)
 {
-  ray->camera_x = (2 * x / resolution_x) - 1;
+  ray->camera_x = (2 * x / (double)resolution_x) - 1;
   ray->dir_x = camera->dir_x + (camera->plane_x * ray->camera_x);
   ray->dir_y = camera->dir_y + (camera->plane_y * ray->camera_x);
   ray->delta_dist_x = sqrt(1 + (ray->dir_y * ray->dir_y) /

@@ -1,12 +1,9 @@
 #include "cub3D.h"
 
-void	render(t_file *file, void *mlx, void *win, t_images *images)
+void	render(t_file *file, t_id *id, t_ray *ray, t_images *images)
 {
   int	x;
-  t_ray *ray;
-
-  if (!(ray = (t_ray*)malloc(sizeof(t_ray))))
-    ft_exit("Couldn't allocate memory for ray struct");
+  
   ray->map_x = (int)file->map->camera->pos_x;
   ray->map_y = (int)file->map->camera->pos_y;
   x = -1;
@@ -18,10 +15,10 @@ void	render(t_file *file, void *mlx, void *win, t_images *images)
       get_wall(ray, file->map->camera, file->params, images->texture);
       get_wall_dist(ray, file->map->camera);
       get_wall_height(ray, file->params);
-      get_texture_addr(images->texture, mlx);
+      get_texture_addr(images->texture, id->mlx);
       get_texture_x(ray, images->texture);
       print_column(x, ray, file->params, images);
       //      mlx_destroy_image(mlx, images->texture->id);
     }
-  mlx_put_image_to_window(mlx, win, images->screen->id, 0, 0);
+  mlx_put_image_to_window(id->mlx, id->win, images->screen->id, 0, 0);
 }

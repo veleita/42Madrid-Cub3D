@@ -122,10 +122,9 @@ typedef struct	s_ray
   double	perp_wall_dist;
   double	wall_hit_x;
   int		texture_x;
-  // Not sure if the three following should be int or double values
-  int		wall_height;
-  int		draw_start;
-  int		draw_end;
+  double	wall_height;
+  double	draw_start;
+  double	draw_end;
 }		t_ray;
 
 #ifdef __APPLE__
@@ -161,10 +160,15 @@ typedef struct	s_key
   unsigned char	right;
 }		t_key;
 
-typedef struct	s_var //this struct is probably unnecesary
+typedef struct	s_id
 {
   void		*mlx;
   void		*win;
+}		t_id;
+
+typedef struct	s_var //this struct is probably unnecesary
+{
+  t_id		*id;
   t_file	*file;
   t_images	*images;
   t_ray		*ray;
@@ -201,7 +205,7 @@ void		valid_map(t_map *map, int y, int x);
 /* 
 ** render.c
 */
-void		render(t_file *file, void *mlx, void *win, t_images *images);
+void		render(t_file *file, t_id *id, t_ray *ray, t_images *images);
 /*
 ** raycasting.c
 */

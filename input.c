@@ -81,6 +81,6 @@ int		move_player(t_var *var)
       rotation(var->file->map->camera, -rotation_speed);
       printf("right\n");
     }
-  render(var->file, var->mlx, var->win, var->images);
+  render(var->file, var->id, var->ray, var->images);
   return (1);
 }
