@@ -4,8 +4,6 @@ void	render(t_file *file, t_id *id, t_ray *ray, t_images *images)
 {
   int	x;
   
-  ray->map_x = (int)file->map->camera->pos_x;
-  ray->map_y = (int)file->map->camera->pos_y;
   x = -1;
   while (++x < file->params->resolution_x)
     {

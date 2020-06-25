@@ -31,10 +31,10 @@ static void	charge_map(t_map *map)
 {
   int	y;
 
-  if (!(map->map = (int**)malloc(map->y * sizeof(int*))))
+  if (!(map->map = (int**)malloc((map->y + 1) * sizeof(int*))))
     ft_exit("Failed to allocate memory for the bitmap");
   y = 0;
-  while (y < map->y)
+  while (y <= map->y)
     {
       if (!(map->map[y] = (int*)malloc(map->x * sizeof(int))))
 	{
@@ -65,7 +65,7 @@ void		read_map(char *line, int fd, int len, t_map *map)
   while (map->map_line-- > 0)
     get_next_line(fd, &line_2);
   y = -1;
-  while (++y < map->y)
+  while (++y <= map->y)
     {
       fill_map(line_2, y, map, &player);
       get_next_line(fd, &line_2);
