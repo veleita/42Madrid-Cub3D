@@ -67,4 +67,10 @@ void	init(const char *file_name, t_var *var)
   var->images = create_images(var->id->mlx, var->file->params);
   if (!(var->key = (t_key*)malloc(sizeof(t_key))))
     ft_exit ("Oops error allocating t_key (init.c)");
+  var->key->a = 0;
+  var->key->w = 0;
+  var->key->s = 0;
+  var->key->d = 0;
+  var->key->left = 0;
+  var->key->right = 0;
 }

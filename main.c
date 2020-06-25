@@ -26,7 +26,6 @@ int main(int argc, char **argv)
   if (!(var = (t_var*)malloc(sizeof(t_var))))
     ft_exit ("Failed to allocate memory for the var struct (init.c)"); 
   init(argv[1], var);
-  render(var->file, var->id, var->ray, var->images);
   mlx_hook(var->id->win, 2, 1L<<0, &key_pressed, var->key);
   mlx_hook(var->id->win, 3, 1L<<1, &key_released, var->key);
   mlx_loop_hook(var->id->mlx, &move_player, var);
