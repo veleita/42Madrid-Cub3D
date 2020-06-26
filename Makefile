@@ -6,8 +6,8 @@ OS		= $(shell uname)
 ifeq ($(OS), Linux)
 	IFLAGS	= -L minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
 endif
-#ifeq ($(OS), Darwin)
-#	IFLAGS	= -L minilib_mac -l mlx -framework OpenGL -framework Appkit
+ifeq ($(OS), Darwin)
+	IFLAGS	= -L minilib_mac -l mlx -framework OpenGL -framework Appkit
 #endif
 WFLAGS		= -Werror -Wall -Wextra
 GDB		= -g
@@ -45,8 +45,7 @@ all:	$(NAME)
 	./$(NAME) maps/map2.cub
 
 $(NAME):
-	$(CC) $(GDB) $(SRC) $(IFLAGS) $(INCLUDES) -o $(NAME) -pg
-#	$(CC) $(IFLAGS) $(INCLUDES) $(SRC)-o $(NAME)
+	$(CC) $(GDB) $(SRC) $(IFLAGS) $(INCLUDES) -o $(NAME)
 
 # TEST THE PARSE FUNCTIONS
 parse:	$(PARSE_SRC) $(HEADERS)
