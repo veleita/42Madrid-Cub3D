@@ -26,17 +26,17 @@ void	horizontal_movement(t_map *map, double movement_speed,
 
 void	rotation(t_camera *camera, double rotation_speed)
 {
-  double dir_x_copy;
-  double plane_x_copy;
+  double dir_y_copy;
+  double plane_y_copy;
 
-  dir_x_copy = camera->dir_x;
-  camera->dir_x = camera->dir_x * cos(rotation_speed)
-    - camera->dir_y * sin(rotation_speed);
-  camera->dir_y = dir_x_copy * sin(rotation_speed) + camera->dir_y *
+  dir_y_copy = camera->dir_y;
+  camera->dir_y = camera->dir_y * cos(rotation_speed)
+    - camera->dir_x * sin(rotation_speed);
+  camera->dir_x = dir_y_copy * sin(rotation_speed) + camera->dir_x *
     cos(rotation_speed);
-  plane_x_copy = camera->plane_x;
-  camera->plane_x = camera->plane_x * cos(rotation_speed) - 
-    camera->plane_y * sin(rotation_speed);
-  camera->plane_y = plane_x_copy * sin(rotation_speed) + 
-    camera->plane_y * cos(rotation_speed);
+  plane_y_copy = camera->plane_y;
+  camera->plane_y = camera->plane_y * cos(rotation_speed) - 
+    camera->plane_x * sin(rotation_speed);
+  camera->plane_x = plane_y_copy * sin(rotation_speed) + 
+    camera->plane_x * cos(rotation_speed);
 }

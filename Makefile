@@ -45,7 +45,7 @@ all:	$(NAME)
 	./$(NAME) maps/map2.cub
 
 $(NAME):
-	$(CC) $(GDB) $(SRC) $(IFLAGS) $(INCLUDES) -o $(NAME)
+	$(CC) $(GDB) $(SRC) $(IFLAGS) $(INCLUDES) -o $(NAME) -pg
 #	$(CC) $(IFLAGS) $(INCLUDES) $(SRC)-o $(NAME)
 
 # TEST THE PARSE FUNCTIONS

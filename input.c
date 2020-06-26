@@ -44,8 +44,8 @@ int		move_player(t_var *var)
 	double	movement_speed;
 	double	rotation_speed;
 
-	movement_speed = 0.3;
-	rotation_speed = 0.15;
+	movement_speed = 0.10;
+	rotation_speed = 0.03;
 	if (var->key->w == 1)
 	{
 		vertical_movement(var->file->map, movement_speed,

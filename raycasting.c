@@ -91,22 +91,21 @@ void	get_hit(t_ray *ray, int **map, int map_max_x, int map_max_y)
  ** L: we select the correspondent texture according to the
  **	orientation of the wall
  */
-void	get_wall(t_ray *ray, t_camera *camera,
-		t_parameters *params, t_texture *texture)
+void	get_wall(t_ray *ray, t_camera *camera, t_images *images)
 {
 	if (ray->side == 1)
 	{
 		ray->wall_hit_x = camera->pos_x + ((ray->map_y - camera->pos_y
 					+ (1 - ray->step_y) / 2) 
 				/ ray->dir_y) * ray->dir_x;
-		texture->path = (ray->dir_y < 0) ? params->so : params->no;
+		ray->texture = (ray->dir_y < 0) ? images->south : images->north;
 	}
 	else
 	{
 		ray->wall_hit_x = camera->pos_y + ((ray->map_x - camera->pos_x
 					+ (1 - ray->step_x) / 2)
 				/ ray->dir_x) * ray->dir_y;
-		texture->path = (ray->dir_x < 0) ? params->ea : params->we;
+		ray->texture = (ray->dir_x < 0) ? images->east : images->west;
 	}
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
 	/*   printf("%s\n", texture->path); */
@@ -123,10 +122,10 @@ void	get_wall_dist(t_ray *ray, t_camera *camera)
 {
 	if (ray->side == 1)
 		ray->perp_wall_dist = fabs((ray->map_y - camera->pos_y +
-				(1 - ray->step_y) / 2.0) / ray->dir_y);
+					(1 - ray->step_y) / 2.0) / ray->dir_y);
 	else
 		ray->perp_wall_dist = fabs((ray->map_x - camera->pos_x +
-				(1 - ray->step_x) / 2.0) / ray->dir_x);
+					(1 - ray->step_x) / 2.0) / ray->dir_x);
 	ray->perp_wall_dist *= (ray->perp_wall_dist < 0) ? -1 : 1;
 }
 

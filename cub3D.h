@@ -1,6 +1,6 @@
 /*
 ** |------HEADERS------|
-/* 
+**
 ** For the mlx functions: 
 */
 #include "mlx.h"
@@ -95,13 +95,15 @@ typedef struct	s_texture
   int		endian;
   int		bpp;
   int		size_line;
-  char		*path;
 }		t_texture;
 
 typedef struct	s_images
 {
   t_screen	*screen;
-  t_texture	*texture;
+  t_texture	*north;
+  t_texture	*south;
+  t_texture	*east; 
+  t_texture	*west;
 }		t_images;
 
 typedef struct	s_ray
@@ -122,6 +124,7 @@ typedef struct	s_ray
   double	perp_wall_dist;
   double	wall_hit_x;
   int		texture_x;
+  t_texture	*texture;
   double	wall_height;
   double	draw_start;
   double	draw_end;
@@ -212,15 +215,14 @@ void		render(t_file *file, t_id *id, t_ray *ray, t_images *images);
 void		get_side_dist(int x, double resolution_x, t_ray *ray,
 			      t_camera *camera);
 void		get_hit(t_ray *ray, int **map, int map_max_x, int map_max_y);
-void		get_wall(t_ray *ray, t_camera *camera,
-			 t_parameters *parameters, t_texture *texture);
+void		get_wall(t_ray *ray, t_camera *camera, t_images *images);
 void		get_wall_dist(t_ray *ray, t_camera *camera);
 void		get_wall_height(t_ray *ray, t_parameters *parameters);
 /*
 ** textures.c
 */
 void		get_texture_addr(t_texture *texture, void *mlx);
-void		get_texture_x(t_ray *ray, t_texture *texture);
+void		get_texture_x(t_ray *ray);
 void		print_column(int x, t_ray *ray, t_parameters *params,
 			     t_images *images);
 /*
@@ -237,7 +239,6 @@ void		horizontal_movement(t_map *map, double movement_speed,
 				    double plane_x, double plane_y);
 void		vertical_movement(t_map *map, double movement_speed,
 				  double dir_x, double dir_y);
-
 /*
 ** exit.c 
 */
@@ -261,38 +262,3 @@ size_t		ft_strlen(const char *s);// used
 void		ft_bzero(void *s, size_t n);// used
 short		ft_isdigit(int c);// used
 short		ft_isalpha(int c);// used
-//char		*ft_strnstr(const char *haystack, const char *needle,
-//			    size_t len);//
-//short		ft_strcmp(const char *s1, const char *s2);//
-/*
-void		fill_map(char *line, int **map, int x);
-int		**create_map(char *file_name, int x, int y);
-/* /* render.c 
-*void		render(t_var *var);//here
-* raycasting.c
-*void		get_side_dist(int x, t_var *var);// here
-*
-*void		get_hit(t_var *var);// here
-*void		get_wall(t_var *var);// here
-*void		get_wall_hit(t_var *var);// here
-** print_world.c
-*void		print_column(t_var *var, int x, int texture_x);// here
-*char		*select_texture(t_var *var);// here
-*/
-/*
-void		*ft_memcpy(void *dst, const void *src, size_t n);
-char		*ft_strdup(const char *s1);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_strchr(char *s, char c);
-int		get_next_line(int fd, char **line);// used
-/* movement.c
-void		vertical_movement(t_var *var, double movement_speed,
-				  double dirX, double dirY);
-void		horizontal_movement(t_var *var, double movement_speed,
-				    double planeX, double planeY);
-void		rotation(t_var *var, double rotation_speed);
-/* keys.c
-short		key_pressed(int key_code, t_var *var);// here
-short		key_released(int key_code, t_var *var);// here
-int		move_player(t_var *var);// what did this do????
-*/
