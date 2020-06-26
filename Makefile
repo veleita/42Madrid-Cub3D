@@ -8,7 +8,7 @@ ifeq ($(OS), Linux)
 endif
 ifeq ($(OS), Darwin)
 	IFLAGS	= -L minilib_mac -l mlx -framework OpenGL -framework Appkit
-#endif
+endif
 WFLAGS		= -Werror -Wall -Wextra
 GDB		= -g
 
