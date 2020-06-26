@@ -32,7 +32,7 @@ void		print_column(int x, t_ray *ray, t_parameters *params,
 	y = -1;
 	while (++y < ray->draw_start)
 		images->screen->addr[y * params->resolution_x + x] = 
-			rgb_to_hex(params->floor_rgb);
+			rgb_to_hex(params->ceiling_rgb);
 	step = 1.0 * ray->texture->height / ray->wall_height;
 	texture_pos = (ray->draw_start - params->resolution_y / 2 +
 			ray->wall_height / 2) * step;
@@ -47,5 +47,5 @@ void		print_column(int x, t_ray *ray, t_parameters *params,
 	}
 	while (y < (params->resolution_y - 1))
 		images->screen->addr[y++ * params->resolution_x + x] = 
-			rgb_to_hex(params->ceiling_rgb);
+			rgb_to_hex(params->floor_rgb);
 }

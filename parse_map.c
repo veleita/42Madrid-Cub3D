@@ -67,13 +67,13 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y)
 	t_camera *camera;
 
 	if (coord == 'N')
-		camera = set_dir_plane(0, -1, 0.66, 0);
+		camera = set_dir_plane(0, -1, -0.66, 0);
 	if (coord == 'S')
-		camera = set_dir_plane(0, 1, -0.66, 0);
+		camera = set_dir_plane(0, 1, 0.66, 0);
 	if (coord == 'E')
-		camera = set_dir_plane(1, 0, 0, -0.66);
+		camera = set_dir_plane(1, 0, 0, 0.66);
 	if (coord == 'W')
-		camera = set_dir_plane(-1, 0, 0, 0.66);
+		camera = set_dir_plane(-1, 0, 0, -0.66);
 	camera->pos_x = pos_x + 0.5;
 	camera->pos_y = pos_y + 0.5;
 	return (camera);
