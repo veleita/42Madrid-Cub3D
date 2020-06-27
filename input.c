@@ -9,10 +9,7 @@ int		key_pressed(int keycode, t_key *key)
 	if (keycode == S_KEY)
 		key->s = 1;
 	if (keycode == D_KEY)
-	{
 		key->d = 1;
-		printf("d\n");
-	}
 	if (keycode == LEFT_KEY)
 		key->left = 1;
 	if (keycode == RIGHT_KEY)
