@@ -38,6 +38,7 @@ void	get_map_dimensions(char *line, int fd, short read, t_map *map)
 		line[x_copy] == 'N' || line[x_copy] == 'S' ||
 		line[x_copy] == 'E' || line[x_copy] == 'W'))
 	    ft_exit("Invalid elements in the bitmap");
+	  map->num_sprites += (line[x_copy] == '2') ? 1 : 0;
 	  x_copy++;
 	}
       map->x = x_copy > map->x ? x_copy : map->x;
@@ -46,6 +47,7 @@ void	get_map_dimensions(char *line, int fd, short read, t_map *map)
     }
   map->y--;
   free(line);
+  printf("Num sprites: %d\n", map->num_sprites);
 }
 
 static t_camera	*set_dir_plane(double dirX, double dirY,

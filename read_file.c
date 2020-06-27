@@ -119,6 +119,7 @@ void	init_values(t_file *file)
 {
   file->map->map_line = 0;
   file->map->map_line = 0;
+  file->map->num_sprites= 0;
   file->params->resolution_x = 0;
   file->params->resolution_y = 0;
   file->params->no = 0;
