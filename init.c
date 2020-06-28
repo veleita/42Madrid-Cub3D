@@ -88,4 +88,6 @@ void	init(const char *file_name, t_var *var)
 	var->key->d = 0;
 	var->key->left = 0;
 	var->key->right = 0;
+	var->movement_speed = 0.05;
+	var->rotation_speed = 0.02;
 }

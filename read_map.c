@@ -6,22 +6,26 @@ static void	charge_sprite(double x, double y, int num_sprites, t_sprite **sprite
 		ft_exit("na mi weh\n");
 	sprite[num_sprites]->pos_x = x;
 	sprite[num_sprites]->pos_y = y;
-	printf("sprite %d - x: %f  y: %f\n", num_sprites, x, y);
 }
+
+static void	map_objects(char number, int x, int y, t_map *map)
+{
+	map->map[y][x] = number - '0';
+	if (number == '2')
+		charge_sprite((double)x, (double)y, --map->num_sprites, map->sprite);
+}
+
 static void	fill_map(char *line, int y, t_map *map, short *player)
 {
 	int x;
 	int it;
+
 	it = 0;
 	x = -1;
 	while (++x < map->x)
 	{
 		if (ft_isdigit(line[it]))
-		{
-			map->map[y][x] = line[it] - '0';
-			if (line[it] == '2')
-				charge_sprite((double)x, (double)y, --map->num_sprites, map->sprite);
-		}
+			map_objects(line[it], x, y, map);
 		else
 		{
 			map->map[y][x] = 0;
@@ -63,16 +67,14 @@ void		read_map(char *line, int fd, int len, t_map *map)
 	short	player;
 	char	*line_2;
 	int	y;
+	int	num_sprites;
 
-	map->x = 0;
-	map->y = 0;
 	get_map_dimensions(line, fd, len, map);
+	num_sprites = map->num_sprites;
 	close(fd);
 	charge_map(map);
 	if ((fd = open(map->file_name, O_RDONLY)) == -1)
 		ft_exit("Couldn't open file (read_map.c)");
-	//if (!(line_2 = (char**)malloc(sizeof(char*))))
-	//  ft_exit("Couldn't allocate memory for line (read_map.c)");
 	player = 0;
 	line_2 = 0;
 	while (map->map_line-- > 0)
@@ -84,5 +86,6 @@ void		read_map(char *line, int fd, int len, t_map *map)
 		get_next_line(fd, &line_2);
 	}
 	free(line_2);
+	map->num_sprites = num_sprites;
 	valid_map(map, (int)map->camera->pos_y, (int)map->camera->pos_x);
 }

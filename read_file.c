@@ -117,7 +117,8 @@ void	parse_parameters(char *line, int len, int fd, t_file *file)
 
 void	init_values(t_file *file)
 {
-  file->map->map_line = 0;
+  file->map->x = 0;
+  file->map->y = 0;
   file->map->map_line = 0;
   file->map->num_sprites= 0;
   file->params->resolution_x = 0;

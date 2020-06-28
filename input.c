@@ -38,43 +38,29 @@ int		key_released(int keycode, t_key *key)
 
 int		move_player(t_var *var)
 {
-	double	movement_speed;
-	double	rotation_speed;
-
-	movement_speed = 0.05;
-	rotation_speed = 0.02;
 	if (var->key->w == 1)
-	{
-		vertical_movement(var->file->map, movement_speed,
+		vertical_movement(var->file->map, var->movement_speed,
 				var->file->map->camera->dir_x,
 				var->file->map->camera->dir_y);
-	}
 	if (var->key->s == 1)
-	{
-		vertical_movement(var->file->map, movement_speed,
+		vertical_movement(var->file->map, var->movement_speed,
 				-var->file->map->camera->dir_x,
 				-var->file->map->camera->dir_y);
-	}
 	if (var->key->a == 1)
-	{
-		horizontal_movement(var->file->map, movement_speed,
+		horizontal_movement(var->file->map, var->movement_speed,
 				-var->file->map->camera->plane_x,
 				-var->file->map->camera->plane_y);
-	}
 	if (var->key->d == 1)
-	{
-		horizontal_movement(var->file->map, movement_speed,
+		horizontal_movement(var->file->map, var->movement_speed,
 				var->file->map->camera->plane_x,
 				var->file->map->camera->plane_y);
-	}
 	if (var->key->left == 1)
-	{
-		rotation(var->file->map->camera, rotation_speed);
-	}
+		rotation(var->file->map->camera, var->rotation_speed);
 	if (var->key->right == 1)
-	{
-		rotation(var->file->map->camera, -rotation_speed);
-	}
+		rotation(var->file->map->camera, -var->rotation_speed);
+		order_sprites(var->file->map->num_sprites, var->file->map->sprite,
+			var->file->map->camera->pos_x, 
+			var->file->map->camera->pos_y);
 	render(var->file, var->id, var->ray, var->images);
 	return (1);
 }

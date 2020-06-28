@@ -25,6 +25,7 @@ SRC		= 	main.c \
 			textures.c \
 			input.c \
 			movement.c \
+			sprites.c \
 			exit.c \
 			get_next_line.c \
 			gnl_utils.c \
