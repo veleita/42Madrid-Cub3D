@@ -10,10 +10,6 @@ static int	rgb_to_hex(t_color color)
 	return (ret);
 }
 
-void		get_texture_addr(t_texture *texture, void *mlx)
-{
-}
-
 void		get_texture_x(t_ray *ray)
 {
 	ray->texture_x = (int)(ray->wall_hit_x * (double)(ray->texture->width));

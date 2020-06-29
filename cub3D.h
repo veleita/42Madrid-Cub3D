@@ -112,7 +112,28 @@ typedef struct		s_images
 	t_texture	*south;
 	t_texture	*east; 
 	t_texture	*west;
+	t_texture	*sprite;
 }			t_images;
+
+typedef struct		s_sprite_ray
+{
+	double		inv_det;
+	int		*sprite_order;
+	double		sprite_x;
+	double		sprite_y;
+	double		transform_x;
+	double		transform_y;
+	int		sprite_screen_x;
+	int		sprite_height;
+	int		draw_start_y;
+	int		draw_end_y;
+	int		draw_start_x;
+	int		draw_end_x;
+	int		stripe;
+	double		*wall_z;
+	int		tex_x;
+	int		tex_y;
+}			t_sprite_ray;
 
 typedef struct		s_ray
 {
@@ -131,8 +152,8 @@ typedef struct		s_ray
 	short		side;
 	double		perp_wall_dist;
 	double		wall_hit_x;
-	int		texture_x;
 	t_texture	*texture;
+	int		texture_x;
 	double		wall_height;
 	double		draw_start;
 	double		draw_end;
@@ -182,10 +203,11 @@ typedef struct	s_var //this struct is probably unnecesary
 	t_id		*id;
 	t_file		*file;
 	t_images	*images;
-	t_ray		*ray;
 	t_key		*key;
-	double		movement_speed;
-	double		rotation_speed;
+	double		mov_speed;
+	double		rotate_speed;
+	t_ray		*ray;
+	t_sprite_ray	*spr_ray;
 }			t_var;
 
 /*
@@ -194,6 +216,7 @@ typedef struct	s_var //this struct is probably unnecesary
  ** init.c 
  */
 void			init(const char *file_name, t_var *var);
+void			zero_values(t_var *var);
 t_file			*read_file(const char *file_name);
 /* 
  ** read_file.c 
@@ -211,14 +234,13 @@ void			all_parameters(t_parameters *parameters);
 void			get_map_dimensions(char *line, int fd, short read,
 			t_map *map);
 t_camera		*check_coord(char coord, int pos_x, int pos_y);
-/*
- ** valid_map.c
- */
 void			valid_map(t_map *map, int y, int x);
 /* 
  ** render.c
  */
-void			render(t_file *file, t_id *id, t_ray *ray, t_images *images);
+void			render(t_file *file, t_ray *ray, t_images *images,
+			t_sprite_ray *s_ray);
+int			actualize(t_var *var);
 /*
  ** raycasting.c
  */
@@ -227,12 +249,12 @@ void			get_side_dist(int x, double resolution_x, t_ray *ray,
 void			get_hit(t_ray *ray, int **map, int map_max_x, 
 			int map_max_y);
 void			get_wall(t_ray *ray, t_camera *camera, t_images *images);
-void			get_wall_dist(t_ray *ray, t_camera *camera);
+void			get_wall_dist(t_ray *ray, t_camera *camera, 
+			t_sprite_ray *s_ray, int x);
 void			get_wall_height(t_ray *ray, t_parameters *parameters);
 /*
  ** textures.c
  */
-void			get_texture_addr(t_texture *texture, void *mlx);
 void			get_texture_x(t_ray *ray);
 void			print_column(int x, t_ray *ray, t_parameters *params,
 			t_images *images);
@@ -241,7 +263,6 @@ void			print_column(int x, t_ray *ray, t_parameters *params,
  */
 int			key_pressed(int keycode, t_key *key);
 int			key_released(int keycode, t_key *key);
-int			move_player(t_var *var);
 /*
  ** movement.c
  */
@@ -253,8 +274,8 @@ void			vertical_movement(t_map *map, double movement_speed,
 /*
 ** sprites.c
 */
-void			order_sprites(int num_sprites, t_sprite **sprite, 
-			double pos_x, double pos_y);
+void			order_sprites(int *num_sprites, t_map *map);
+void			render_sprites(t_var *var);
 /*
 ** exit.c 
 */
@@ -266,6 +287,7 @@ short			get_next_line(int fd, char **line);
 /*
 ** gnl_utils.c
 */
+size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *s1);
 char			*ft_strjoin(char const *s1, char const *s2);
 short			ft_strchr(char *s, char c);
@@ -273,8 +295,8 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 /* 
 ** utils.c 
 */
-void			remove_space(char *line, int *it);// used
-size_t			ft_strlen(const char *s);// used
-void			ft_bzero(void *s, size_t n);// used
-short			ft_isdigit(int c);// used
-short			ft_isalpha(int c);// used
+void			remove_space(char *line, int *it);
+void			ft_bzero(void *s, size_t n);
+short			ft_isdigit(int c);
+short			ft_isalpha(int c);
+void			bubble_sort(int *list, double *content, int elements);

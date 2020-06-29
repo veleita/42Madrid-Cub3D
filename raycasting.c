@@ -118,7 +118,8 @@ void	get_wall(t_ray *ray, t_camera *camera, t_images *images)
  ** L127: the perp_wall_dist value is a scalar, not a vector, it must
  **	 always be a positive number.
  */
-void	get_wall_dist(t_ray *ray, t_camera *camera)
+void	get_wall_dist(t_ray *ray, t_camera *camera, 
+		t_sprite_ray *s_ray, int x)
 {
 	if (ray->side == 1)
 		ray->perp_wall_dist = fabs((ray->map_y - camera->pos_y +
@@ -127,6 +128,7 @@ void	get_wall_dist(t_ray *ray, t_camera *camera)
 		ray->perp_wall_dist = fabs((ray->map_x - camera->pos_x +
 					(1 - ray->step_x) / 2.0) / ray->dir_x);
 	ray->perp_wall_dist *= (ray->perp_wall_dist < 0) ? -1 : 1;
+	s_ray->wall_z[x] = ray->perp_wall_dist;
 }
 
 /*

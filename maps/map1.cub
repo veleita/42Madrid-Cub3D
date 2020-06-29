@@ -5,7 +5,7 @@ SO textures/case.xpm
 EA textures/greystone.xpm
 WE textures/purplestone.xpm
 
-S sprite
+S textures/pillar.xpm
 
 C 100 230 210
 F 156 209 89

@@ -19,7 +19,6 @@ SRC		= 	main.c \
 			read_file.c \
 			read_map.c \
 			parse_map.c \
-			valid_map.c \
 			render.c \
 			raycasting.c \
 			textures.c \

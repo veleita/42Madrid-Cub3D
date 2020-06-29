@@ -57,21 +57,32 @@ static t_images	*create_images(void *mlx, t_parameters *params)
 	images->south = create_texture(mlx, params->so);
 	images->east = create_texture(mlx, params->ea);
 	images->west = create_texture(mlx, params->we);
+	images->sprite = create_texture(mlx, params->sprt);
 	return (images);
 }
 
-/*
- ** L:
- **
- ** L: Fill the var->file struct with the info in the fd
- */
+void	zero_values(t_var *var)
+{
+	var->key->a = 0;
+	var->key->w = 0;
+	var->key->s = 0;
+	var->key->d = 0;
+	var->key->left = 0;
+	var->key->right = 0;
+	var->mov_speed = 0.05;
+	var->rotate_speed = 0.02;
+	ft_bzero(var->spr_ray->sprite_order, 
+			var->file->map->num_sprites);
+	//ft_bzero(var->spr_ray, var->file->params->resolution_x);
+}
+
 void	init(const char *file_name, t_var *var)
 {
 	var->file = read_file(file_name);
 	if (!(var->id = (t_id*)malloc(sizeof(t_id))))
-		ft_exit ("Failed to allocate memory for t_id (init.c)");
+		ft_exit ("Failed to allocate t_id (init.c)");
 	if (!(var->id->mlx = mlx_init()))
-		ft_exit ("Failed to establish connection with mlx (init.c)");
+		ft_exit ("Failed to establish mlx (init.c)");
 	if (!(var->id->win = mlx_new_window(var->id->mlx,
 					var->file->params->resolution_x,
 					var->file->params->resolution_y,
@@ -79,15 +90,18 @@ void	init(const char *file_name, t_var *var)
 		ft_exit ("Failed to open new window (init.c)");
 	if (!(var->ray = (t_ray*)malloc(sizeof(t_ray))))
 		ft_exit("Couldn't allocate memory for ray struct");
+	var->spr_ray = (t_sprite_ray*)malloc(sizeof(t_sprite_ray));
+	if (var->spr_ray == 0)
+		ft_exit("Couldn't allocate memory for ray struct");
+	var->spr_ray->sprite_order = 
+		(int*)malloc(var->file->map->num_sprites * 
+				sizeof(int));
+	var->spr_ray->wall_z = 
+		(double*)malloc(var->file->params->resolution_x * 
+				sizeof(double));
+	//if (!(var->spr_ray->sprite_order && var->spr_ray->wall_z))
+	//	ft_exit("Couldn't allocate memory for sprite arrays");
 	var->images = create_images(var->id->mlx, var->file->params);
 	if (!(var->key = (t_key*)malloc(sizeof(t_key))))
 		ft_exit ("Oops error allocating t_key (init.c)");
-	var->key->a = 0;
-	var->key->w = 0;
-	var->key->s = 0;
-	var->key->d = 0;
-	var->key->left = 0;
-	var->key->right = 0;
-	var->movement_speed = 0.05;
-	var->rotation_speed = 0.02;
 }

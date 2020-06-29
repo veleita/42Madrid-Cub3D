@@ -14,14 +14,12 @@ void	vertical_movement(t_map *map, double movement_speed,
 void	horizontal_movement(t_map *map, double movement_speed,
 			    double plane_x, double plane_y)
 {
-  //printf("h");
   if (map->map[(int)map->camera->pos_y]
 		  [(int)(map->camera->pos_x + plane_x * 1)] != 1)
     map->camera->pos_x += plane_x * movement_speed;
   if (map->map[(int)(map->camera->pos_y + plane_y * 1)]
 		  [(int)map->camera->pos_x] != 1)
     map->camera->pos_y += plane_y * movement_speed;
-  //printf("h");
 }
 
 void	rotation(t_camera *camera, double rotation_speed)
