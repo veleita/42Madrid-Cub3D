@@ -47,7 +47,6 @@ void	get_map_dimensions(char *line, int fd, short read, t_map *map)
     }
   map->y--;
   free(line);
-  printf("Num sprites: %d\n", map->num_sprites);
 }
 
 static t_camera	*set_dir_plane(double dirX, double dirY,
@@ -69,9 +68,9 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y)
 	t_camera *camera;
 
 	if (coord == 'N')
-		camera = set_dir_plane(0, -1, -0.66, 0);
+		camera = set_dir_plane(0, -1, 0.66, 0);
 	if (coord == 'S')
-		camera = set_dir_plane(0, 1, 0.66, 0);
+		camera = set_dir_plane(0, 1, -0.66, 0);
 	if (coord == 'E')
 		camera = set_dir_plane(1, 0, 0, 0.66);
 	if (coord == 'W')

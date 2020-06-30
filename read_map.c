@@ -4,8 +4,8 @@ static void	charge_sprite(double x, double y, int num_sprites, t_sprite **sprite
 {
 	if (!(sprite[num_sprites] = (t_sprite*)malloc(sizeof(t_sprite))))
 		ft_exit("na mi weh\n");
-	sprite[num_sprites]->pos_x = y + 0.5;
-	sprite[num_sprites]->pos_y = x + 0.5;
+	sprite[num_sprites]->pos_x = x + 0.5;
+	sprite[num_sprites]->pos_y = y + 0.5;
 }
 
 static void	map_objects(char number, int x, int y, t_map *map)
