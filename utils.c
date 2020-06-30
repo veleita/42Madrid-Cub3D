@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/30 13:17:09 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/06/30 21:47:20 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	 remove_space(char *line, int *it)
@@ -15,9 +27,25 @@ void 	ft_bzero(void *s, size_t n)
     *(ps++) = 0;
 }
 
-short 	ft_isdigit(int c)
+//short 	ft_isdigit(int c)
+//{
+//  return (('0' <= c && c <= '9')? 1 : 0);
+//}
+
+int	ft_strcmp(const char *s1, const char *s2)
 {
-  return (('0' <= c && c <= '9')? 1 : 0);
+	if (!s1 || !s2)
+		return (0);
+	while (*s1 != '\0' && *s2 != '\0')
+	{
+		if (*s1 != *s2)
+			return (0);
+		s1++;
+		s2++;
+	}
+	if (*s1 != *s2)
+		return (0);
+	return (1);
 }
 
 short 	ft_isalpha(int c)

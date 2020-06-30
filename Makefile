@@ -25,6 +25,7 @@ SRC		= 	main.c \
 			input.c \
 			movement.c \
 			sprites.c \
+			bmp.c \
 			exit.c \
 			get_next_line.c \
 			gnl_utils.c \
@@ -45,7 +46,7 @@ all:	$(NAME)
 	./$(NAME) maps/map2.cub
 
 $(NAME):
-	$(CC) $(GDB) $(SRC) $(IFLAGS) $(INCLUDES) -o $(NAME)
+	$(CC) $(GDB) $(SRC) $(WFLAGS) $(IFLAGS) $(INCLUDES) -o $(NAME)
 
 # TEST THE PARSE FUNCTIONS
 parse:	$(PARSE_SRC) $(HEADERS)

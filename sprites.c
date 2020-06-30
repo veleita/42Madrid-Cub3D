@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sprites.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/30 13:17:44 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/06/30 22:06:52 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void		order_sprites(int *sprite_order, t_map *map)
@@ -23,8 +35,8 @@ void		order_sprites(int *sprite_order, t_map *map)
 	bubble_sort(sprite_order, sprite_distance, map->num_sprites);
 }
 
-static void	print_stripe(t_camera *player, t_sprite_ray *ray,
-		t_images *images, t_parameters *params)
+static void	print_stripe(t_sprite_ray *ray, t_images *images, 
+		t_parameters *params)
 {
 	int y;
 	int d;
@@ -116,8 +128,7 @@ void		render_sprites(t_var *var)
 			var->spr_ray->draw_start_x - 1;
 		while (++var->spr_ray->stripe < 
 				var->spr_ray->draw_end_x)
-			print_stripe(var->file->map->camera,
-					var->spr_ray, var->images,
+			print_stripe(var->spr_ray, var->images,
 					var->file->params);
 	}
 	mlx_put_image_to_window(var->id->mlx, var->id->win, 

@@ -246,8 +246,7 @@ int			actualize(t_var *var);
  */
 void			get_side_dist(int x, double resolution_x, t_ray *ray,
 			t_camera *camera);
-void			get_hit(t_ray *ray, int **map, int map_max_x, 
-			int map_max_y);
+void			get_hit(t_ray *ray, int **map, int map_max_y);
 void			get_wall(t_ray *ray, t_camera *camera, t_images *images);
 void			get_wall_dist(t_ray *ray, t_camera *camera, 
 			t_sprite_ray *s_ray, int x);
@@ -277,6 +276,10 @@ void			vertical_movement(t_map *map, double movement_speed,
 void			order_sprites(int *num_sprites, t_map *map);
 void			render_sprites(t_var *var);
 /*
+ * bmp.c
+ */
+void			create_bmp(t_parameters *params, int *screen);
+/*
 ** exit.c 
 */
 void			ft_exit(char *error);
@@ -297,6 +300,7 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 */
 void			remove_space(char *line, int *it);
 void			ft_bzero(void *s, size_t n);
-short			ft_isdigit(int c);
+//short			ft_isdigit(int c);
 short			ft_isalpha(int c);
 void			bubble_sort(int *list, double *content, int elements);
+int			ft_strcmp(const char *s1, const char *s2);

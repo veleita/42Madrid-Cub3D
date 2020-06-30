@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/06/30 21:56:00 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 static void	charge_sprite(double x, double y, int num_sprites, t_sprite **sprite)
@@ -24,7 +36,7 @@ static void	fill_map(char *line, int y, t_map *map, short *player)
 	x = -1;
 	while (++x < map->x)
 	{
-		if (ft_isdigit(line[it]))
+		if ('0' <= line[it] && line[it] <= '9')
 			map_objects(line[it], x, y, map);
 		else
 		{

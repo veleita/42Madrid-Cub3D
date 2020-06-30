@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycasting.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/30 13:17:36 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/06/30 22:04:40 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 /*
@@ -60,7 +72,7 @@ void	get_side_dist(int x, double resolution_x, t_ray *ray,
  ** L: ray->side is a flag that indicates wether if the edge cell we
  **	are evaluating certical (0) or horizontal (1);
  */
-void	get_hit(t_ray *ray, int **map, int map_max_x, int map_max_y)
+void	get_hit(t_ray *ray, int **map, int map_max_y)
 {
 	ray->step_x = (ray->dir_x < 0) ? -1 : 1;
 	ray->step_y = (ray->dir_y < 0) ? -1 : 1;

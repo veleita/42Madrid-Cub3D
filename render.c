@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/06/30 22:04:51 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 void	render(t_file *file, t_ray *ray, t_images *images, 
@@ -10,7 +22,7 @@ void	render(t_file *file, t_ray *ray, t_images *images,
 	{
 		get_side_dist(x, (double)file->params->resolution_x, ray,
 				file->map->camera);
-		get_hit(ray, file->map->map, file->map->x, file->map->y);
+		get_hit(ray, file->map->map, file->map->y);
 		get_wall(ray, file->map->camera, images);
 		get_wall_dist(ray, file->map->camera, s_ray, x);
 		get_wall_height(ray, file->params);
