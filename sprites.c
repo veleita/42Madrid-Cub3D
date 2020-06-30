@@ -46,7 +46,7 @@ static void	print_stripe(t_camera *player, t_sprite_ray *ray,
 				ray->sprite_height) / 256;
 		color = images->sprite->addr[images->sprite->width *
 			ray->tex_y + ray->tex_x];
-		if ( color != 0)
+		if (color != 0)
 			images->screen->addr[y * 
 				params->resolution_x + 
 				ray->stripe] = color;
@@ -63,7 +63,7 @@ static void	calculate_params(t_camera *player, t_sprite_ray *ray,
 	ray->transform_y = ray->inv_det * 
 		(-player->plane_y * ray->sprite_x + 
 		 player->plane_x * ray->sprite_y);
-	ray->sprite_screen_x = (int)(params->resolution_x / 2 * 
+	ray->sprite_screen_x = (int)((params->resolution_x / 2) * 
 			(1 + ray->transform_x / ray->transform_y));
 	ray->sprite_height = abs((int)(params->resolution_y / 
 				ray->transform_y));
