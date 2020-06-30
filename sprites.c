@@ -31,8 +31,8 @@ static void	print_stripe(t_camera *player, t_sprite_ray *ray,
 	int color;
 
 	ray->tex_x = (int)(256 * (ray->stripe - (-ray->sprite_height / 2
-				       	+ ray->sprite_screen_x))
-		       	* images->sprite->width / 
+					+ ray->sprite_screen_x))
+			* images->sprite->width / 
 			ray->sprite_height) / 256;
 	if (ray->transform_y < 0 || ray->transform_y > 
 			ray->wall_z[ray->stripe])
@@ -46,10 +46,10 @@ static void	print_stripe(t_camera *player, t_sprite_ray *ray,
 				ray->sprite_height) / 256;
 		color = images->sprite->addr[images->sprite->width *
 			ray->tex_y + ray->tex_x];
-			if ( color != 0)
-				images->screen->addr[y * 
-					params->resolution_x + 
-					ray->stripe] = color;
+		if ( color != 0)
+			images->screen->addr[y * 
+				params->resolution_x + 
+				ray->stripe] = color;
 		y++;
 	}
 }
@@ -63,7 +63,7 @@ static void	calculate_params(t_camera *player, t_sprite_ray *ray,
 	ray->transform_y = ray->inv_det * 
 		(-player->plane_y * ray->sprite_x + 
 		 player->plane_x * ray->sprite_y);
-	ray->sprite_screen_x = (int)(params->resolution_x / 2 + 
+	ray->sprite_screen_x = (int)(params->resolution_x / 2 * 
 			(1 + ray->transform_x / ray->transform_y));
 	ray->sprite_height = abs((int)(params->resolution_y / 
 				ray->transform_y));
@@ -101,17 +101,17 @@ void		render_sprites(t_var *var)
 
 	var->spr_ray->inv_det = 1.0 / 
 		(var->file->map->camera->plane_x * 
-			var->file->map->camera->dir_y - 
-			var->file->map->camera->plane_y * 
-			var->file->map->camera->dir_x);
+		 var->file->map->camera->dir_y - 
+		 var->file->map->camera->plane_y * 
+		 var->file->map->camera->dir_x);
 	it = -1;
 	while (++it < var->file->map->num_sprites)
 	{
 		set_sprite(var->spr_ray, var->file->map->sprite,
 				var->file->map->camera, it);
-			calculate_params(var->file->map->camera, 
-					var->spr_ray,
-					var->file->params);
+		calculate_params(var->file->map->camera, 
+				var->spr_ray,
+				var->file->params);
 		var->spr_ray->stripe = 
 			var->spr_ray->draw_start_x - 1;
 		while (++var->spr_ray->stripe < 

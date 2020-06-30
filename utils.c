@@ -38,7 +38,7 @@ void	bubble_sort(int *list, double *content, int elements)
 		add = it;
 		while (++add < elements)
 		{
-			if ( content[it] > content[add])
+			if ( content[it] < content[add])
 			{
 				list_copy = list[it];
 				list[it] = list[add];
