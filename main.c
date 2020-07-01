@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 21:50:09 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:54:55 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,28 +31,47 @@
  **
  ** L29: KEEP THE PROGRAM RUNNING
  */
+void	game_option(t_var *var)
+{
+	var->id->win = mlx_new_window(var->id->mlx,
+			var->file->params->resolution_x,
+			var->file->params->resolution_y,
+			"cub3D");
+	if (var->id->win == NULL)
+		ft_exit_fail("Failed to open new window (init.c)");
+	zero_values(var);
+	mlx_hook(var->id->win, 17, 0L, &ft_exit_success, var->key);
+	mlx_hook(var->id->win, 2, 1L<<0, &key_pressed, var->key);
+	mlx_hook(var->id->win, 3, 1L<<1, &key_released, var->key);
+	mlx_loop_hook(var->id->mlx, &actualize, var);
+	mlx_loop(var->id->mlx);
+}
+
+void	screenshot_option(t_var *var)
+{
+	render(var->file, var->ray, var->images, var->spr_ray);
+	order_sprites(var->spr_ray->sprite_order, var->file->map);
+	render_sprites(var);
+	create_bmp(var->file->params, var->images->screen->addr);
+}
+
 int main(int argc, char **argv)
 {
 	t_var *var;
 
 	if (!(argc == 2 || argc == 3))
-		ft_exit ("Wrong number or arguments (main.c)");
+		ft_exit_fail("Wrong number of arguments (main.c)");
 	if (!(var = (t_var*)malloc(sizeof(t_var))))
-		ft_exit ("Failed to allocate memory for t_var (init.c)"); 
+		ft_exit_fail("Failed to allocate memory for t_var (main.c)"); 
 	init(argv[1], var);
 	if (argc == 2)
 	{
-		zero_values(var);
-		mlx_hook(var->id->win, 2, 1L<<0, &key_pressed, var->key);
-		mlx_hook(var->id->win, 3, 1L<<1, &key_released, var->key);
-		mlx_loop_hook(var->id->mlx, &actualize, var);
-		mlx_loop(var->id->mlx);
+		game_option(var);
 	}
 	else if (argc == 3 && ft_strcmp(argv[2], "--save") == 1)
 	{
-		render(var->file, var->ray, var->images, var->spr_ray);
-		create_bmp(var->file->params, var->images->screen->addr);
+		screenshot_option(var);
 	}
 	else
-		ft_exit("Invalid argument");
+		ft_exit_fail("Invalid argument (main.c)");
 }

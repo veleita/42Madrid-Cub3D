@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 21:56:00 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:33:04 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	charge_sprite(double x, double y, int num_sprites, t_sprite **sprite)
 {
 	if (!(sprite[num_sprites] = (t_sprite*)malloc(sizeof(t_sprite))))
-		ft_exit("na mi weh\n");
+		ft_exit_fail("Didn't allocate sprite[] (read_map.c)");
 	sprite[num_sprites]->pos_x = x + 0.5;
 	sprite[num_sprites]->pos_y = y + 0.5;
 }
@@ -44,7 +44,7 @@ static void	fill_map(char *line, int y, t_map *map, short *player)
 			if (ft_isalpha(line[it]))
 			{
 				if (*player == 1)
-					ft_exit("The program found more than one player");
+					ft_exit_fail("Many players");
 				map->camera = check_coord(line[it], x, y);
 				*player = 1;
 			}
@@ -58,17 +58,18 @@ static void	charge_map(t_map *map)
 {
 	int	y;
 
-	if (!(map->sprite = (t_sprite**)malloc(map->num_sprites * sizeof(t_sprite*))))
-		ft_exit("Error allocating memory for sprites array");
+	if (!(map->sprite = (t_sprite**)malloc(map->num_sprites * 
+					sizeof(t_sprite*))))
+		ft_exit_fail("Couldn't allocate sprites array");
 	if (!(map->map = (int**)malloc((map->y + 1) * sizeof(int*))))
-		ft_exit("Failed to allocate memory for the bitmap");
+		ft_exit_fail("Couldn't allocate bitmap rows");
 	y = 0;
 	while (y <= map->y)
 	{
 		if (!(map->map[y] = (int*)malloc(map->x * sizeof(int))))
 		{
 			free(map->map);
-			ft_exit("Couldn't allocate memory for the bitmap");
+			ft_exit_fail("Couldn't register bitmap col");
 		}
 		y++;
 	}
@@ -86,7 +87,7 @@ void		read_map(char *line, int fd, int len, t_map *map)
 	close(fd);
 	charge_map(map);
 	if ((fd = open(map->file_name, O_RDONLY)) == -1)
-		ft_exit("Couldn't open file (read_map.c)");
+		ft_exit_fail("Error opening file (read_map.c)");
 	player = 0;
 	line_2 = 0;
 	while (map->map_line-- > 0)

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:44 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 22:06:52 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:02:50 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,4 @@ void		render_sprites(t_var *var)
 			print_stripe(var->spr_ray, var->images,
 					var->file->params);
 	}
-	mlx_put_image_to_window(var->id->mlx, var->id->win, 
-			var->images->screen->id, 0, 0);
 }

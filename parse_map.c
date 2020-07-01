@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 22:03:41 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:27:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	all_parameters(t_parameters *parameters)
       parameters->no == 0 || parameters->so == 0 ||
       parameters->ea == 0 || parameters->we == 0 ||
       parameters->sprt == 0)
-    ft_exit("Missing parameters in the map file");
+    ft_exit_fail("Missing parameters in the map file");
 }
 
 /* 
@@ -49,7 +49,7 @@ void	get_map_dimensions(char *line, int fd, short read, t_map *map)
 		line[x_copy] == '0' || line[x_copy] == '2' ||
 		line[x_copy] == 'N' || line[x_copy] == 'S' ||
 		line[x_copy] == 'E' || line[x_copy] == 'W'))
-	    ft_exit("Invalid elements in the bitmap");
+	    ft_exit_fail("Invalid elements in the bitmap");
 	  map->num_sprites += (line[x_copy] == '2') ? 1 : 0;
 	  x_copy++;
 	}
@@ -97,7 +97,7 @@ void valid_map(t_map *map, int y, int x)
   if ((map->map[y][x] == 0 && (x == (map->x - 1) || y == map->y ||
 			      x == 0 || y == 0)) || 
 			  map->map[y][x] == ' ')
-    ft_exit("Invalid map");
+    ft_exit_fail("Invalid map");
   map->map[y][x] = map->map[y][x] == 0 ? 3 : 1;
   if (y != (map->y - 1))
     if (map->map[y + 1][x] == 0)

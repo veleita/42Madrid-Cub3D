@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 22:04:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:04:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ int		actualize(t_var *var)
 	order_sprites(var->spr_ray->sprite_order, var->file->map);
 	render(var->file, var->ray, var->images, var->spr_ray);
 	render_sprites(var);
+	mlx_put_image_to_window(var->id->mlx, var->id->win, 
+			var->images->screen->id, 0, 0);
 	return (1);
 }

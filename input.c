@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/01 17:55:41 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/07/01 17:55:44 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3D.h"
 
 int		key_pressed(int keycode, t_key *key)
@@ -32,6 +44,6 @@ int		key_released(int keycode, t_key *key)
 	if (keycode == RIGHT_KEY)
 		key->right = 0;
 	if (keycode == ESC_KEY)
-		ft_exit("Goodbye!");
+		ft_exit_success(key);
 	return (1);
 }

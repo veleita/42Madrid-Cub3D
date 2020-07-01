@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 23:04:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/01 17:35:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,11 @@
  ** L28: Sets the minimum resolution value to 50x50
  ** L32: Sets the maximum resolution value to 2560x1440
  */
-static void	get_resolution(char *line, t_parameters *params, int it)
+static void	get_resolution(char *line, t_parameters *params, 
+		int it)
 {
 	if (params->resolution_x != 0 || params->resolution_y != 0)
-		ft_exit("Found more than one resolution value");
+		ft_exit_fail("Found more than one resolution value");
 	remove_space(line, &it);
 	while (line[it] >= '0' && line[it] <= '9')
 	{
@@ -61,7 +62,7 @@ static char	*get_path(char *line, int it)
 	while (!(line[len] == ' ' || line[len] == '\0'))
 		len++;
 	if (!(ret = (char*)malloc(len - it + 1)))
-		ft_exit("Failed to allocate path when reading the map file");
+		ft_exit_fail("Couldn't allocate path (read_file.c)");
 	len = 0;
 	while (!(line[it] == ' ' || line[it] == '\0'))
 	{
@@ -99,7 +100,7 @@ static t_color	get_color(char *line, int it)
 		checker++;
 	}
 	if (checker > 9)
-		ft_exit("Invalid rgb values");
+		ft_exit_fail("Invalid rgb values (read_file.c)");
 	return (ret);
 }
 

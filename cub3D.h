@@ -282,7 +282,8 @@ void			create_bmp(t_parameters *params, int *screen);
 /*
 ** exit.c 
 */
-void			ft_exit(char *error);
+void 			ft_exit_fail(char *error);
+int			ft_exit_success(t_key *key);
 /*
 ** get_next_line.c
 */
