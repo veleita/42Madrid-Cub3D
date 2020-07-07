@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/04 20:08:21 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/07 13:02:50 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	get_map_dimensions(char *line, int fd, short read, t_map *map)
 	}
       map->x = x_copy > map->x ? x_copy : map->x;
       map->y++;
+      free(line);
       read = get_next_line(fd, &line);
     }
   map->y--;

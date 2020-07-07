@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/01 17:42:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/07 13:55:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	zero_values(t_var *var)
 	var->key->d = 0;
 	var->key->left = 0;
 	var->key->right = 0;
+	var->key->esc = 0;
 	var->mov_speed = 0.05;
 	var->rotate_speed = 0.02;
 	ft_bzero(var->spr_ray->sprite_order, 

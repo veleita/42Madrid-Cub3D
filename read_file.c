@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/01 17:35:28 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/07 13:19:30 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ void	parse_parameters(char *line, int len, int fd, t_file *file)
 	{
 		all_parameters(file->params);
 		read_map(line, fd, len, file->map);
+		return ;
 	}
 	free(line);
 }

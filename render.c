@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/01 17:04:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/07 13:53:42 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ int		actualize(t_var *var)
 		rotation(var->file->map->camera, var->rotate_speed);
 	if (var->key->right == 1)
 		rotation(var->file->map->camera, -var->rotate_speed);
+	if (var->key->esc == 1)
+		ft_exit_success(var);
 	order_sprites(var->spr_ray->sprite_order, var->file->map);
 	render(var->file, var->ray, var->images, var->spr_ray);
 	render_sprites(var);

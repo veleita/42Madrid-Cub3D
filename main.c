@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/01 17:54:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/07 20:02:03 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int main(int argc, char **argv)
 	if (!(argc == 2 || argc == 3))
 		ft_exit_fail("Wrong number of arguments (main.c)");
 	if (!(var = (t_var*)malloc(sizeof(t_var))))
-		ft_exit_fail("Failed to allocate memory for t_var (main.c)"); 
+		ft_exit_fail("Failed to allocate memory for t_var (main.c)");
 	init(argv[1], var);
 	if (argc == 2)
 	{

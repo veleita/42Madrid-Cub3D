@@ -190,6 +190,7 @@ typedef struct		s_key
 	unsigned char	d;
 	unsigned char	left;
 	unsigned char	right;
+	unsigned char	esc;
 }			t_key;
 
 typedef struct		s_id
@@ -283,7 +284,7 @@ void			create_bmp(t_parameters *params, int *screen);
 ** exit.c 
 */
 void 			ft_exit_fail(char *error);
-int			ft_exit_success(t_key *key);
+int			ft_exit_success(t_var *var);
 /*
 ** get_next_line.c
 */
@@ -301,7 +302,6 @@ char			*ft_substr(char const *s, unsigned int start, size_t len);
 */
 void			remove_space(char *line, int *it);
 void			ft_bzero(void *s, size_t n);
-//short			ft_isdigit(int c);
 short			ft_isalpha(int c);
 void			bubble_sort(int *list, double *content, int elements);
 int			ft_strcmp(const char *s1, const char *s2);

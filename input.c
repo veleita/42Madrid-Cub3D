@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:55:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/01 17:55:44 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/07 13:55:11 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int		key_pressed(int keycode, t_key *key)
 		key->left = 1;
 	if (keycode == RIGHT_KEY)
 		key->right = 1;
+	if (keycode == ESC_KEY)
+		key->esc = 1;
 	return (1);
 }
 
@@ -43,7 +45,5 @@ int		key_released(int keycode, t_key *key)
 		key->left = 0;
 	if (keycode == RIGHT_KEY)
 		key->right = 0;
-	if (keycode == ESC_KEY)
-		ft_exit_success(key);
 	return (1);
 }

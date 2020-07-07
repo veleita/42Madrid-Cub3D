@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/01 17:33:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/07 13:10:09 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,11 @@ void		read_map(char *line, int fd, int len, t_map *map)
 	player = 0;
 	line_2 = 0;
 	while (map->map_line-- > 0)
+	{
 		get_next_line(fd, &line_2);
+		if (map->map_line > 0)
+			free(line_2);
+	}
 	y = -1;
 	while (++y <= map->y)
 	{
