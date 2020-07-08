@@ -6,11 +6,24 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/07 20:01:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/08 18:44:58 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+#include "mlx_int.h"
+#include <X11/Xlib.h>
+
+static void	mlx_terminate(void *mlx)
+{
+	struct s_xvar *xvar;
+
+	xvar = mlx;
+	if (xvar->private_cmap)
+		XFreeColormap(xvar->display, (Colormap)xvar->private_cmap);
+	XCloseDisplay(xvar->display);
+	free(xvar);
+}
 
 static void	free_all(t_var *var)
 {
@@ -53,7 +66,7 @@ static void	free_all(t_var *var)
 	free(var->file);
 	free(var->key);
 	mlx_destroy_window(var->id->mlx, var->id->win);
-	free(var->id->mlx);
+	mlx_terminate(var->id->mlx);
 	free(var->id);
 	free(var);
 }
