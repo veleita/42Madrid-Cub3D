@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/08 18:44:58 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/08 22:57:34 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static void	free_all(t_var *var)
 	free(var->file->params);
 	free(var->file);
 	free(var->key);
-	mlx_destroy_window(var->id->mlx, var->id->win);
 	mlx_terminate(var->id->mlx);
 	free(var->id);
 	free(var);
