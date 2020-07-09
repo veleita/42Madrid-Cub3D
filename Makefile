@@ -1,19 +1,24 @@
 NAME		= cub3D
 
 CC		= gcc
+GDB		= -g
+WFLAGS		= -Werror -Wall -Wextra
+
 INCLUDES	= -I includes/
+
 OS		= $(shell uname)
 ifeq ($(OS), Linux)
-	IFLAGS	= -L minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
+	MINILIBX_DIR	= minilibx-linux/
+	IFLAGS		= -L minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
 endif
 ifeq ($(OS), Darwin)
-	IFLAGS	= -L minilibx_mac -l mlx -framework OpenGL -framework Appkit
+	MINILIBX_DIR	= minilibx-opengl/
+	IFLAGS		= -L minilibx_mac -l mlx -framework OpenGL -framework Appkit
 endif
-WFLAGS		= -Werror -Wall -Wextra
-GDB		= -g
 
 HEADERS		=	cub3D.h
 
+SRC_DIR		=	src/
 SRC		= 	main.c \
 			init.c \
 			read_file.c \
@@ -32,29 +37,28 @@ SRC		= 	main.c \
 			gnl_utils.c \
 			utils.c \
 
-PARSE_SRC	=	test_main.c \
-			init.c \
-			read_file.c \
-			read_map.c \
-			parse_map.c \
-			valid_map.c \
-			exit.c \
-			get_next_line.c \
-			gnl_utils.c \
-			utils.c \
+OBJ_DIR		= objs/
+OBJS		= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
 
-all:	$(NAME)
-	./$(NAME) maps/map2.cub
+all:		$(OBJ_DIR) $(NAME)
 
-$(NAME):
-	$(CC) $(GDB) $(SRC) $(WFLAGS) $(IFLAGS) $(INCLUDES) -o $(NAME)
+$(OBJ_DIR):
+		@mkdir $(OBJ_DIR)
+		@echo obj/ has been created!
 
-# TEST THE PARSE FUNCTIONS
-parse:	$(PARSE_SRC) $(HEADERS)
-	$(CC) $(GDB) $(INCLUDES) $(PARSE_SRC) && ./a.out maps/map1.cub
-	rm a.out
+$(NAME):	$(OBJS)
+		@make -C $(MINILIBX_DIR)
+		@$(CC) $(GDB) $(OBJS) $(IFLAGS) -o $(NAME)
 
-fclean:
-	rm -rf $(NAME)
+$(OBJ_DIR)%.o:	$(SRC_DIR)%.c
+		@$(CC) $(INCLUDES) -c $< -o $@
+
+clean:
+		@rm -rf $(OBJ_DIR)
+		@make -C $(MINILIBX_DIR) clean
+
+fclean:		clean
+		@echo Objects and executable file erased, bye!
+		@rm -rf $(NAME)
 
 re: fclean all
