@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/08 22:53:17 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/09 11:55:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
  ** 	This one is called constantly 
  **
  ** L28: CLOSE THE WINDOW
- ** 	The destroy notify event (17 code) notifies that a window is closed
+ ** 	The destroy notify event (33 code) notifies that a window is closed
  ** 	https://tronche.com/gui/x/xlib/events/window-state-change/destroy.html
  **
  ** L29: KEEP THE PROGRAM RUNNING
@@ -61,17 +61,12 @@ int main(int argc, char **argv)
 
 	if (!(argc == 2 || argc == 3))
 		ft_exit_fail("Wrong number of arguments (main.c)");
-	if (!(var = (t_var*)malloc(sizeof(t_var))))
-		ft_exit_fail("Failed to allocate memory for t_var (main.c)");
+	var = get_var();
 	init(argv[1], var);
 	if (argc == 2)
-	{
 		game_option(var);
-	}
 	else if (argc == 3 && ft_strcmp(argv[2], "--save") == 1)
-	{
 		screenshot_option(var);
-	}
 	else
 		ft_exit_fail("Invalid argument (main.c)");
 }

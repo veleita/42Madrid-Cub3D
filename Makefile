@@ -7,7 +7,7 @@ ifeq ($(OS), Linux)
 	IFLAGS	= -L minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
 endif
 ifeq ($(OS), Darwin)
-	IFLAGS	= -L minilib_mac -l mlx -framework OpenGL -framework Appkit
+	IFLAGS	= -L minilibx_mac -l mlx -framework OpenGL -framework Appkit
 endif
 WFLAGS		= -Werror -Wall -Wextra
 GDB		= -g
@@ -27,6 +27,7 @@ SRC		= 	main.c \
 			sprites.c \
 			bmp.c \
 			exit.c \
+			free.c \
 			get_next_line.c \
 			gnl_utils.c \
 			utils.c \

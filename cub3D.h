@@ -283,8 +283,16 @@ void			create_bmp(t_parameters *params, int *screen);
 /*
 ** exit.c 
 */
+t_var			*get_var(void);
 void 			ft_exit_fail(char *error);
 int			ft_exit_success(t_var *var);
+/*
+ * free.c
+ */
+void			free_all(t_var *var);
+void			free_images(t_images *images);
+void			free_file(t_file *file);
+void			free_map(t_map *map);
 /*
 ** get_next_line.c
 */

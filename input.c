@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:55:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/07 13:55:11 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/09 01:39:50 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,7 @@ int		key_released(int keycode, t_key *key)
 		key->left = 0;
 	if (keycode == RIGHT_KEY)
 		key->right = 0;
+	if (keycode == ESC_KEY)
+		key->esc = 0;
 	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/07 13:19:30 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/09 12:38:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,12 @@ static void	get_resolution(char *line, t_parameters *params,
 			line[it] - '0';
 		it++;
 	}
-	params->resolution_x = (params->resolution_x < 50) ?
-		50 : params->resolution_x;
-	params->resolution_y = (params->resolution_y < 50) ?
-		50 : params->resolution_y;
-	params->resolution_x = (params->resolution_x > 2560) ?
-		2560 : params->resolution_x;
+	params->resolution_x = (params->resolution_x < 200) ?
+		200 : params->resolution_x;
+	params->resolution_y = (params->resolution_y < 200) ?
+		200 : params->resolution_y;
+	params->resolution_x = (params->resolution_x > 1900) ?
+		1900 : params->resolution_x;
 	params->resolution_y = (params->resolution_y > 1440) ?
 		1440 : params->resolution_y;
 }

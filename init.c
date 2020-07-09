@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/07 13:55:37 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/09 12:10:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,9 @@ static t_texture	*create_texture(void *mlx, char *path)
 
 	if (!(texture = (t_texture*)malloc(sizeof(t_texture))))
 		ft_exit_fail("Couldn't allocate t_texture (init.c)");
-	texture->id = mlx_xpm_file_to_image(mlx, path, 
-			&texture->width, &texture->height);
+	if (!(texture->id = mlx_xpm_file_to_image(mlx, path, 
+			&texture->width, &texture->height)))
+		ft_exit_fail("Couldn't charge texture, invalid path (init.c)");
 	texture->addr = (int*)mlx_get_data_addr(texture->id, &texture->bpp,
 			&texture->size_line, &texture->endian);
 	return (texture);
