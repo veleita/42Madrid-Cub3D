@@ -12,7 +12,7 @@ ifeq ($(OS), Linux)
 	IFLAGS		= -L minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
 endif
 ifeq ($(OS), Darwin)
-	MINILIBX_DIR	= minilibx-opengl/
+	MINILIBX_DIR	= minilibx_opengl/
 	IFLAGS		= -L minilibx_mac -l mlx -framework OpenGL -framework Appkit
 endif
 
@@ -38,7 +38,8 @@ SRC		= 	main.c \
 			utils.c \
 
 OBJ_DIR		= objs/
-OBJS		= $(addprefix $(OBJ_DIR), $(SRC:.c=.o))
+OBJ_FILES	= $(SRC:.c=.o)
+OBJS		= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 all:		$(OBJ_DIR) $(NAME)
 
