@@ -1,0 +1,12 @@
+R 1000 800
+
+NO textures/colorstone.xpm
+SO textures/case.xpm
+EA textures/greystone.xpm
+WE textures/mossy.xpm
+
+S textures/pillar.xpm
+
+C 10 23 50
+F 17 74 36
+

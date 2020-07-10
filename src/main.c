@@ -6,31 +6,12 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/09 11:55:00 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:22:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/*
- ** L24: init() initializates main variables
- **
- ** Event hooks info
- ** https://harm-smits.github.io/42docs/libs/minilibx/events.html
- **
- ** L25: KEY INPUT
- ** These are called constantly while a key is being pressed (2 code)
- ** or constantly while a key is being released (3 code) 
- **
- ** L27: MOVEMENT LOOP
- ** 	This one is called constantly 
- **
- ** L28: CLOSE THE WINDOW
- ** 	The destroy notify event (33 code) notifies that a window is closed
- ** 	https://tronche.com/gui/x/xlib/events/window-state-change/destroy.html
- **
- ** L29: KEEP THE PROGRAM RUNNING
- */
 void	game_option(t_var *var)
 {
 	var->id->win = mlx_new_window(var->id->mlx,

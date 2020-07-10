@@ -1,33 +1,10 @@
-/*
- ** |------HEADERS------|
- **
- ** For the mlx functions: 
- */
 #include "mlx.h"
-/* 
- ** For the open function: 
- */
 #include <fcntl.h>
-/* 
- ** For the read and write functions:
- */
 #include <unistd.h>
-/* 
- ** For the exit function:
- */
 #include <stdlib.h>
-/*
- ** For the sqrt and cos functions:
- */
 #include <math.h>
-/* 
- ** For the printf function (debugging and testing purposes):
- */
 #include <stdio.h>
 
-/*
- ** |------STRUCTS------| 
- */
 typedef struct		s_camera
 {
 	double		pos_x;
@@ -56,9 +33,6 @@ typedef struct		s_map
 	int		**map;
 }			t_map;
 
-/*
- ** The rgb values in the s_color struct are integers from 0 to 255 
- */
 typedef struct		s_color
 {
 	unsigned char	r;
@@ -179,9 +153,6 @@ typedef struct		s_ray
 #endif
 
 
-/*
- ** All the following unsigned chars are meant to be boolean values (0 or 1)
- */
 typedef struct		s_key
 {
 	unsigned char	a;
@@ -199,7 +170,7 @@ typedef struct		s_id
 	void		*win;
 }			t_id;
 
-typedef struct	s_var //this struct is probably unnecesary
+typedef struct	s_var
 {
 	t_id		*id;
 	t_file		*file;
@@ -211,103 +182,56 @@ typedef struct	s_var //this struct is probably unnecesary
 	t_sprite_ray	*spr_ray;
 }			t_var;
 
-/*
- ** |------FUNCTIONS------| 
- ** 
- ** init.c 
- */
 void			init(const char *file_name, t_var *var);
 void			zero_values(t_var *var);
 t_file			*read_file(const char *file_name);
-/* 
- ** read_file.c 
- */
 void			init_values(t_file *file);
-void			parse_parameters(char *line, int len, int fd, t_file *file);
-/* 
- ** read_map.c 
- */
+void			parse_parameters(char *line, int len, int fd, 
+		t_file *file);
 void			read_map(char *line, int fd, int len, t_map *map);
-/* 
- ** parse_map.c 
- */
 void			all_parameters(t_parameters *parameters);
-void			get_map_dimensions(char *line, int fd, short read,
-			t_map *map);
+int			get_map_dimensions(char *line, int fd, short read,
+		t_map *map);
 t_camera		*check_coord(char coord, int pos_x, int pos_y);
 void			valid_map(t_map *map, int y, int x);
-/* 
- ** render.c
- */
 void			render(t_file *file, t_ray *ray, t_images *images,
-			t_sprite_ray *s_ray);
+		t_sprite_ray *s_ray);
 int			actualize(t_var *var);
-/*
- ** raycasting.c
- */
 void			get_side_dist(int x, double resolution_x, t_ray *ray,
-			t_camera *camera);
+		t_camera *camera);
 void			get_hit(t_ray *ray, int **map, int map_max_y);
-void			get_wall(t_ray *ray, t_camera *camera, t_images *images);
+void			get_wall(t_ray *ray, t_camera *camera, 
+		t_images *images);
 void			get_wall_dist(t_ray *ray, t_camera *camera, 
-			t_sprite_ray *s_ray, int x);
+		t_sprite_ray *s_ray, int x);
 void			get_wall_height(t_ray *ray, t_parameters *parameters);
-/*
- ** textures.c
- */
 void			get_texture_x(t_ray *ray);
 void			print_column(int x, t_ray *ray, t_parameters *params,
-			t_images *images);
-/*
- ** input.c
- */
+		t_images *images);
 int			key_pressed(int keycode, t_key *key);
 int			key_released(int keycode, t_key *key);
-/*
- ** movement.c
- */
 void			rotation(t_camera *camera, double rotation_speed);
 void			horizontal_movement(t_map *map, double movement_speed,
-			double plane_x, double plane_y);
+		double plane_x, double plane_y);
 void			vertical_movement(t_map *map, double movement_speed,
-			double dir_x, double dir_y);
-/*
-** sprites.c
-*/
+		double dir_x, double dir_y);
 void			order_sprites(int *num_sprites, t_map *map);
 void			render_sprites(t_var *var);
-/*
- * bmp.c
- */
 void			create_bmp(t_parameters *params, int *screen);
-/*
-** exit.c 
-*/
 t_var			*get_var(void);
 void 			ft_exit_fail(char *error);
 int			ft_exit_success(t_var *var);
-/*
- * free.c
- */
 void			free_all(t_var *var);
 void			free_images(t_images *images);
 void			free_file(t_file *file);
 void			free_map(t_map *map);
-/*
-** get_next_line.c
-*/
 short			get_next_line(int fd, char **line);
-/*
-** gnl_utils.c
-*/
 size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *s1);
 char			*ft_strjoin(char const *s1, char const *s2);
 short			ft_strchr(char *s, char c);
-char			*ft_substr(char const *s, unsigned int start, size_t len);
-/* 
-** utils.c 
-*/
+char			*ft_substr(char const *s, unsigned int start, 
+		size_t len);
 void			remove_space(char *line, int *it);
 void			ft_bzero(void *s, size_t n);
 short			ft_isalpha(int c);

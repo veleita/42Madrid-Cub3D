@@ -6,28 +6,20 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/09 12:38:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:26:59 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/* 
- ** L12: Checks that no resolution values have already been registered
- ** L14: Iterates through the spaces between the identifier ’R’ and the
- ** 	resolution values.
- ** L28: Sets the minimum resolution value to 50x50
- ** L32: Sets the maximum resolution value to 2560x1440
- */
-static void	get_resolution(char *line, t_parameters *params, 
-		int it)
+static void	get_resolution(char *line, t_parameters *params, int it)
 {
 	if (params->resolution_x != 0 || params->resolution_y != 0)
 		ft_exit_fail("Found more than one resolution value");
 	remove_space(line, &it);
 	while (line[it] >= '0' && line[it] <= '9')
 	{
-		params->resolution_x = params->resolution_x * 10 +
+		params->resolution_x = params->resolution_x * 10 + 
 			line[it] - '0';
 		it++;
 	}
@@ -48,10 +40,6 @@ static void	get_resolution(char *line, t_parameters *params,
 		1440 : params->resolution_y;
 }
 
-/*
- ** L49: Reads everyting in the line that is not a space, len - it would be
- **	the number of characters in the path 
- */
 static char	*get_path(char *line, int it)
 {
 	char *ret;
@@ -104,10 +92,6 @@ static t_color	get_color(char *line, int it)
 	return (ret);
 }
 
-/* 
- ** L95: Note that line[it] is the first character in the line after the
- ** 	spaces, trimmed by the remove_spaces function
- */
 void	parse_parameters(char *line, int len, int fd, t_file *file)
 {
 	int it;
@@ -133,8 +117,7 @@ void	parse_parameters(char *line, int len, int fd, t_file *file)
 	else if (line[it] == '1')
 	{
 		all_parameters(file->params);
-		read_map(line, fd, len, file->map);
-		return ;
+		return (read_map(line, fd, len, file->map));
 	}
 	free(line);
 }

@@ -6,13 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/09 11:04:16 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/10 14:31:23 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	charge_sprite(double x, double y, int num_sprites, t_sprite **sprite)
+static void	charge_sprite(double x, double y, int num_sprites, 
+		t_sprite **sprite)
 {
 	if (!(sprite[num_sprites] = (t_sprite*)malloc(sizeof(t_sprite))))
 		ft_exit_fail("Didn't allocate sprite[] (read_map.c)");
@@ -24,7 +25,8 @@ static void	map_objects(char number, int x, int y, t_map *map)
 {
 	map->map[y][x] = number - '0';
 	if (number == '2')
-		charge_sprite((double)x, (double)y, --map->num_sprites, map->sprite);
+		charge_sprite((double)x, (double)y, --map->num_sprites, 
+				map->sprite);
 }
 
 static void	fill_map(char *line, int y, t_map *map, short *player)
@@ -82,9 +84,7 @@ void		read_map(char *line, int fd, int len, t_map *map)
 	int	y;
 	int	num_sprites;
 
-	get_map_dimensions(line, fd, len, map);
-	num_sprites = map->num_sprites;
-	close(fd);
+	num_sprites = get_map_dimensions(line, fd, len, map);
 	charge_map(map);
 	if ((fd = open(map->file_name, O_RDONLY)) == -1)
 		ft_exit_fail("Error opening file (read_map.c)");
