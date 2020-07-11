@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/10 14:52:21 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/11 21:43:47 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y)
 
 void valid_map(t_map *map, int y, int x)
 {
-	if ((map->map[y][x] == 0 && (x == (map->x - 1) || y == map->y ||
+/*	if ((map->map[y][x] == 0 && (x == (map->x - 1) || y == map->y ||
 					x == 0 || y == 0)) || 
 			map->map[y][x] == ' ')
 		ft_exit_fail("Invalid map");
@@ -101,4 +101,4 @@ void valid_map(t_map *map, int y, int x)
 	if (x != 0)
 		if (map->map[y][x - 1] == 0)
 			valid_map(map, y, x - 1);
-}
+*/}

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/10 14:31:23 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/11 21:49:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void		read_map(char *line, int fd, int len, t_map *map)
 		get_next_line(fd, &line_2);
 	}
 	free(line_2);
+	if (player == 0)
+		ft_exit_fail("No player nigga");
 	map->num_sprites = num_sprites;
 	valid_map(map, (int)map->camera->pos_y, (int)map->camera->pos_x);
 }
