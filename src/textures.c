@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:18:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:27:05 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:55:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void		print_column(int x, t_ray *ray, t_parameters *params,
 		texture_pos += step;
 		images->screen->addr[y * params->resolution_x + x] =
 			ray->texture->addr[(int)(texture_y * ray->texture->width
-			   + ray->texture_x)];
+					+ ray->texture_x)];
 		y++;
 	}
 	while (y < (params->resolution_y - 1))

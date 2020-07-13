@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:20:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:51:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ static t_images		*create_images(void *mlx, t_parameters *params)
 		ft_exit_fail("Failed to create image (init.c)");
 	images->screen->addr = (int*)mlx_get_data_addr(images->screen->id,
 			&images->screen->bpp, &images->screen->size_line,
-		       &images->screen->endian);
+			&images->screen->endian);
 	ft_bzero(images->screen->addr,
-		       (params->resolution_x * params->resolution_y));
+			(params->resolution_x * params->resolution_y));
 	images->north = create_texture(mlx, params->no);
 	images->south = create_texture(mlx, params->so);
 	images->east = create_texture(mlx, params->ea);
@@ -97,8 +97,8 @@ void			init(const char *file_name, t_var *var)
 	var->spr_ray->sprite_order =
 		(int*)malloc(var->file->map->num_sprites * sizeof(int));
 	var->spr_ray->wall_z =
-	       (double*)malloc(var->file->params->resolution_x *
-			       sizeof(double));
+		(double*)malloc(var->file->params->resolution_x *
+				sizeof(double));
 	if (!(var->spr_ray->sprite_order && var->spr_ray->wall_z))
 		ft_exit_fail("Couldn't allocate memory for sprite arrays");
 	var->images = create_images(var->id->mlx, var->file->params);

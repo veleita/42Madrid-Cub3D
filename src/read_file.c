@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:17:31 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:49:19 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		parse_parameters(char *line, int len, int fd, t_file *file)
 	it = 0;
 	remove_space(line, &it);
 	if (line[it] == 'R')
-		get_resolution(line, file->params, it + 1); 
+		get_resolution(line, file->params, it + 1);
 	else if (line[it] == 'N' && line[it + 1] == 'O')
 		file->params->no = get_path(line, it + 2);
 	else if (line[it] == 'S' && line[it + 1] == 'O')

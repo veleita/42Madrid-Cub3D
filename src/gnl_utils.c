@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:36:22 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:58:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	ft_strlen(const char *s)
 }
 
 char	*ft_strdup(const char *s1)
-{ 
+{
 	char	*ret;
 	char	*pret;
 	char	*ps1;

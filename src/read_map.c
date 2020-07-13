@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:08:14 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:45:26 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static void	charge_map(t_map *map, int fd)
 	int	y;
 
 	if (!(map->sprite = (t_sprite**)malloc(map->num_sprites *
-				       	sizeof(t_sprite*))))
+					sizeof(t_sprite*))))
 		ft_exit_fail("Couldn't allocate sprites array");
 	if (!(map->map = (int**)malloc((map->y + 1) * sizeof(int*))))
 		ft_exit_fail("Couldn't allocate bitmap rows");
@@ -105,5 +105,5 @@ void		read_map(char *line, int fd, int len, t_map *map)
 	free(line_2);
 	map->num_sprites = num_sprites;
 	(player == 0) ? ft_exit_fail("No player nigga") :
-	       valid_map(map, (int)map->camera->pos_y, (int)map->camera->pos_x);
+		valid_map(map, (int)map->camera->pos_y, (int)map->camera->pos_x);
 }

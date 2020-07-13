@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:44 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:26:22 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:54:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void		order_sprites(int *sprite_order, t_map *map)
 	{
 		sprite_order[it] = it;
 		sprite_distance[it] = (map->camera->pos_x -
-			       map->sprite[it]->pos_x) *
-		       (map->camera->pos_x - map->sprite[it]->pos_x) +
-		       (map->camera->pos_y - map->sprite[it]->pos_y) *
-		       (map->camera->pos_y - map->sprite[it]->pos_y);
+				map->sprite[it]->pos_x) *
+			(map->camera->pos_x - map->sprite[it]->pos_x) +
+			(map->camera->pos_y - map->sprite[it]->pos_y) *
+			map->camera->pos_y - map->sprite[it]->pos_y;
 		it++;
 	}
 	bubble_sort(sprite_order, sprite_distance, map->num_sprites);
@@ -40,21 +40,21 @@ static void	print_stripe(t_sprite_ray *ray, t_images *images,
 
 	ray->tex_x = (int)(256 * (ray->stripe - (-ray->sprite_height / 2
 					+ ray->sprite_screen_x)) *
-		       images->sprite->width / ray->sprite_height) / 256;
+			images->sprite->width / ray->sprite_height) / 256;
 	if (ray->transform_y < 0 || ray->transform_y > ray->wall_z[ray->stripe])
 		return ;
 	y = ray->draw_start_y;
 	while (y < ray->draw_end_y)
 	{
 		d = y * 256 - params->resolution_y *
-		       128 + ray->sprite_height * 128;
+			128 + ray->sprite_height * 128;
 		ray->tex_y = ((d * images->sprite->height) /
-			       ray->sprite_height) / 256;
+				ray->sprite_height) / 256;
 		color = images->sprite->addr[images->sprite->width *
-		       ray->tex_y + ray->tex_x];
+			ray->tex_y + ray->tex_x];
 		if (color != 0)
 			images->screen->addr[y * params->resolution_x +
-			       ray->stripe] = color;
+				ray->stripe] = color;
 		y++;
 	}
 }

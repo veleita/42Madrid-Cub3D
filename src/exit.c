@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:36:49 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:59:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	mlx_terminate(void *mlx)
 	free(xvar);
 }
 
-void	free_all(t_var *var)
+void		free_all(t_var *var)
 {
 	if (var->spr_ray)
 		free_spr_ray(var->spr_ray);
@@ -50,14 +50,14 @@ void	free_all(t_var *var)
 	}
 }
 
-t_var	*get_var(void)
+t_var		*get_var(void)
 {
 	static t_var var;
 
 	return (&var);
 }
 
-void	ft_exit_fail(char *error)
+void		ft_exit_fail(char *error)
 {
 	t_var	*var;
 
@@ -68,7 +68,7 @@ void	ft_exit_fail(char *error)
 	exit(EXIT_FAILURE);
 }
 
-int	ft_exit_success(t_var *var)
+int		ft_exit_success(t_var *var)
 {
 	char *farewell;
 
