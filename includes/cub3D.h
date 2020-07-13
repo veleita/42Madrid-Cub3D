@@ -227,6 +227,7 @@ int			ft_exit_success(t_var *var);
 void			free_all(t_var *var);
 void			free_spr_ray(t_sprite_ray *spr_ray);
 void			free_images(t_images *images);
+void			destroy_images(t_images *images, void *mlx);
 void			free_file(t_file *file);
 void			free_map(t_map *map);
 short			get_next_line(int fd, char **line);
