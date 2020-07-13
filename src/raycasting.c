@@ -6,30 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 22:04:40 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 10:41:24 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/*
- ** L23: ray->camera_x is a value in the range (-1, 1)
- **	Negative numbers correspond to the left side of the map,
- **	positive numbers correspond to the right side of the map,
- **	the 0 value corresponds to the center of the map.
- **
- ** L24: ray->dir_x/y is the vectorial addition of the view direction
- **	of the player (camera->dir_x/y) and the plane of the player,
- **	a perpendicular vector scaled by the ray->camera_x value.
- **
- ** L26: ray->delta_dist_x/y is the distance travelled by the ray for
- **	each column (delta_dist_x) or line (delta_dist_y) of the map
- **
- ** L31: ray->side_dist_x/y is the distance that the ray needs to travel
- **	from the player to the first cell edge it encounters
- */
-void	get_side_dist(int x, double resolution_x, t_ray *ray,
-		t_camera *camera)
+void	get_side_dist(int x, double resolution_x, t_ray *ray, t_camera *camera)
 {
 	ray->camera_x = (2 * x / (double)resolution_x) - 1;
 	ray->dir_x = camera->dir_x + (camera->plane_x * ray->camera_x);
@@ -52,26 +35,6 @@ void	get_side_dist(int x, double resolution_x, t_ray *ray,
 			ray->delta_dist_y;
 }
 
-/*
- ** L: the ray->step_x/y value determines wether if the ray advances
- **	forward (1) or backwards (-1)
- **
- ** L: ray->hit is a flag which is activated when a wall (the edge of
- **	a cell with a ’1’ value on the map[][] array) is encountered
- **      by the ray
- **
- ** L: we check if the nearest cell edge is vertical (side_dist_x < )
- **	or horizontal (side_dist_y < )
- **
- ** L: note that the side_dist_x/y values are not accurate, this isn’t
- **	important, as the distance to the wall will be computed using
- **	only the pos, dir, map and step values. We only need the
- **	side_dist_x and side_dist_y values to be proportional to each
- **	other, so we can properly perform the comparison on L67
- **
- ** L: ray->side is a flag that indicates wether if the edge cell we
- **	are evaluating certical (0) or horizontal (1);
- */
 void	get_hit(t_ray *ray, int **map, int map_max_y)
 {
 	ray->step_x = (ray->dir_x < 0) ? -1 : 1;
@@ -97,12 +60,6 @@ void	get_hit(t_ray *ray, int **map, int map_max_y)
 	}
 }
 
-/*
- ** L: ray->wall_hit_x is ???
- **
- ** L: we select the correspondent texture according to the
- **	orientation of the wall
- */
 void	get_wall(t_ray *ray, t_camera *camera, t_images *images)
 {
 	if (ray->side == 1)
@@ -120,18 +77,9 @@ void	get_wall(t_ray *ray, t_camera *camera, t_images *images)
 		ray->texture = (ray->dir_x < 0) ? images->east : images->west;
 	}
 	ray->wall_hit_x -= floor(ray->wall_hit_x);
-	/*   printf("%s\n", texture->path); */
 }
 
-/*
- ** L119: perp_wall_dist is the perpendicular distance from the player
- **	 to the wall
- **
- ** L127: the perp_wall_dist value is a scalar, not a vector, it must
- **	 always be a positive number.
- */
-void	get_wall_dist(t_ray *ray, t_camera *camera, 
-		t_sprite_ray *s_ray, int x)
+void	get_wall_dist(t_ray *ray, t_camera *camera, t_sprite_ray *s_ray, int x)
 {
 	if (ray->side == 1)
 		ray->perp_wall_dist = fabs((ray->map_y - camera->pos_y +
@@ -143,9 +91,6 @@ void	get_wall_dist(t_ray *ray, t_camera *camera,
 	s_ray->wall_z[x] = ray->perp_wall_dist;
 }
 
-/*
- ** L136: the wall height is inversely proportional to its distance
- */
 void	get_wall_height(t_ray *ray, t_parameters *parameters)
 {
 	ray->wall_height = (int)(parameters->resolution_y /

@@ -6,27 +6,16 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/04 21:13:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 09:19:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-/* This version of the gnl function can only read from 10 file
- ** descriptors at once, which is more that enough for the purposes
- ** of this project.
- ** Also, the buffer size for this version will be fixed to 80,
- ** based on the assumption that most of our maps won’t have lines
- ** longer than 80 characters. So the function can run faster without
- ** consumming an excesive amount of memory in the buffer allocation.
- ** Some additional enhancements have also been added, like the
- ** supression of the "empty" auxiliar function and some expendable
- ** variables in the utils functions.
- */
 static short	get_line(char **file, int fd, char **line, int len)
 {
 	char	*tmp;
-	int		it;
+	int	it;
 
 	if (len < 0)
 		return (-1);
@@ -51,7 +40,7 @@ static short	get_line(char **file, int fd, char **line, int len)
 	return (1);
 }
 
-short	get_next_line(int fd, char **line)
+short		get_next_line(int fd, char **line)
 {
 	char		*buffer;
 	static char	*file[10];

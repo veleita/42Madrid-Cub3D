@@ -6,14 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/11 21:49:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 09:53:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static void	charge_sprite(double x, double y, int num_sprites, 
-		t_sprite **sprite)
+static void	charge_sprite(double x, double y, int num_sprites,
+	       	t_sprite **sprite)
 {
 	if (!(sprite[num_sprites] = (t_sprite*)malloc(sizeof(t_sprite))))
 		ft_exit_fail("Didn't allocate sprite[] (read_map.c)");
@@ -31,8 +31,8 @@ static void	map_objects(char number, int x, int y, t_map *map)
 
 static void	fill_map(char *line, int y, t_map *map, short *player)
 {
-	int x;
-	int it;
+	int	x;
+	int	it;
 
 	it = 0;
 	x = -1;
@@ -56,12 +56,12 @@ static void	fill_map(char *line, int y, t_map *map, short *player)
 	free(line);
 }
 
-static void	charge_map(t_map *map)
+static void	charge_map(t_map *map, int fd)
 {
 	int	y;
 
-	if (!(map->sprite = (t_sprite**)malloc(map->num_sprites * 
-					sizeof(t_sprite*))))
+	if (!(map->sprite = (t_sprite**)malloc(map->num_sprites *
+				       	sizeof(t_sprite*))))
 		ft_exit_fail("Couldn't allocate sprites array");
 	if (!(map->map = (int**)malloc((map->y + 1) * sizeof(int*))))
 		ft_exit_fail("Couldn't allocate bitmap rows");
@@ -75,6 +75,8 @@ static void	charge_map(t_map *map)
 		}
 		y++;
 	}
+	if ((fd = open(map->file_name, O_RDONLY)) == -1)
+		ft_exit_fail("Error opening file (read_map.c)");
 }
 
 void		read_map(char *line, int fd, int len, t_map *map)
@@ -85,9 +87,7 @@ void		read_map(char *line, int fd, int len, t_map *map)
 	int	num_sprites;
 
 	num_sprites = get_map_dimensions(line, fd, len, map);
-	charge_map(map);
-	if ((fd = open(map->file_name, O_RDONLY)) == -1)
-		ft_exit_fail("Error opening file (read_map.c)");
+	charge_map(map, fd);
 	player = 0;
 	line_2 = 0;
 	while (map->map_line-- > 0)

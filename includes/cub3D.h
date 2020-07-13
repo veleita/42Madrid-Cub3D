@@ -183,11 +183,14 @@ typedef struct	s_var
 }			t_var;
 
 void			init(const char *file_name, t_var *var);
-void			zero_values(t_var *var);
+void			init_values_render(t_var *var);
 t_file			*read_file(const char *file_name);
-void			init_values(t_file *file);
+void			init_values_file(t_file *file);
 void			parse_parameters(char *line, int len, int fd, 
 		t_file *file);
+void			get_resolution(char *line, t_parameters *params, int it);
+char			*get_path(char *line, int it);
+t_color			get_color(char *line, int it);
 void			read_map(char *line, int fd, int len, t_map *map);
 void			all_parameters(t_parameters *parameters);
 int			get_map_dimensions(char *line, int fd, short read,
@@ -222,6 +225,7 @@ t_var			*get_var(void);
 void 			ft_exit_fail(char *error);
 int			ft_exit_success(t_var *var);
 void			free_all(t_var *var);
+void			free_spr_ray(t_sprite_ray *spr_ray);
 void			free_images(t_images *images);
 void			free_file(t_file *file);
 void			free_map(t_map *map);

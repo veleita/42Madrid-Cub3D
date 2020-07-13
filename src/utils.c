@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 21:47:20 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 09:18:25 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,18 @@
 
 void	 remove_space(char *line, int *it)
 {
-  while (line[*it] == ' ' || line[*it] == '\f' || line[*it] == '\t')
-    (*it)++;
+	while (line[*it] == ' ' || line[*it] == '\f' || line[*it] == '\t')
+		(*it)++;
 }
 
 void 	ft_bzero(void *s, size_t n)
 {
-  char *ps;
+	char *ps;
 
-  ps = (char*)s;
-  while (n-- > 0)
-    *(ps++) = 0;
+	ps = (char*)s;
+	while (n-- > 0)
+		*(ps++) = 0;
 }
-
-//short 	ft_isdigit(int c)
-//{
-//  return (('0' <= c && c <= '9')? 1 : 0);
-//}
 
 int	ft_strcmp(const char *s1, const char *s2)
 {
@@ -50,7 +45,7 @@ int	ft_strcmp(const char *s1, const char *s2)
 
 short 	ft_isalpha(int c)
 {
-  return ((('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) ? 1 : 0);
+	return ((('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) ? 1 : 0);
 }
 
 void	bubble_sort(int *list, double *content, int elements)

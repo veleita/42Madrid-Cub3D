@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/11 21:43:47 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 10:40:34 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	all_parameters(t_parameters *parameters)
+void		all_parameters(t_parameters *parameters)
 {
 	if (parameters->resolution_x == 0 || parameters->resolution_y == 0 ||
 			parameters->no == 0 || parameters->so == 0 ||
@@ -23,7 +23,7 @@ void	all_parameters(t_parameters *parameters)
 
 int	get_map_dimensions(char *line, int fd, short read, t_map *map)
 {
-	int x_copy;
+	int	x_copy;
 
 	while (read > 0)
 	{
@@ -50,9 +50,9 @@ int	get_map_dimensions(char *line, int fd, short read, t_map *map)
 }
 
 static t_camera	*set_dir_plane(double dirX, double dirY,
-		double planeX, double planeY)
+	       	double planeX, double planeY)
 {
-	t_camera *camera;
+	t_camera	*camera;
 
 	if (!(camera = (t_camera*)malloc(sizeof(t_camera))))
 		exit(0);
@@ -65,7 +65,7 @@ static t_camera	*set_dir_plane(double dirX, double dirY,
 
 t_camera	*check_coord(char coord, int pos_x, int pos_y)
 {
-	t_camera *camera;
+	t_camera	*camera;
 
 	if (coord == 'N')
 		camera = set_dir_plane(0, -1, 0.66, 0);
@@ -82,11 +82,10 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y)
 	return (camera);
 }
 
-void valid_map(t_map *map, int y, int x)
+void		valid_map(t_map *map, int y, int x)
 {
-/*	if ((map->map[y][x] == 0 && (x == (map->x - 1) || y == map->y ||
-					x == 0 || y == 0)) || 
-			map->map[y][x] == ' ')
+	if ((map->map[y][x] == 0 && (x == (map->x - 1) || y == map->y || x == 0
+				       	|| y == 0)) || map->map[y][x] == ' ')
 		ft_exit_fail("Invalid map");
 	map->map[y][x] = map->map[y][x] == 0 ? 3 : 1;
 	if (y != (map->y - 1))
@@ -101,4 +100,4 @@ void valid_map(t_map *map, int y, int x)
 	if (x != 0)
 		if (map->map[y][x - 1] == 0)
 			valid_map(map, y, x - 1);
-*/}
+}

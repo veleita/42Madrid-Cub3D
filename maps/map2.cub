@@ -1,20 +1,20 @@
-R 1000 800
+R 1900 1000
 
-NO textures/colorstone.xpm
-SO textures/case.xpm
+NO textures/greystone.xpm
+SO textures/greystone.xpm
 EA textures/greystone.xpm
-WE textures/mossy.xpm
+WE textures/greystone.xpm
 
 S textures/pillar.xpm
 
-C 10 23 50
-F 17 74 36
+C 60 50 100
+F 50 50 50
 
 11111111111111
-10000200000021
 10000000000001
-10000000W00011
+10020000020001
+10000000W00001
 10000000000001
+10020000020001
 10000000000001
-12000000000001
 11111111111111

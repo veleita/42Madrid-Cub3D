@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/11 21:51:58 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 10:29:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@ void	game_option(t_var *var)
 {
 	var->id->win = mlx_new_window(var->id->mlx,
 			var->file->params->resolution_x,
-			var->file->params->resolution_y,
-			"cub3D");
+			var->file->params->resolution_y, "cub3D");
 	if (var->id->win == NULL)
 		ft_exit_fail("Failed to open new window (init.c)");
-	zero_values(var);
+	init_values_render(var);
 	mlx_hook(var->id->win, 33, 1L<<17, &ft_exit_success, var);
 	mlx_hook(var->id->win, 2, 1L<<0, &key_pressed, var->key);
 	mlx_hook(var->id->win, 3, 1L<<1, &key_released, var->key);
@@ -36,7 +35,7 @@ void	screenshot_option(t_var *var)
 	create_bmp(var->file->params, var->images->screen->addr);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_var *var;
 
