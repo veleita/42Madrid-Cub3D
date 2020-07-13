@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:57:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:14:02 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_bzero(void *s, size_t n)
 		*(ps++) = 0;
 }
 
-int	ft_strcmp(const char *s1, const char *s2)
+int		ft_strcmp(const char *s1, const char *s2)
 {
 	if (!s1 || !s2)
 		return (0);

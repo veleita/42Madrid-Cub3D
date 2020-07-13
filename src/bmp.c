@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:40:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:58:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:07:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	write_headers(unsigned char *file_header,
 
 void	create_headers(int fd, int padding, t_parameters *params)
 {
-	int			file_size;
+	int						file_size;
 	static unsigned char	file_header[14];
 	static unsigned char	info_header[40];
 
@@ -52,9 +52,9 @@ void	create_headers(int fd, int padding, t_parameters *params)
 
 void	write_bmp(int fd, int padding, int *screen, t_parameters *params)
 {
-	int			i;
-	int			j;
-	int			color;
+	int						i;
+	int						j;
+	int						color;
 	static unsigned char	zero[3];
 
 	ft_bzero(zero, 3);

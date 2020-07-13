@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:56:42 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:13:35 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	trigger_events(t_var *var)
 		ft_exit_success(var);
 }
 
-int		actualize(t_var *var)
+int			actualize(t_var *var)
 {
 	trigger_events(var);
 	order_sprites(var->spr_ray->sprite_order, var->file->map);

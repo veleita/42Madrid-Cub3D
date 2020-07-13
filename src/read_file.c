@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:49:19 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:11:33 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ t_file		*read_file(const char *file_name)
 {
 	t_file	*file;
 	char	*line;
-	int	len;
-	int	fd;
+	int		len;
+	int		fd;
 
 	if ((fd = open(file_name, O_RDONLY)) == -1)
 		ft_exit_fail("Invalid file (read_file.c)");

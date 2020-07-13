@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:45:46 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:08:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	screenshot_option(t_var *var)
 	create_bmp(var->file->params, var->images->screen->addr);
 }
 
-int	main(int argc, char **argv)
+int		main(int argc, char **argv)
 {
 	t_var	*var;
 

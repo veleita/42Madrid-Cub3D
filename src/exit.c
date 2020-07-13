@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:59:31 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:14:34 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void		ft_exit_fail(char *error)
 	exit(EXIT_FAILURE);
 }
 
-int		ft_exit_success(t_var *var)
+int			ft_exit_success(t_var *var)
 {
 	char *farewell;
 

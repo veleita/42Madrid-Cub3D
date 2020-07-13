@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:24:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:47:25 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:11:11 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	get_resolution(char *line, t_parameters *params, int it)
 char	*get_path(char *line, int it)
 {
 	char	*ret;
-	int	len;
+	int		len;
 
 	remove_space(line, &it);
 	len = it;

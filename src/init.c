@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:51:56 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:12:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void			init_values_file(t_file *file)
+void				init_values_file(t_file *file)
 {
 	file->map->x = 0;
 	file->map->y = 0;
@@ -65,7 +65,7 @@ static t_images		*create_images(void *mlx, t_parameters *params)
 	return (images);
 }
 
-void			init_values_render(t_var *var)
+void				init_values_render(t_var *var)
 {
 	var->key->a = 0;
 	var->key->w = 0;

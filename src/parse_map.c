@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:56:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:13:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void		all_parameters(t_parameters *parameters)
+void			all_parameters(t_parameters *parameters)
 {
 	if (parameters->resolution_x == 0 || parameters->resolution_y == 0 ||
 			parameters->no == 0 || parameters->so == 0 ||
@@ -21,7 +21,7 @@ void		all_parameters(t_parameters *parameters)
 		ft_exit_fail("Missing parameters in the map file");
 }
 
-int		get_map_dimensions(char *line, int fd, short read, t_map *map)
+int				get_map_dimensions(char *line, int fd, short read, t_map *map)
 {
 	int	x_copy;
 
@@ -63,7 +63,7 @@ static t_camera	*set_dir_plane(double dir_x, double dir_y,
 	return (camera);
 }
 
-t_camera	*check_coord(char coord, int pos_x, int pos_y)
+t_camera		*check_coord(char coord, int pos_x, int pos_y)
 {
 	t_camera	*camera;
 
@@ -82,7 +82,7 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y)
 	return (camera);
 }
 
-void		valid_map(t_map *map, int y, int x)
+void			valid_map(t_map *map, int y, int x)
 {
 	if ((map->map[y][x] == 0 && (x == (map->x - 1) || y == map->y || x == 0
 					|| y == 0)) || map->map[y][x] == ' ')

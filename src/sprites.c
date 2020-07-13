@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:44 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:54:44 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:12:28 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void		order_sprites(int *sprite_order, t_map *map)
 {
 	double	sprite_distance[map->num_sprites];
-	int	it;
+	int		it;
 
 	it = 0;
 	while (it < map->num_sprites)

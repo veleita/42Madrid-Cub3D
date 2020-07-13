@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:45:26 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:09:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void		read_map(char *line, int fd, int len, t_map *map)
 {
 	short	player;
 	char	*line_2;
-	int	y;
-	int	num_sprites;
+	int		y;
+	int		num_sprites;
 
 	num_sprites = get_map_dimensions(line, fd, len, map);
 	charge_map(map, fd);

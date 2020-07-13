@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:46:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:10:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static short	get_line(char **file, int fd, char **line, int len)
 {
 	char	*tmp;
-	int	it;
+	int		it;
 
 	if (len < 0)
 		return (-1);
@@ -40,12 +40,12 @@ static short	get_line(char **file, int fd, char **line, int len)
 	return (1);
 }
 
-short		get_next_line(int fd, char **line)
+short			get_next_line(int fd, char **line)
 {
-	char	*buffer;
+	char		*buffer;
 	static char	*file[10];
-	int	len;
-	char	*tmp;
+	int			len;
+	char		*tmp;
 
 	if (!line || fd < 0 || !(buffer = (char*)malloc(81)))
 		return (-1);
