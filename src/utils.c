@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:14:02 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:25:45 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ short	ft_isalpha(int c)
 
 void	bubble_sort(int *list, double *content, int elements)
 {
-	int	it;
-	int	add;
-	int	list_copy;
+	int		it;
+	int		add;
+	int		list_copy;
 	double	content_copy;
 
 	it = 0;

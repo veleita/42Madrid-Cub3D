@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:12:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 16:25:20 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void				init_values_render(t_var *var)
 	ft_bzero(var->spr_ray->wall_z, var->file->params->resolution_x);
 }
 
-void			init(const char *file_name, t_var *var)
+void				init(const char *file_name, t_var *var)
 {
 	var->file = read_file(file_name);
 	if (!var->file->map->map)
