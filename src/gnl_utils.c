@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:26 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 09:05:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:36:22 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-size_t	 ft_strlen(const char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t ret;
 
@@ -25,7 +25,7 @@ size_t	 ft_strlen(const char *s)
 }
 
 char	*ft_strdup(const char *s1)
-{  
+{ 
 	char	*ret;
 	char	*pret;
 	char	*ps1;
@@ -76,8 +76,8 @@ short	ft_strchr(char *s, char c)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char		*ret;
-	char		*pret;
+	char	*ret;
+	char	*pret;
 	size_t	retlen;
 	size_t	slen;
 

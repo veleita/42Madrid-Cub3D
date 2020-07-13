@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 10:17:06 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:20:54 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	init_values_file(t_file *file)
+void			init_values_file(t_file *file)
 {
 	file->map->x = 0;
 	file->map->y = 0;
@@ -33,7 +33,7 @@ static t_texture	*create_texture(void *mlx, char *path)
 
 	if (!(texture = (t_texture*)malloc(sizeof(t_texture))))
 		ft_exit_fail("Couldn't allocate t_texture (init.c)");
-	if (!(texture->id = mlx_xpm_file_to_image(mlx, path, 
+	if (!(texture->id = mlx_xpm_file_to_image(mlx, path,
 					&texture->width, &texture->height)))
 		ft_exit_fail("Couldn't charge texture, invalid path (init.c)");
 	texture->addr = (int*)mlx_get_data_addr(texture->id, &texture->bpp,
@@ -54,9 +54,9 @@ static t_images		*create_images(void *mlx, t_parameters *params)
 		ft_exit_fail("Failed to create image (init.c)");
 	images->screen->addr = (int*)mlx_get_data_addr(images->screen->id,
 			&images->screen->bpp, &images->screen->size_line,
-		       	&images->screen->endian);
+		       &images->screen->endian);
 	ft_bzero(images->screen->addr,
-		       	(params->resolution_x * params->resolution_y));
+		       (params->resolution_x * params->resolution_y));
 	images->north = create_texture(mlx, params->no);
 	images->south = create_texture(mlx, params->so);
 	images->east = create_texture(mlx, params->ea);
@@ -65,7 +65,7 @@ static t_images		*create_images(void *mlx, t_parameters *params)
 	return (images);
 }
 
-void	init_values_render(t_var *var)
+void			init_values_render(t_var *var)
 {
 	var->key->a = 0;
 	var->key->w = 0;
@@ -80,7 +80,7 @@ void	init_values_render(t_var *var)
 	ft_bzero(var->spr_ray->wall_z, var->file->params->resolution_x);
 }
 
-void	init(const char *file_name, t_var *var)
+void			init(const char *file_name, t_var *var)
 {
 	var->file = read_file(file_name);
 	if (!var->file->map->map)
@@ -94,11 +94,11 @@ void	init(const char *file_name, t_var *var)
 	var->spr_ray = (t_sprite_ray*)malloc(sizeof(t_sprite_ray));
 	if (var->spr_ray == 0)
 		ft_exit_fail("Couldn't allocate memory for ray struct");
-	var->spr_ray->sprite_order = 
+	var->spr_ray->sprite_order =
 		(int*)malloc(var->file->map->num_sprites * sizeof(int));
 	var->spr_ray->wall_z =
-	       	(double*)malloc(var->file->params->resolution_x *
-			       	sizeof(double));
+	       (double*)malloc(var->file->params->resolution_x *
+			       sizeof(double));
 	if (!(var->spr_ray->sprite_order && var->spr_ray->wall_z))
 		ft_exit_fail("Couldn't allocate memory for sprite arrays");
 	var->images = create_images(var->id->mlx, var->file->params);

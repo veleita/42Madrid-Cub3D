@@ -6,16 +6,16 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:18 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 09:19:43 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:12:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-static short	get_line(char **file, int fd, char **line, int len)
+static short		get_line(char **file, int fd, char **line, int len)
 {
-	char	*tmp;
-	int	it;
+	char		*tmp;
+	int		it;
 
 	if (len < 0)
 		return (-1);
@@ -40,7 +40,7 @@ static short	get_line(char **file, int fd, char **line, int len)
 	return (1);
 }
 
-short		get_next_line(int fd, char **line)
+short			get_next_line(int fd, char **line)
 {
 	char		*buffer;
 	static char	*file[10];

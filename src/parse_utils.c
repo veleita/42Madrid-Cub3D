@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:24:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 10:25:55 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:14:25 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	get_resolution(char *line, t_parameters *params, int it)
 	remove_space(line, &it);
 	while (line[it] >= '0' && line[it] <= '9')
 	{
-		params->resolution_x = params->resolution_x * 10 + 
+		params->resolution_x = params->resolution_x * 10 +
 			line[it] - '0';
 		it++;
 	}
@@ -27,7 +27,7 @@ void	get_resolution(char *line, t_parameters *params, int it)
 	while ('0' <= line[it] && line[it] <= '9')
 	{
 		params->resolution_y = params->resolution_y * 10 +
-		       	line[it] - '0';
+			line[it] - '0';
 		it++;
 	}
 	params->resolution_x = (params->resolution_x < 200) ?
@@ -42,8 +42,8 @@ void	get_resolution(char *line, t_parameters *params, int it)
 
 char	*get_path(char *line, int it)
 {
-	char *ret;
-	int  len;
+	char	*ret;
+	int	len;
 
 	remove_space(line, &it);
 	len = it;
@@ -64,7 +64,7 @@ char	*get_path(char *line, int it)
 
 t_color	get_color(char *line, int it)
 {
-	t_color 	ret;
+	t_color	ret;
 
 	ret.r = 0;
 	ret.g = 0;

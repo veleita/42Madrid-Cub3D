@@ -6,14 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 09:06:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 09:06:51 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:10:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 void	vertical_movement(t_map *map, double movement_speed,
-	       	double dir_x, double dir_y)
+		double dir_x, double dir_y)
 {
 	if (map->map[(int)map->camera->pos_y]
 			[(int)(map->camera->pos_x + dir_x * 1)] != 1)
@@ -24,7 +24,7 @@ void	vertical_movement(t_map *map, double movement_speed,
 }
 
 void	horizontal_movement(t_map *map, double movement_speed,
-	       	double plane_x, double plane_y)
+		double plane_x, double plane_y)
 {
 	if (map->map[(int)map->camera->pos_y]
 			[(int)(map->camera->pos_x + plane_x * 1)] != 1)
@@ -45,8 +45,8 @@ void	rotation(t_camera *camera, double rotation_speed)
 	camera->dir_x = dir_y_copy * sin(rotation_speed) + camera->dir_x *
 		cos(rotation_speed);
 	plane_y_copy = camera->plane_y;
-	camera->plane_y = camera->plane_y * cos(rotation_speed) - 
+	camera->plane_y = camera->plane_y * cos(rotation_speed) -
 		camera->plane_x * sin(rotation_speed);
-	camera->plane_x = plane_y_copy * sin(rotation_speed) + 
+	camera->plane_x = plane_y_copy * sin(rotation_speed) +
 		camera->plane_x * cos(rotation_speed);
 }

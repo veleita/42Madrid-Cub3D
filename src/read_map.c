@@ -6,14 +6,14 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 09:53:37 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:08:14 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
 static void	charge_sprite(double x, double y, int num_sprites,
-	       	t_sprite **sprite)
+		t_sprite **sprite)
 {
 	if (!(sprite[num_sprites] = (t_sprite*)malloc(sizeof(t_sprite))))
 		ft_exit_fail("Didn't allocate sprite[] (read_map.c)");
@@ -25,7 +25,7 @@ static void	map_objects(char number, int x, int y, t_map *map)
 {
 	map->map[y][x] = number - '0';
 	if (number == '2')
-		charge_sprite((double)x, (double)y, --map->num_sprites, 
+		charge_sprite((double)x, (double)y, --map->num_sprites,
 				map->sprite);
 }
 
@@ -103,8 +103,7 @@ void		read_map(char *line, int fd, int len, t_map *map)
 		get_next_line(fd, &line_2);
 	}
 	free(line_2);
-	if (player == 0)
-		ft_exit_fail("No player nigga");
 	map->num_sprites = num_sprites;
-	valid_map(map, (int)map->camera->pos_y, (int)map->camera->pos_x);
+	(player == 0) ? ft_exit_fail("No player nigga") :
+	       valid_map(map, (int)map->camera->pos_y, (int)map->camera->pos_x);
 }

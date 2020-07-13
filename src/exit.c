@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 09:18:54 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:36:49 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_var	*get_var(void)
 	return (&var);
 }
 
-void ft_exit_fail(char *error)
+void	ft_exit_fail(char *error)
 {
 	t_var	*var;
 
@@ -68,7 +68,7 @@ void ft_exit_fail(char *error)
 	exit(EXIT_FAILURE);
 }
 
-int ft_exit_success(t_var *var)
+int	ft_exit_success(t_var *var)
 {
 	char *farewell;
 

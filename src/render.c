@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/10 14:46:18 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:30:57 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	render(t_file *file, t_ray *ray, t_images *images, 
+void		render(t_file *file, t_ray *ray, t_images *images,
 		t_sprite_ray *s_ray)
 {
 	int	x;
@@ -31,7 +31,7 @@ void	render(t_file *file, t_ray *ray, t_images *images,
 	}
 }
 
-static void		trigger_events(t_var *var)
+static void	trigger_events(t_var *var)
 {
 	if (var->key->w == 1)
 		vertical_movement(var->file->map, var->mov_speed,
@@ -63,7 +63,7 @@ int		actualize(t_var *var)
 	order_sprites(var->spr_ray->sprite_order, var->file->map);
 	render(var->file, var->ray, var->images, var->spr_ray);
 	render_sprites(var);
-	mlx_put_image_to_window(var->id->mlx, var->id->win, 
+	mlx_put_image_to_window(var->id->mlx, var->id->win,
 			var->images->screen->id, 0, 0);
 	return (1);
 }

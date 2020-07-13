@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 10:29:37 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:11:25 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	game_option(t_var *var)
 	if (var->id->win == NULL)
 		ft_exit_fail("Failed to open new window (init.c)");
 	init_values_render(var);
-	mlx_hook(var->id->win, 33, 1L<<17, &ft_exit_success, var);
-	mlx_hook(var->id->win, 2, 1L<<0, &key_pressed, var->key);
-	mlx_hook(var->id->win, 3, 1L<<1, &key_released, var->key);
+	mlx_hook(var->id->win, 33, 1L << 17, &ft_exit_success, var);
+	mlx_hook(var->id->win, 2, 1L << 0, &key_pressed, var->key);
+	mlx_hook(var->id->win, 3, 1L << 1, &key_released, var->key);
 	mlx_loop_hook(var->id->mlx, &actualize, var);
 	mlx_loop(var->id->mlx);
 }
@@ -37,7 +37,7 @@ void	screenshot_option(t_var *var)
 
 int	main(int argc, char **argv)
 {
-	t_var *var;
+	t_var	*var;
 
 	if (!(argc == 2 || argc == 3))
 		ft_exit_fail("Wrong number of arguments (main.c)");

@@ -6,13 +6,13 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:40:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 08:30:11 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:35:00 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	write_headers(unsigned char *file_header, 
+void	write_headers(unsigned char *file_header,
 		unsigned char *info_header, int file_size, t_parameters *params)
 {
 	file_header[0] = (unsigned char)('B');
@@ -37,13 +37,13 @@ void	write_headers(unsigned char *file_header,
 
 void	create_headers(int fd, int padding, t_parameters *params)
 {
-	int			file_size;
+	int	file_size;
 	static unsigned char	file_header[14];
 	static unsigned char	info_header[40];
 
 	ft_bzero(file_header, 14);
 	ft_bzero(info_header, 40);
-	file_size = 14 + 40 + (3 * params->resolution_x + padding) * 
+	file_size = 14 + 40 + (3 * params->resolution_x + padding) *
 		params->resolution_y;
 	write_headers(file_header, info_header, file_size, params);
 	write(fd, &file_header, 14);
@@ -52,9 +52,9 @@ void	create_headers(int fd, int padding, t_parameters *params)
 
 void	write_bmp(int fd, int padding, int *screen, t_parameters *params)
 {
-	int			i;
-	int			j;
-	int			color;
+	int	i;
+	int	j;
+	int	color;
 	static unsigned char	zero[3];
 
 	ft_bzero(zero, 3);

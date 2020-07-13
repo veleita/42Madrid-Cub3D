@@ -6,19 +6,19 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 09:18:25 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:33:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-void	 remove_space(char *line, int *it)
+void	remove_space(char *line, int *it)
 {
 	while (line[*it] == ' ' || line[*it] == '\f' || line[*it] == '\t')
 		(*it)++;
 }
 
-void 	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	char *ps;
 
@@ -43,15 +43,15 @@ int	ft_strcmp(const char *s1, const char *s2)
 	return (1);
 }
 
-short 	ft_isalpha(int c)
+short	ft_isalpha(int c)
 {
 	return ((('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z')) ? 1 : 0);
 }
 
 void	bubble_sort(int *list, double *content, int elements)
 {
-	int 	it;
-	int 	add;
+	int	it;
+	int	add;
 	int	list_copy;
 	double	content_copy;
 
@@ -61,7 +61,7 @@ void	bubble_sort(int *list, double *content, int elements)
 		add = it;
 		while (++add < elements)
 		{
-			if ( content[it] < content[add])
+			if (content[it] < content[add])
 			{
 				list_copy = list[it];
 				list[it] = list[add];

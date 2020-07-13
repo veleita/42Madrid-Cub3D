@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:18:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/06/30 13:18:06 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:27:05 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		print_column(int x, t_ray *ray, t_parameters *params,
 
 	y = -1;
 	while (++y < ray->draw_start)
-		images->screen->addr[y * params->resolution_x + x] = 
+		images->screen->addr[y * params->resolution_x + x] =
 			rgb_to_hex(params->ceiling_rgb);
 	step = 1.0 * ray->texture->height / ray->wall_height;
 	texture_pos = (ray->draw_start - params->resolution_y / 2 +
@@ -48,12 +48,12 @@ void		print_column(int x, t_ray *ray, t_parameters *params,
 	{
 		texture_y = (int)texture_pos & (ray->texture->height - 1);
 		texture_pos += step;
-		images->screen->addr[y * params->resolution_x + x] = 
+		images->screen->addr[y * params->resolution_x + x] =
 			ray->texture->addr[(int)(texture_y * ray->texture->width
-			    + ray->texture_x)];
+			   + ray->texture_x)];
 		y++;
 	}
 	while (y < (params->resolution_y - 1))
-		images->screen->addr[y++ * params->resolution_x + x] = 
+		images->screen->addr[y++ * params->resolution_x + x] =
 			rgb_to_hex(params->floor_rgb);
 }

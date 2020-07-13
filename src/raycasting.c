@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 10:41:24 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:21:43 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	get_wall(t_ray *ray, t_camera *camera, t_images *images)
 	if (ray->side == 1)
 	{
 		ray->wall_hit_x = camera->pos_x + ((ray->map_y - camera->pos_y
-					+ (1 - ray->step_y) / 2) 
+					+ (1 - ray->step_y) / 2)
 				/ ray->dir_y) * ray->dir_x;
 		ray->texture = (ray->dir_y < 0) ? images->south : images->north;
 	}
@@ -102,4 +102,4 @@ void	get_wall_height(t_ray *ray, t_parameters *parameters)
 		(ray->wall_height / 2);
 	ray->draw_end = (ray->draw_end > parameters->resolution_y) ?
 		parameters->resolution_y : ray->draw_end;
-} 
+}

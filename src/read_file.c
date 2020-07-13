@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 10:37:45 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:17:31 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 static void	manage_map(char *line, int len, int fd, t_file *file)
 {
-		all_parameters(file->params);
-		read_map(line, fd, len, file->map);
+	all_parameters(file->params);
+	read_map(line, fd, len, file->map);
 }
 
-void	parse_parameters(char *line, int len, int fd, t_file *file)
+void		parse_parameters(char *line, int len, int fd, t_file *file)
 {
-	int it;
+	int	it;
 
 	it = 0;
 	remove_space(line, &it);
 	if (line[it] == 'R')
-		get_resolution(line, file->params, it + 1);      
+		get_resolution(line, file->params, it + 1); 
 	else if (line[it] == 'N' && line[it + 1] == 'O')
 		file->params->no = get_path(line, it + 2);
 	else if (line[it] == 'S' && line[it + 1] == 'O')
@@ -41,14 +41,11 @@ void	parse_parameters(char *line, int len, int fd, t_file *file)
 	else if (line[it] == 'C')
 		file->params->ceiling_rgb = get_color(line, it + 1);
 	else if (line[it] == '1')
-	{
-		manage_map(line, len, fd, file);
-		return ;
-	}
+		return (manage_map(line, len, fd, file));
 	free(line);
 }
 
-t_file	*read_file(const char *file_name)
+t_file		*read_file(const char *file_name)
 {
 	t_file	*file;
 	char	*line;

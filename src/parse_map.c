@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 10:40:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/13 11:30:13 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		all_parameters(t_parameters *parameters)
 		ft_exit_fail("Missing parameters in the map file");
 }
 
-int	get_map_dimensions(char *line, int fd, short read, t_map *map)
+int		get_map_dimensions(char *line, int fd, short read, t_map *map)
 {
 	int	x_copy;
 
@@ -30,8 +30,8 @@ int	get_map_dimensions(char *line, int fd, short read, t_map *map)
 		x_copy = 0;
 		while (line[x_copy] != '\0')
 		{
-			if (!(line[x_copy] == ' ' || line[x_copy] == '1' || 
-						line[x_copy] == '0' || 
+			if (!(line[x_copy] == ' ' || line[x_copy] == '1' ||
+						line[x_copy] == '0' ||
 						line[x_copy] == '2' ||
 						ft_isalpha(line[x_copy])))
 				ft_exit_fail("Invalid elements in the bitmap");
@@ -49,17 +49,17 @@ int	get_map_dimensions(char *line, int fd, short read, t_map *map)
 	return (map->num_sprites);
 }
 
-static t_camera	*set_dir_plane(double dirX, double dirY,
-	       	double planeX, double planeY)
+static t_camera	*set_dir_plane(double dir_x, double dir_y,
+		double plane_x, double plane_y)
 {
 	t_camera	*camera;
 
 	if (!(camera = (t_camera*)malloc(sizeof(t_camera))))
 		exit(0);
-	camera->dir_x = dirX;
-	camera->dir_y = dirY;
-	camera->plane_x = planeX;
-	camera->plane_y = planeY;
+	camera->dir_x = dir_x;
+	camera->dir_y = dir_y;
+	camera->plane_x = plane_x;
+	camera->plane_y = plane_y;
 	return (camera);
 }
 
@@ -85,7 +85,7 @@ t_camera	*check_coord(char coord, int pos_x, int pos_y)
 void		valid_map(t_map *map, int y, int x)
 {
 	if ((map->map[y][x] == 0 && (x == (map->x - 1) || y == map->y || x == 0
-				       	|| y == 0)) || map->map[y][x] == ' ')
+					|| y == 0)) || map->map[y][x] == ' ')
 		ft_exit_fail("Invalid map");
 	map->map[y][x] = map->map[y][x] == 0 ? 3 : 1;
 	if (y != (map->y - 1))
