@@ -1,0 +1,16 @@
+R 1500 1000
+
+NO textures/colorstone.xpm
+SO textures/case.xpm
+EA textures/greystone.xpm
+WE textures/purplestone.xpm
+
+S textures/pillar.xpm
+
+C 100 230 210
+
+1111111111111111111
+1000S00000000000001
+10000000000N0000001
+100000N000000000001
+1111111111111111111
