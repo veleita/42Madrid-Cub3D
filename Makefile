@@ -8,8 +8,8 @@ INCLUDES	= -I includes/
 
 OS		= $(shell uname)
 ifeq ($(OS), Linux)
-	MINILIBX_DIR	= minilibx-linux/
-	IFLAGS		= -L minilibx-linux -l mlx -l m -l bsd -l X11 -l Xext
+	MINILIBX_DIR	= minilibx-linux-master/
+	IFLAGS		= -L minilibx-linux-master -l mlx -l m -l bsd -l X11 -l Xext
 endif
 ifeq ($(OS), Darwin)
 	MINILIBX_DIR	= minilibx_opengl/

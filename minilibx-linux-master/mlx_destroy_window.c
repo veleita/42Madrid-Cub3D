@@ -30,7 +30,7 @@ int	mlx_destroy_window(t_xvar *xvar,t_win_list *win)
       w = w->next;
     }
   xvar->win_list = first.next;
-  //XDestroyWindow(xvar->display,win->window);
+  XDestroyWindow(xvar->display,win->window);
   XFreeGC(xvar->display,win->gc);
   free(win);
   if (xvar->do_flush)
