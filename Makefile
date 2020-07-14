@@ -42,7 +42,7 @@ OBJ_DIR		= objs/
 OBJ_FILES	= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
-all:		$(OBJ_DIR) $(NAME)
+all:		$(OBJS) $(NAME)
 
 $(OBJ_DIR):
 		@mkdir $(OBJ_DIR)
