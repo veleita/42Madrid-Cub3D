@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:08:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 14:10:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	game_option(t_var *var)
 	if (var->id->win == NULL)
 		ft_exit_fail("Failed to open new window (init.c)");
 	init_values_render(var);
-	mlx_hook(var->id->win, 33, 1L << 17, &ft_exit_success, var);
+	mlx_hook(var->id->win, X_BTN, 1L << 17, &ft_exit_success, var);
 	mlx_hook(var->id->win, 2, 1L << 0, &key_pressed, var->key);
 	mlx_hook(var->id->win, 3, 1L << 1, &key_released, var->key);
 	mlx_loop_hook(var->id->mlx, &actualize, var);
