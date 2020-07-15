@@ -13,7 +13,7 @@ ifeq ($(OS), Linux)
 endif
 ifeq ($(OS), Darwin)
 	MINILIBX_DIR	= minilibx_opengl/
-	IFLAGS		= -L minilibx_mac -l mlx -framework OpenGL -framework Appkit
+	IFLAGS		= -L minilibx_opengl -l mlx -framework OpenGL -framework Appkit
 endif
 
 HEADERS		=	cub3D.h
@@ -42,7 +42,7 @@ OBJ_DIR		= objs/
 OBJ_FILES	= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
-all:		$(OBJS) $(NAME)
+all:		$(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR):
 		@mkdir $(OBJ_DIR)
@@ -50,10 +50,10 @@ $(OBJ_DIR):
 
 $(NAME):	$(OBJS)
 		@make -C $(MINILIBX_DIR)
-		@$(CC) $(GDB) $(OBJS) $(IFLAGS) -o $(NAME)
+		@$(CC) $(OBJS) $(IFLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
-		@$(CC) $(INCLUDES) -c $< -o $@
+		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
 
 clean:
 		@rm -rf $(OBJ_DIR)
@@ -61,6 +61,7 @@ clean:
 
 fclean:		clean
 		@echo Objects and executable file erased, bye!
-		@rm -rf $(NAME)
+		@rm  $(NAME)
+		@rm $(NAME).bmp
 
 re: fclean all

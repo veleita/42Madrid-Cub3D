@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:40:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:07:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:41:11 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	write_bmp(int fd, int padding, int *screen, t_parameters *params)
 	static unsigned char	zero[3];
 
 	ft_bzero(zero, 3);
-	i = params->resolution_y;
-	while (i > 0)
+	i = params->resolution_y - 1;
+	while (i >= 0)
 	{
 		j = 0;
 		while (j < params->resolution_x)
