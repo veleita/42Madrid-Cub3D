@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 14:10:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:05:19 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void	game_option(t_var *var)
 {

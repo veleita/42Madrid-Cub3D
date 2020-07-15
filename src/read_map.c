@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:09:44 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:06:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 static void	charge_sprite(double x, double y, int num_sprites,
 		t_sprite **sprite)

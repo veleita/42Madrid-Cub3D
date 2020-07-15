@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 20:37:34 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:05:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void			all_parameters(t_parameters *parameters)
 {

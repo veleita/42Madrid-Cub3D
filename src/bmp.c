@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 20:40:30 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 13:41:11 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:04:01 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void	write_headers(unsigned char *file_header,
 		unsigned char *info_header, int file_size, t_parameters *params)

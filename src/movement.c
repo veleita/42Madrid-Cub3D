@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 09:06:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:10:13 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:05:29 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void	vertical_movement(t_map *map, double movement_speed,
 		double dir_x, double dir_y)

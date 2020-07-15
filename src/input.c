@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:55:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/09 01:39:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:05:07 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 int		key_pressed(int keycode, t_key *key)
 {

@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:25:20 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:04:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void				init_values_file(t_file *file)
 {

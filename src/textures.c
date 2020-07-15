@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:18:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:55:18 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:06:58 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 static int	rgb_to_hex(t_color color)
 {

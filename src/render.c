@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:13:35 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:06:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void		render(t_file *file, t_ray *ray, t_images *images,
 		t_sprite_ray *s_ray)

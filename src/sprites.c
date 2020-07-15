@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:44 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:12:28 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:06:48 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 void		order_sprites(int *sprite_order, t_map *map)
 {

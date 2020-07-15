@@ -6,11 +6,11 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:11:33 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:06:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub3d.h"
 
 static void	manage_map(char *line, int len, int fd, t_file *file)
 {

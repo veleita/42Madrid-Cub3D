@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 20:45:36 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:08:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-#define	CUB3D_H
+# define	CUB3D_H
+#endif
 
 #include "mlx.h"
 #include <fcntl.h>
@@ -243,6 +244,7 @@ int					ft_exit_success(t_var *var);
 void				free_all(t_var *var);
 void				free_spr_ray(t_sprite_ray *spr_ray);
 void				free_images(t_images *images);
+void				destroy_images(t_images *images, void *mlx);
 void				free_file(t_file *file);
 void				free_map(t_map *map);
 short				get_next_line(int fd, char **line);
@@ -257,4 +259,3 @@ void				ft_bzero(void *s, size_t n);
 short				ft_isalpha(int c);
 void				bubble_sort(int *list, double *content, int elements);
 int					ft_strcmp(const char *s1, const char *s2);
-#endif
