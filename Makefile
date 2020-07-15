@@ -59,9 +59,9 @@ clean:
 		@rm -rf $(OBJ_DIR)
 		@make -C $(MINILIBX_DIR) clean
 
-fclean:		clean
+fclean:		clean 
+		@rm -rf $(NAME)
+		@rm -rf $(NAME).bmp
 		@echo Objects and executable file erased, bye!
-		@rm  $(NAME)
-		@rm $(NAME).bmp
 
 re: fclean all
