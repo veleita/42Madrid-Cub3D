@@ -38,8 +38,11 @@ SRC		= 	main.c \
 			gnl_utils.c \
 			utils.c \
 
+BONUS		=	music.c \
+			jump.c \
+
 OBJ_DIR		= objs/
-OBJ_FILES	= $(SRC:.c=.o)
+OBJ_FILES	= $(SRC:.c=.o) $(BONUS:.c=.o)
 OBJS		= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
 
 all:		$(OBJ_DIR) $(NAME)
