@@ -141,6 +141,7 @@ typedef struct		s_ray
 # define LEFT_KEY 123
 # define RIGHT_KEY 124
 # define ESC_KEY 53
+# define X_BTN 17
 
 #elif defined __unix__
 # define A_KEY 97
@@ -150,6 +151,7 @@ typedef struct		s_ray
 # define LEFT_KEY 65361
 # define RIGHT_KEY 65363
 # define ESC_KEY 65307
+# define X_BTN 33
 #endif
 
 
