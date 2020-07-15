@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 21:20:06 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:24:04 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,26 +148,26 @@ typedef struct		s_ray
 	double			draw_end;
 }					t_ray;
 
-#ifdef __APPLE__
-# define A_KEY 0
-# define W_KEY 13
-# define S_KEY 1
-# define D_KEY 2
-# define LEFT_KEY 123
-# define RIGHT_KEY 124
-# define ESC_KEY 53
-# define X_BTN 17
+# ifdef __APPLE__
+#  define A_KEY 0
+#  define W_KEY 13
+#  define S_KEY 1
+#  define D_KEY 2
+#  define LEFT_KEY 123
+#  define RIGHT_KEY 124
+#  define ESC_KEY 53
+#  define X_BTN 17
 
-#elif defined __unix__
-# define A_KEY 97
-# define W_KEY 119
-# define S_KEY 115
-# define D_KEY 100
-# define LEFT_KEY 65361
-# define RIGHT_KEY 65363
-# define ESC_KEY 65307
-# define X_BTN 33
-#endif
+# elif defined __unix__
+#  define A_KEY 97
+#  define W_KEY 119
+#  define S_KEY 115
+#  define D_KEY 100
+#  define LEFT_KEY 65361
+#  define RIGHT_KEY 65363
+#  define ESC_KEY 65307
+#  define X_BTN 33
+# endif
 
 typedef struct		s_key
 {
