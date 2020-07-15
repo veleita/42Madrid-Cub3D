@@ -1,0 +1,15 @@
+R 1000 1080
+NO textures/purplestone.mlx
+SO textures/case.mlx
+EA textures/purplestone.mlx
+WE textures/case.mlx
+S  textures/barrel.mlx
+
+F 0 0 0
+C 0 0 0
+
+111111111111
+100000000001
+100000N00001
+100000000001
+111110111111
