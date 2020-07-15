@@ -1,9 +1,24 @@
-#include "mlx.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/07/15 21:42:00 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# include "mlx.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
+# include <stdio.h>
 
 typedef struct		s_camera
 {
@@ -133,26 +148,26 @@ typedef struct		s_ray
 	double			draw_end;
 }					t_ray;
 
-#ifdef __APPLE__
-# define A_KEY 0
-# define W_KEY 13
-# define S_KEY 1
-# define D_KEY 2
-# define LEFT_KEY 123
-# define RIGHT_KEY 124
-# define ESC_KEY 53
-# define X_BTN 17
+# ifdef __APPLE__
+#  define A_KEY 0
+#  define W_KEY 13
+#  define S_KEY 1
+#  define D_KEY 2
+#  define LEFT_KEY 123
+#  define RIGHT_KEY 124
+#  define ESC_KEY 53
+#  define X_BTN 17
 
-#elif defined __unix__
-# define A_KEY 97
-# define W_KEY 119
-# define S_KEY 115
-# define D_KEY 100
-# define LEFT_KEY 65361
-# define RIGHT_KEY 65363
-# define ESC_KEY 65307
-# define X_BTN 33
-#endif
+# elif defined __unix__
+#  define A_KEY 97
+#  define W_KEY 119
+#  define S_KEY 115
+#  define D_KEY 100
+#  define LEFT_KEY 65361
+#  define RIGHT_KEY 65363
+#  define ESC_KEY 65307
+#  define X_BTN 33
+# endif
 
 
 typedef struct		s_key
@@ -307,4 +322,4 @@ void				ft_bzero(void *s, size_t n);
 short				ft_isalpha(int c);
 void				bubble_sort(int *list, double *content, int elements);
 int					ft_strcmp(const char *s1, const char *s2);
->>>>>>> 0e18ba4... Erased bonus
+#endif
