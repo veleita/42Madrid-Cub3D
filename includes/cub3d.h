@@ -6,20 +6,19 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 21:08:38 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/15 21:20:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
-# define	CUB3D_H
-#endif
+# define CUB3D_H
 
-#include "mlx.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
+# include "mlx.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
+# include <stdio.h>
 
 typedef struct		s_camera
 {
@@ -259,3 +258,4 @@ void				ft_bzero(void *s, size_t n);
 short				ft_isalpha(int c);
 void				bubble_sort(int *list, double *content, int elements);
 int					ft_strcmp(const char *s1, const char *s2);
+#endif
