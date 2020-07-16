@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:36 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 09:12:10 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 00:18:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	get_wall_height(t_ray *ray, t_parameters *parameters)
 {
 	ray->wall_height = (int)(parameters->resolution_y /
 			ray->perp_wall_dist);
-	ray->draw_start = ((parameters->resolution_y + ray->up -  ray->down) / 2) -
+	ray->draw_start = ((parameters->resolution_y + ray->up - ray->down) / 2) -
 		(ray->wall_height / 2);
 	ray->draw_start = (ray->draw_start < 0) ? 0 : ray->draw_start;
 	ray->draw_end = ((parameters->resolution_y + ray->up - ray->down) / 2) +
