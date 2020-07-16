@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:55:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 18:57:24 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 23:57:56 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int		key_pressed(int keycode, t_key *key)
 		key->c = key->c == 0 ? 1 : 2;
 	if (keycode == ESC_KEY)
 		key->esc = 1;
-	printf("%d\n", keycode);
 	return (1);
 }
 

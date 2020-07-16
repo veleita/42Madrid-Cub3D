@@ -1,5 +1,5 @@
 NAME		= cub3D
-
+MAP			= map1.cub
 CC		= gcc
 GDB		= -g
 WFLAGS		= -Werror -Wall -Wextra
@@ -56,6 +56,9 @@ $(NAME):	$(OBJS)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
+
+run:		all
+		./$(NAME) maps/$(MAP)
 
 clean:
 		@rm -rf $(OBJ_DIR)

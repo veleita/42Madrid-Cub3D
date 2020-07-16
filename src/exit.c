@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:01 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/14 17:50:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 23:54:30 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void		ft_exit_fail(char *error)
 	write(1, "\n", 1);
 	var = get_var();
 	free_all(var);
+	system("pkill play");
 	exit(EXIT_FAILURE);
 }
 
@@ -75,6 +76,7 @@ int			ft_exit_success(t_var *var)
 	farewell = "Goodbye!\n";
 	write(1, farewell, 9);
 	free_all(var);
+	system("pkill play");
 	exit(EXIT_SUCCESS);
 	return (1);
 }
