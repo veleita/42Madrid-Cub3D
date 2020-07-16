@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:44 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:12:28 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 08:59:17 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ void		order_sprites(int *sprite_order, t_map *map)
 	while (it < map->num_sprites)
 	{
 		sprite_order[it] = it;
-		sprite_distance[it] = (map->camera->pos_x -
-				map->sprite[it]->pos_x) *
+		sprite_distance[it] = (map->camera->pos_x - map->sprite[it]->pos_x) *
 			(map->camera->pos_x - map->sprite[it]->pos_x) +
 			(map->camera->pos_y - map->sprite[it]->pos_y) *
-			map->camera->pos_y - map->sprite[it]->pos_y;
+			(map->camera->pos_y - map->sprite[it]->pos_y);
 		it++;
 	}
 	bubble_sort(sprite_order, sprite_distance, map->num_sprites);

@@ -1,9 +1,24 @@
-#include "mlx.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/07/16 08:54:16 by mzomeno-          #+#    #+#             */
+/*   Updated: 2020/07/16 08:58:29 by mzomeno-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef CUB3D_H
+# define CUB3D_H
+
+# include "mlx.h"
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <math.h>
+# include <stdio.h>
 
 typedef struct		s_camera
 {
@@ -133,26 +148,26 @@ typedef struct		s_ray
 	double			draw_end;
 }					t_ray;
 
-#ifdef __APPLE__
-# define A_KEY 0
-# define W_KEY 13
-# define S_KEY 1
-# define D_KEY 2
-# define LEFT_KEY 123
-# define RIGHT_KEY 124
-# define ESC_KEY 53
-# define X_BTN 17
+# ifdef __APPLE__
+#  define A_KEY 0
+#  define W_KEY 13
+#  define S_KEY 1
+#  define D_KEY 2
+#  define LEFT_KEY 123
+#  define RIGHT_KEY 124
+#  define ESC_KEY 53
+#  define X_BTN 17
 
-#elif defined __unix__
-# define A_KEY 97
-# define W_KEY 119
-# define S_KEY 115
-# define D_KEY 100
-# define LEFT_KEY 65361
-# define RIGHT_KEY 65363
-# define ESC_KEY 65307
-# define X_BTN 33
-#endif
+# elif defined __unix__
+#  define A_KEY 97
+#  define W_KEY 119
+#  define S_KEY 115
+#  define D_KEY 100
+#  define LEFT_KEY 65361
+#  define RIGHT_KEY 65363
+#  define ESC_KEY 65307
+#  define X_BTN 33
+# endif
 
 
 typedef struct		s_key
@@ -182,72 +197,9 @@ typedef struct		s_var
 	double			rotate_speed;
 	t_ray			*ray;
 	t_sprite_ray	*spr_ray;
-<<<<<<< HEAD
-}			t_var;
-
-void			init(const char *file_name, t_var *var);
-void			init_values_render(t_var *var);
-t_file			*read_file(const char *file_name);
-void			init_values_file(t_file *file);
-void			parse_parameters(char *line, int len, int fd, 
-		t_file *file);
-void			get_resolution(char *line, t_parameters *params, int it);
-char			*get_path(char *line, int it);
-t_color			get_color(char *line, int it);
-void			read_map(char *line, int fd, int len, t_map *map);
-void			all_parameters(t_parameters *parameters);
-int			get_map_dimensions(char *line, int fd, short read,
-		t_map *map);
-t_camera		*check_coord(char coord, int pos_x, int pos_y);
-void			valid_map(t_map *map, int y, int x);
-void			render(t_file *file, t_ray *ray, t_images *images,
-		t_sprite_ray *s_ray);
-int			actualize(t_var *var);
-void			get_side_dist(int x, double resolution_x, t_ray *ray,
-		t_camera *camera);
-void			get_hit(t_ray *ray, int **map, int map_max_y);
-void			get_wall(t_ray *ray, t_camera *camera, 
-		t_images *images);
-void			get_wall_dist(t_ray *ray, t_camera *camera, 
-		t_sprite_ray *s_ray, int x);
-void			get_wall_height(t_ray *ray, t_parameters *parameters);
-void			get_texture_x(t_ray *ray);
-void			print_column(int x, t_ray *ray, t_parameters *params,
-		t_images *images);
-int			key_pressed(int keycode, t_key *key);
-int			key_released(int keycode, t_key *key);
-void			rotation(t_camera *camera, double rotation_speed);
-void			horizontal_movement(t_map *map, double movement_speed,
-		double plane_x, double plane_y);
-void			vertical_movement(t_map *map, double movement_speed,
-		double dir_x, double dir_y);
-void			order_sprites(int *num_sprites, t_map *map);
-void			render_sprites(t_var *var);
-void			create_bmp(t_parameters *params, int *screen);
-t_var			*get_var(void);
-void 			ft_exit_fail(char *error);
-int			ft_exit_success(t_var *var);
-void			free_all(t_var *var);
-void			free_spr_ray(t_sprite_ray *spr_ray);
-void			free_images(t_images *images);
-void			destroy_images(t_images *images, void *mlx);
-void			free_file(t_file *file);
-void			free_map(t_map *map);
-short			get_next_line(int fd, char **line);
-size_t			ft_strlen(const char *s);
-char			*ft_strdup(const char *s1);
-char			*ft_strjoin(char const *s1, char const *s2);
-short			ft_strchr(char *s, char c);
-char			*ft_substr(char const *s, unsigned int start, 
-		size_t len);
-void			remove_space(char *line, int *it);
-void			ft_bzero(void *s, size_t n);
-short			ft_isalpha(int c);
-void			bubble_sort(int *list, double *content, int elements);
-int			ft_strcmp(const char *s1, const char *s2);
-=======
 }					t_var;
 
+void				game_option(t_var *var);
 void				init(const char *file_name, t_var *var);
 void				init_values_render(t_var *var);
 t_file				*read_file(const char *file_name);
@@ -293,6 +245,7 @@ int					ft_exit_success(t_var *var);
 void				free_all(t_var *var);
 void				free_spr_ray(t_sprite_ray *spr_ray);
 void				free_images(t_images *images);
+void				destroy_images(t_images *images, void *mlx);
 void				free_file(t_file *file);
 void				free_map(t_map *map);
 short				get_next_line(int fd, char **line);
@@ -307,4 +260,4 @@ void				ft_bzero(void *s, size_t n);
 short				ft_isalpha(int c);
 void				bubble_sort(int *list, double *content, int elements);
 int					ft_strcmp(const char *s1, const char *s2);
->>>>>>> 0e18ba4... Erased bonus
+#endif
