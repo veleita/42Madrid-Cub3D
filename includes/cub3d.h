@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cub3D.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 21:24:04 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:16:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct		s_parameters
 	char			*ea;
 	char			*we;
 	char			*sprt;
-	t_color			floor_rgb;
+	t_color 		floor_rgb;
 	t_color			ceiling_rgb;
 }					t_parameters;
 
@@ -99,7 +99,7 @@ typedef struct		s_images
 	t_screen		*screen;
 	t_texture		*north;
 	t_texture		*south;
-	t_texture		*east;
+	t_texture		*east; 
 	t_texture		*west;
 	t_texture		*sprite;
 }					t_images;
@@ -146,6 +146,8 @@ typedef struct		s_ray
 	double			wall_height;
 	double			draw_start;
 	double			draw_end;
+	short			up;
+	short			down;
 }					t_ray;
 
 # ifdef __APPLE__
@@ -155,7 +157,11 @@ typedef struct		s_ray
 #  define D_KEY 2
 #  define LEFT_KEY 123
 #  define RIGHT_KEY 124
+#  define UP_KEY 126
+#  define DOWN_KEY 125
 #  define ESC_KEY 53
+#  define C_KEY 8
+#  define SPC_KEY 49
 #  define X_BTN 17
 
 # elif defined __unix__
@@ -165,9 +171,14 @@ typedef struct		s_ray
 #  define D_KEY 100
 #  define LEFT_KEY 65361
 #  define RIGHT_KEY 65363
+#  define UP_KEY 65362
+#  define DOWN_KEY 65364
 #  define ESC_KEY 65307
+#  define C_KEY 99
+#  define SPC_KEY 32
 #  define X_BTN 33
 # endif
+
 
 typedef struct		s_key
 {
@@ -177,6 +188,12 @@ typedef struct		s_key
 	unsigned char	d;
 	unsigned char	left;
 	unsigned char	right;
+	unsigned char	up;
+	unsigned char	down;
+	unsigned char	spc;
+	unsigned char	jump;
+	unsigned char	c;
+	unsigned char	crouch;
 	unsigned char	esc;
 }					t_key;
 
@@ -202,7 +219,7 @@ void				init(const char *file_name, t_var *var);
 void				init_values_render(t_var *var);
 t_file				*read_file(const char *file_name);
 void				init_values_file(t_file *file);
-void				parse_parameters(char *line, int len, int fd,
+void				parse_parameters(char *line, int len, int fd, 
 					t_file *file);
 void				get_resolution(char *line, t_parameters *params, int it);
 char				*get_path(char *line, int it);
@@ -219,9 +236,9 @@ int					actualize(t_var *var);
 void				get_side_dist(int x, double resolution_x, t_ray *ray,
 					t_camera *camera);
 void				get_hit(t_ray *ray, int **map, int map_max_y);
-void				get_wall(t_ray *ray, t_camera *camera,
+void				get_wall(t_ray *ray, t_camera *camera, 
 					t_images *images);
-void				get_wall_dist(t_ray *ray, t_camera *camera,
+void				get_wall_dist(t_ray *ray, t_camera *camera, 
 					t_sprite_ray *s_ray, int x);
 void				get_wall_height(t_ray *ray, t_parameters *parameters);
 void				get_texture_x(t_ray *ray);
@@ -238,7 +255,7 @@ void				order_sprites(int *num_sprites, t_map *map);
 void				render_sprites(t_var *var);
 void				create_bmp(t_parameters *params, int *screen);
 t_var				*get_var(void);
-void				ft_exit_fail(char *error);
+void 				ft_exit_fail(char *error);
 int					ft_exit_success(t_var *var);
 void				free_all(t_var *var);
 void				free_spr_ray(t_sprite_ray *spr_ray);
@@ -251,11 +268,14 @@ size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
 char				*ft_strjoin(char const *s1, char const *s2);
 short				ft_strchr(char *s, char c);
-char				*ft_substr(char const *s, unsigned int start,
+char				*ft_substr(char const *s, unsigned int start, 
 					size_t len);
 void				remove_space(char *line, int *it);
 void				ft_bzero(void *s, size_t n);
 short				ft_isalpha(int c);
 void				bubble_sort(int *list, double *content, int elements);
 int					ft_strcmp(const char *s1, const char *s2);
+void				up_down(t_key *key, t_ray *ray);
+void				jump(t_key *key, t_ray *ray);
+void				crouch(t_key *key, t_ray *ray);
 #endif

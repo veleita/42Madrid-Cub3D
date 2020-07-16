@@ -1,4 +1,5 @@
 NAME		= cub3D
+NAME_BONUS	= cub3D_bonus
 
 CC		= gcc
 GDB		= -g
@@ -38,9 +39,35 @@ SRC		= 	main.c \
 			gnl_utils.c \
 			utils.c \
 
+SRC_BONUS_DIR		=	src_bonus/
+
+SRC_BONUS		= 	main.c \
+			init.c \
+			read_file.c \
+			read_map.c \
+			parse_map.c \
+			parse_utils.c \
+			render.c \
+			raycasting.c \
+			textures.c \
+			input.c \
+			movement.c \
+			sprites.c \
+			bmp.c \
+			exit.c \
+			free.c \
+			get_next_line.c \
+			gnl_utils.c \
+			utils.c \
+			up_down.c \
+
 OBJ_DIR		= objs/
 OBJ_FILES	= $(SRC:.c=.o)
 OBJS		= $(addprefix $(OBJ_DIR), $(OBJ_FILES))
+
+OBJ_BONUS_DIR		= objs_bonus/
+OBJ_FILES_BONUS	= $(SRC_BONUS:.c=.o)
+OBJS_BONUS		= $(addprefix $(OBJ_BONUS_DIR), $(OBJ_FILES_BONUS))
 
 all:		$(OBJ_DIR) $(NAME)
 
@@ -55,8 +82,21 @@ $(NAME):	$(OBJS)
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
 		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
 
+bonus:		$(OBJ_BONUS_DIR) $(NAME_BONUS)
+
+$(OBJ_BONUS_DIR):
+		@mkdir $(OBJ_BONUS_DIR)
+		@echo obj/ has been created!
+
+$(NAME_BONUS):	$(OBJS_BONUS)
+		@make -C $(MINILIBX_DIR)
+		@$(CC) $(OBJS_BONUS) $(IFLAGS) -o $(NAME)
+
+$(OBJ_BONUS_DIR)%.o:	$(SRC_BONUS_DIR)%.c
+		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
+
 clean:
-		@rm -rf $(OBJ_DIR)
+		@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
 		@make -C $(MINILIBX_DIR) clean
 
 fclean:		clean 
