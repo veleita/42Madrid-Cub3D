@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 17:43:07 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:52:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@ static void	trigger_events(t_var *var)
 		rotation(var->file->map->camera, var->rotate_speed);
 	if (var->key->right == 1)
 		rotation(var->file->map->camera, -var->rotate_speed);
+	if (var->key->c == 1)
+	{
+		var->ray->down += 800;
+		var->key->c = -1;
+	}
+	if (var->key->c == 2)
+	{
+		var->ray->down -= 800;
+		var->key->c = 0;
+	}
 	if (var->key->esc == 1)
 		ft_exit_success(var);
 }

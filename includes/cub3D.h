@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 17:41:59 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:16:39 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ typedef struct		s_ray
 #  define UP_KEY 126
 #  define DOWN_KEY 125
 #  define ESC_KEY 53
+#  define C_KEY 8
 #  define SPC_KEY 49
 #  define X_BTN 17
 
@@ -173,6 +174,7 @@ typedef struct		s_ray
 #  define UP_KEY 65362
 #  define DOWN_KEY 65364
 #  define ESC_KEY 65307
+#  define C_KEY 99
 #  define SPC_KEY 32
 #  define X_BTN 33
 # endif
@@ -189,6 +191,9 @@ typedef struct		s_key
 	unsigned char	up;
 	unsigned char	down;
 	unsigned char	spc;
+	unsigned char	jump;
+	unsigned char	c;
+	unsigned char	crouch;
 	unsigned char	esc;
 }					t_key;
 
@@ -272,4 +277,5 @@ void				bubble_sort(int *list, double *content, int elements);
 int					ft_strcmp(const char *s1, const char *s2);
 void				up_down(t_key *key, t_ray *ray);
 void				jump(t_key *key, t_ray *ray);
+void				crouch(t_key *key, t_ray *ray);
 #endif

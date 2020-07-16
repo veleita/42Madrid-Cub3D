@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 09:25:03 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:29:41 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void				init_values_render(t_var *var)
 	var->key->esc = 0;
 	var->key->up = 0;
 	var->key->down = 0;
+	var->key->spc = 0;
+	var->key->c = 0;
 	var->mov_speed = 0.05;
 	var->ray->up = 0;
 	var->ray->down = 0;

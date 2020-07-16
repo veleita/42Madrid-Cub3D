@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 09:25:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 17:51:03 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 18:57:12 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,18 @@ void	jump(t_key *key, t_ray *ray)
 
 	top = 800;
 	speed = 70;
-	if (key->spc == 1)
+	if (key->spc == 1 && key->up == 0 && key->down == 0)
 	{
 		if (ray->down > 0)
 			ray->down -= speed;
 		else if (ray->up <= top)
 			ray->up += speed;
 	}
-	if (key->spc == 0 && key->up == 0 && key->down == 0)
+	if (key->spc == 3 && key->up == 0)
 	{
 		if (ray->up > 0)
 			ray->up -= speed;
+		else
+			key->spc = 0;
 	}
 }
