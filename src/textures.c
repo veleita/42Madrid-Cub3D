@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:18:05 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 11:55:18 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 09:35:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void		print_column(int x, t_ray *ray, t_parameters *params,
 		images->screen->addr[y * params->resolution_x + x] =
 			rgb_to_hex(params->ceiling_rgb);
 	step = 1.0 * ray->texture->height / ray->wall_height;
-	texture_pos = (ray->draw_start - params->resolution_y / 2 +
-			ray->wall_height / 2) * step;
+	texture_pos = (ray->draw_start - (params->resolution_y + ray->up
+					- ray->down) / 2 + ray->wall_height / 2) * step;
 	while (y < ray->draw_end - 1)
 	{
 		texture_y = (int)texture_pos & (ray->texture->height - 1);

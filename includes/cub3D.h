@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/15 21:47:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 09:29:50 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ typedef struct		s_ray
 	double			wall_height;
 	double			draw_start;
 	double			draw_end;
+	short			up;
+	short			down;
 }					t_ray;
 
 # ifdef __APPLE__
@@ -155,6 +157,8 @@ typedef struct		s_ray
 #  define D_KEY 2
 #  define LEFT_KEY 123
 #  define RIGHT_KEY 124
+#  define UP_KEY 126
+#  define DOWN_KEY 125
 #  define ESC_KEY 53
 #  define X_BTN 17
 
@@ -165,6 +169,8 @@ typedef struct		s_ray
 #  define D_KEY 100
 #  define LEFT_KEY 65361
 #  define RIGHT_KEY 65363
+#  define UP_KEY 65362
+#  define DOWN_KEY 65364
 #  define ESC_KEY 65307
 #  define X_BTN 33
 # endif
@@ -178,6 +184,8 @@ typedef struct		s_key
 	unsigned char	d;
 	unsigned char	left;
 	unsigned char	right;
+	unsigned char	up;
+	unsigned char	down;
 	unsigned char	esc;
 }					t_key;
 
@@ -244,6 +252,7 @@ int					ft_exit_success(t_var *var);
 void				free_all(t_var *var);
 void				free_spr_ray(t_sprite_ray *spr_ray);
 void				free_images(t_images *images);
+void				destroy_images(t_images *images, void *mlx);
 void				free_file(t_file *file);
 void				free_map(t_map *map);
 short				get_next_line(int fd, char **line);
@@ -258,4 +267,5 @@ void				ft_bzero(void *s, size_t n);
 short				ft_isalpha(int c);
 void				bubble_sort(int *list, double *content, int elements);
 int					ft_strcmp(const char *s1, const char *s2);
+void				up_down(t_key *key, t_ray *ray);
 #endif

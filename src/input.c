@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/01 17:55:41 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/09 01:39:50 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 09:14:02 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ int		key_pressed(int keycode, t_key *key)
 		key->left = 1;
 	if (keycode == RIGHT_KEY)
 		key->right = 1;
+	if (keycode == UP_KEY)
+		key->up = 1;
+	if (keycode == DOWN_KEY)
+		key->down = 1;
 	if (keycode == ESC_KEY)
 		key->esc = 1;
 	return (1);
@@ -45,6 +49,10 @@ int		key_released(int keycode, t_key *key)
 		key->left = 0;
 	if (keycode == RIGHT_KEY)
 		key->right = 0;
+	if (keycode == UP_KEY)
+		key->up = 0;
+	if (keycode == DOWN_KEY)
+		key->down = 0;
 	if (keycode == ESC_KEY)
 		key->esc = 0;
 	return (1);

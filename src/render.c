@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:16:15 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:13:35 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 09:28:10 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ static void	trigger_events(t_var *var)
 int			actualize(t_var *var)
 {
 	trigger_events(var);
+	up_down(var->key, var->ray);
 	order_sprites(var->spr_ray->sprite_order, var->file->map);
 	render(var->file, var->ray, var->images, var->spr_ray);
 	render_sprites(var);

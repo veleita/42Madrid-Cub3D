@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:20 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/13 16:25:20 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 09:25:03 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ void				init_values_render(t_var *var)
 	var->key->left = 0;
 	var->key->right = 0;
 	var->key->esc = 0;
+	var->key->up = 0;
+	var->key->down = 0;
 	var->mov_speed = 0.05;
+	var->ray->up = 0;
+	var->ray->down = 0;
 	var->rotate_speed = 0.02;
 	ft_bzero(var->spr_ray->sprite_order, var->file->map->num_sprites);
 	ft_bzero(var->spr_ray->wall_z, var->file->params->resolution_x);

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:17:44 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 08:45:03 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/16 09:49:54 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		order_sprites(int *sprite_order, t_map *map)
 }
 
 static void	print_stripe(t_sprite_ray *ray, t_images *images,
-		t_parameters *params)
+		t_parameters *params, t_ray *adjust)
 {
 	int	y;
 	int	d;
@@ -45,10 +45,11 @@ static void	print_stripe(t_sprite_ray *ray, t_images *images,
 	y = ray->draw_start_y;
 	while (y < ray->draw_end_y)
 	{
-		d = y * 256 - params->resolution_y *
+		d = y * 256 - (params->resolution_y + adjust->up - adjust->down) *
 			128 + ray->sprite_height * 128;
 		ray->tex_y = ((d * images->sprite->height) /
 				ray->sprite_height) / 256;
+		ray->tex_y = ray->tex_y < 0 ? 0 : ray->tex_y;
 		color = images->sprite->addr[images->sprite->width *
 			ray->tex_y + ray->tex_x];
 		if (color != 0)
@@ -59,7 +60,7 @@ static void	print_stripe(t_sprite_ray *ray, t_images *images,
 }
 
 static void	calculate_params(t_camera *player, t_sprite_ray *ray,
-		t_parameters *params)
+		t_parameters *params, t_ray *adjust)
 {
 	ray->transform_x = ray->inv_det * (player->dir_y * ray->sprite_x -
 			player->dir_x * ray->sprite_y);
@@ -67,11 +68,12 @@ static void	calculate_params(t_camera *player, t_sprite_ray *ray,
 			player->plane_x * ray->sprite_y);
 	ray->sprite_screen_x = (int)((params->resolution_x / 2) *
 			(1 + ray->transform_x / ray->transform_y));
-	ray->sprite_height = abs((int)(params->resolution_y /
-				ray->transform_y));
-	ray->draw_start_y = params->resolution_y / 2 - ray->sprite_height / 2;
+	ray->sprite_height = abs((int)(params->resolution_y / ray->transform_y));
+	ray->draw_start_y = (params->resolution_y + adjust->up - adjust->down)
+			/ 2 - ray->sprite_height / 2;
 	ray->draw_start_y = (ray->draw_start_y < 0) ? 0 : ray->draw_start_y;
-	ray->draw_end_y = params->resolution_y / 2 + ray->sprite_height / 2;
+	ray->draw_end_y = (params->resolution_y + adjust->up - adjust->down)
+			/ 2 + ray->sprite_height / 2;
 	ray->draw_end_y = (ray->draw_end_y >= params->resolution_y) ?
 		params->resolution_y - 1 : ray->draw_end_y;
 	ray->draw_start_x = ray->sprite_screen_x - ray->sprite_height / 2;
@@ -102,11 +104,11 @@ void		render_sprites(t_var *var)
 		set_sprite(var->spr_ray, var->file->map->sprite,
 				var->file->map->camera, it);
 		calculate_params(var->file->map->camera, var->spr_ray,
-				var->file->params);
+				var->file->params, var->ray);
 		var->spr_ray->stripe = var->spr_ray->draw_start_x - 1;
 		while (++var->spr_ray->stripe <
 				var->spr_ray->draw_end_x)
 			print_stripe(var->spr_ray, var->images,
-					var->file->params);
+					var->file->params, var->ray);
 	}
 }
