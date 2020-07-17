@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:47 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 01:09:11 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 16:04:18 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	fill_map(char *line, int y, t_map *map, short *player)
 			map_objects(line[it], x, y, map);
 		else
 		{
-			map->map[y][x] = 0;
+			map->map[y][x] = 4;
 			if (ft_isalpha(line[it]))
 			{
 				if (*player == 1)
