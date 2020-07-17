@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/16 18:16:39 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 01:52:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct		s_parameters
 	char			*ea;
 	char			*we;
 	char			*sprt;
-	t_color 		floor_rgb;
+	t_color			floor_rgb;
 	t_color			ceiling_rgb;
 }					t_parameters;
 
@@ -163,6 +163,7 @@ typedef struct		s_ray
 #  define C_KEY 8
 #  define SPC_KEY 49
 #  define X_BTN 17
+#  define PLAY "afplay"
 
 # elif defined __unix__
 #  define A_KEY 97
@@ -177,8 +178,8 @@ typedef struct		s_ray
 #  define C_KEY 99
 #  define SPC_KEY 32
 #  define X_BTN 33
+#  define PLAY "aplay"
 # endif
-
 
 typedef struct		s_key
 {
@@ -219,7 +220,7 @@ void				init(const char *file_name, t_var *var);
 void				init_values_render(t_var *var);
 t_file				*read_file(const char *file_name);
 void				init_values_file(t_file *file);
-void				parse_parameters(char *line, int len, int fd, 
+void				parse_parameters(char *line, int len, int fd,
 					t_file *file);
 void				get_resolution(char *line, t_parameters *params, int it);
 char				*get_path(char *line, int it);
@@ -236,9 +237,9 @@ int					actualize(t_var *var);
 void				get_side_dist(int x, double resolution_x, t_ray *ray,
 					t_camera *camera);
 void				get_hit(t_ray *ray, int **map, int map_max_y);
-void				get_wall(t_ray *ray, t_camera *camera, 
+void				get_wall(t_ray *ray, t_camera *camera,
 					t_images *images);
-void				get_wall_dist(t_ray *ray, t_camera *camera, 
+void				get_wall_dist(t_ray *ray, t_camera *camera,
 					t_sprite_ray *s_ray, int x);
 void				get_wall_height(t_ray *ray, t_parameters *parameters);
 void				get_texture_x(t_ray *ray);
@@ -255,7 +256,7 @@ void				order_sprites(int *num_sprites, t_map *map);
 void				render_sprites(t_var *var);
 void				create_bmp(t_parameters *params, int *screen);
 t_var				*get_var(void);
-void 				ft_exit_fail(char *error);
+void				ft_exit_fail(char *error);
 int					ft_exit_success(t_var *var);
 void				free_all(t_var *var);
 void				free_spr_ray(t_sprite_ray *spr_ray);
@@ -268,7 +269,7 @@ size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
 char				*ft_strjoin(char const *s1, char const *s2);
 short				ft_strchr(char *s, char c);
-char				*ft_substr(char const *s, unsigned int start, 
+char				*ft_substr(char const *s, unsigned int start,
 					size_t len);
 void				remove_space(char *line, int *it);
 void				ft_bzero(void *s, size_t n);

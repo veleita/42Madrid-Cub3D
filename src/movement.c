@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 09:06:14 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 01:18:16 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 01:35:27 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,15 @@
 void	vertical_movement(t_map *map, double movement_speed,
 		double dir_x, double dir_y)
 {
-		map->camera->pos_x += dir_x * movement_speed;
-		map->camera->pos_y += dir_y * movement_speed;
+	map->camera->pos_x += dir_x * movement_speed;
+	map->camera->pos_y += dir_y * movement_speed;
 }
 
 void	horizontal_movement(t_map *map, double movement_speed,
 		double plane_x, double plane_y)
 {
-		map->camera->pos_x += plane_x * movement_speed;
-		map->camera->pos_y += plane_y * movement_speed;
+	map->camera->pos_x += plane_x * movement_speed;
+	map->camera->pos_y += plane_y * movement_speed;
 }
 
 void	rotation(t_camera *camera, double rotation_speed)

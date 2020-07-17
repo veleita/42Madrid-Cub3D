@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 09:25:17 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 01:10:38 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 02:10:35 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,14 +62,14 @@ void	jump(t_key *key, t_ray *ray)
 
 void	crouch(t_key *key, t_ray *ray)
 {
-	if (key->c == 1)
+	if (key->c == 1 && ray->down == 0 && ray->up == 0)
 	{
-		ray->down += 800;
+		ray->down = (ray->down == 0 && ray->up == 0) ? 800 : ray->down;
 		key->c = -1;
 	}
 	if (key->c == 2)
 	{
-		ray->down -= 800;
+		ray->down = (ray->down == 800 && ray->up == 0) ? 0 : ray->down;
 		key->c = 0;
 	}
 }
