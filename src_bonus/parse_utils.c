@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:24:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 01:08:59 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 17:39:38 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,27 @@ char	*get_path(char *line, int it)
 t_color	get_color(char *line, int it)
 {
 	t_color	ret;
+	short	digits;
 
 	ret.r = 0;
 	ret.g = 0;
 	ret.b = 0;
 	remove_space(line, &it);
-	while (line[it++] >= '0' && line[it - 1] <= '9')
+	digits = 0;
+	while (++digits && line[it++] >= '0' && line[it - 1] <= '9')
 		ret.r = ret.r * 10 + line[it - 1] - '0';
-	while (line[it++] >= '0' && line[it - 1] <= '9')
+	digits = (digits > 1 && digits < 5) ? 0 : -1;
+	if (digits == -1)
+		ft_exit_fail("Invalid rgb");
+	while (++digits && line[it++] >= '0' && line[it - 1] <= '9')
 		ret.g = ret.g * 10 + line[it - 1] - '0';
-	while (line[it++] >= '0' && line[it - 1] <= '9')
+	digits = (digits > 1 && digits < 5) ? 0 : -1;
+	if (digits == -1)
+		ft_exit_fail("Invalid rgb");
+	while (++digits && line[it++] >= '0' && line[it - 1] <= '9')
 		ret.b = ret.b * 10 + line[it - 1] - '0';
+	digits = (digits > 1 && digits < 5) ? 0 : -1;
+	if (digits == -1 || line[it] != '\0')
+		ft_exit_fail("Invalid rgb");
 	return (ret);
 }

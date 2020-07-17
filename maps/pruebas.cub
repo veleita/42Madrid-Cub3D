@@ -7,8 +7,9 @@ WE textures/greystone.xpm
 
 S textures/pillar.xpm
 
-C 60 50 100
-F 50 50 50
+
+F 50 950 50
+C 50 950 50
 
 11111111111111
 10000000000001

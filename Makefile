@@ -1,6 +1,7 @@
 NAME		= cub3D
 NAME_BONUS	= cub3D_bonus
 
+MAP			= pruebas.cub
 CC		= gcc
 GDB		= -g
 WFLAGS		= -Werror -Wall -Wextra
@@ -90,18 +91,19 @@ $(OBJ_BONUS_DIR):
 
 $(NAME_BONUS):	$(OBJS_BONUS)
 		@make -C $(MINILIBX_DIR)
-		@$(CC) $(OBJS_BONUS) $(IFLAGS) -o $(NAME)
+		@$(CC) $(OBJS_BONUS) $(IFLAGS) -o $(NAME_BONUS)
 
 $(OBJ_BONUS_DIR)%.o:	$(SRC_BONUS_DIR)%.c
 		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
 
+run:	bonus
+		./$(NAME_BONUS) maps/$(MAP)
 clean:
 		@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
 		@make -C $(MINILIBX_DIR) clean
 
 fclean:		clean 
-		@rm -rf $(NAME)
-		@rm -rf $(NAME).bmp
+		@rm -rf $(NAME) $(NAME_BONUS) $(NAME).bmp
 		@echo Objects and executable file erased, bye!
 
 re: fclean all

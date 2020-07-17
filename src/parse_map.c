@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:56 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 14:57:01 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 16:35:16 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void			all_parameters(t_parameters *parameters)
 	if (parameters->resolution_x == 0 || parameters->resolution_y == 0 ||
 			parameters->no == 0 || parameters->so == 0 ||
 			parameters->ea == 0 || parameters->we == 0 ||
+			!parameters->ceiling_rgb || !parameters->ceiling_rgb ||
 			parameters->sprt == 0)
 		ft_exit_fail("Missing parameters in the map file");
 }

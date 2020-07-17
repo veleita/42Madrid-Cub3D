@@ -6,16 +6,51 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 01:08:01 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 19:38:32 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	manage_map(char *line, int len, int fd, t_file *file)
+static void		manage_map(char *line, int len, int fd, t_file *file)
 {
 	all_parameters(file->params);
 	read_map(line, fd, len, file->map);
+}
+
+static short	parse_textures(int it, char *line, t_file *file)
+{
+	if (line[it] == 'N' && line[it + 1] == 'O' && file->params->no == 0)
+		file->params->no = get_path(line, it + 2);
+	else if (line[it] == 'S' && line[it + 1] == 'O' && file->params->so == 0)
+		file->params->so = get_path(line, it + 2);
+	else if (line[it] == 'W' && line[it + 1] == 'E' && file->params->we == 0)
+		file->params->we = get_path(line, it + 2);
+	else if (line[it] == 'E' && line[it + 1] == 'A' && file->params->ea == 0)
+		file->params->ea = get_path(line, it + 2);
+	else
+		return (0);
+	return (1);
+}
+
+static short	parse_colors(int it, char *line, t_file *file)
+{
+	static short	f_color;
+	static short	c_color;
+
+	if (line[it] == 'F' && f_color != 1)
+	{
+		file->params->floor_rgb = get_color(line, it + 1);
+		f_color = 1;
+	}
+	else if (line[it] == 'C' && c_color != 1)
+	{
+		file->params->ceiling_rgb = get_color(line, it + 1);
+		c_color = 1;
+	}
+	else
+		return (0);
+	return (1);
 }
 
 void		parse_parameters(char *line, int len, int fd, t_file *file)
@@ -24,24 +59,19 @@ void		parse_parameters(char *line, int len, int fd, t_file *file)
 
 	it = 0;
 	remove_space(line, &it);
-	if (line[it] == 'R')
+	if (line[it] == 'R' && file->params->resolution_x == 0 &&
+			file->params->resolution_y == 0)
 		get_resolution(line, file->params, it + 1);
-	else if (line[it] == 'N' && line[it + 1] == 'O')
-		file->params->no = get_path(line, it + 2);
-	else if (line[it] == 'S' && line[it + 1] == 'O')
-		file->params->so = get_path(line, it + 2);
-	else if (line[it] == 'W' && line[it + 1] == 'E')
-		file->params->we = get_path(line, it + 2);
-	else if (line[it] == 'E' && line[it + 1] == 'A')
-		file->params->ea = get_path(line, it + 2);
-	else if (line[it] == 'S' && line[it + 1] == ' ')
+	else if (parse_textures(it, line, file) == 1)
+		it = it;
+	else if (parse_colors(it, line, file) == 1)
+		it = it;
+	else if (line[it] == 'S' && line[it + 1] == ' ' && file->params->sprt == 0)
 		file->params->sprt = get_path(line, it + 1);
-	else if (line[it] == 'F')
-		file->params->floor_rgb = get_color(line, it + 1);
-	else if (line[it] == 'C')
-		file->params->ceiling_rgb = get_color(line, it + 1);
 	else if (line[it] == '1')
 		return (manage_map(line, len, fd, file));
+	else if (line[it] != '\0')
+		ft_exit_fail("Invalid element in the configuration file");
 	free(line);
 }
 
