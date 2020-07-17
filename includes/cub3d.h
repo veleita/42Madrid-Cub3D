@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/15 20:44:35 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 01:52:27 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 20:10:37 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ typedef struct		s_parameters
 	char			*sprt;
 	t_color			floor_rgb;
 	t_color			ceiling_rgb;
+	char			*music;
 }					t_parameters;
 
 typedef struct		s_file
@@ -163,7 +164,7 @@ typedef struct		s_ray
 #  define C_KEY 8
 #  define SPC_KEY 49
 #  define X_BTN 17
-#  define PLAY "afplay"
+#  define PLAY "afplay "
 
 # elif defined __unix__
 #  define A_KEY 97
@@ -178,7 +179,7 @@ typedef struct		s_ray
 #  define C_KEY 99
 #  define SPC_KEY 32
 #  define X_BTN 33
-#  define PLAY "aplay"
+#  define PLAY "aplay "
 # endif
 
 typedef struct		s_key

@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 13:15:33 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 19:38:32 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/17 19:59:59 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ void		parse_parameters(char *line, int len, int fd, t_file *file)
 		it = it;
 	else if (line[it] == 'S' && line[it + 1] == ' ' && file->params->sprt == 0)
 		file->params->sprt = get_path(line, it + 1);
+	else if (line[it] == 'M')
+	{
+		file->params->music = get_path(line, it + 1);
+		printf("%s\n", file->params->music);
+	}
 	else if (line[it] == '1')
 		return (manage_map(line, len, fd, file));
 	else if (line[it] != '\0')

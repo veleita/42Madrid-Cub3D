@@ -77,7 +77,9 @@ $(OBJ_DIR):
 		@echo obj/ has been created!
 
 $(NAME):	$(OBJS)
-		@make -C $(MINILIBX_DIR)
+		@make -C $(MINILIBX_DIR) &> output.txt
+		@echo minilibx has been compiled!
+		@rm -rf output.txt
 		@$(CC) $(OBJS) $(IFLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
@@ -90,7 +92,9 @@ $(OBJ_BONUS_DIR):
 		@echo obj/ has been created!
 
 $(NAME_BONUS):	$(OBJS_BONUS)
-		@make -C $(MINILIBX_DIR)
+		@make -C $(MINILIBX_DIR) &> output.txt
+		@echo minilibx has been compiled!
+		@rm -rf output.txt
 		@$(CC) $(OBJS_BONUS) $(IFLAGS) -o $(NAME_BONUS)
 
 $(OBJ_BONUS_DIR)%.o:	$(SRC_BONUS_DIR)%.c
@@ -99,11 +103,13 @@ $(OBJ_BONUS_DIR)%.o:	$(SRC_BONUS_DIR)%.c
 run:	bonus
 		./$(NAME_BONUS) maps/$(MAP)
 clean:
-		@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR)
-		@make -C $(MINILIBX_DIR) clean
+		@make -C $(MINILIBX_DIR) clean &> output.txt
+		@echo cleaned minilibx!
+		@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR) output.txt
+		@echo cleaned objects!
 
 fclean:		clean 
 		@rm -rf $(NAME) $(NAME_BONUS) $(NAME).bmp
-		@echo Objects and executable file erased, bye!
+		@echo executable file erased, bye!
 
 re: fclean all
