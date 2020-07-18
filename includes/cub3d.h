@@ -100,7 +100,7 @@ typedef struct		s_images
 	t_screen		*screen;
 	t_texture		*north;
 	t_texture		*south;
-	t_texture		*east; 
+	t_texture		*east;
 	t_texture		*west;
 	t_texture		*sprite;
 }					t_images;

@@ -1,7 +1,7 @@
 NAME		= cub3D
 NAME_BONUS	= cub3D_bonus
 
-MAP			= pruebas.cub
+MAP			= minecraft.cub
 CC		= gcc
 GDB		= -g
 WFLAGS		= -Werror -Wall -Wextra
@@ -77,9 +77,9 @@ $(OBJ_DIR):
 		@echo obj/ has been created!
 
 $(NAME):	$(OBJS)
-		@make -C $(MINILIBX_DIR) &> output.txt
+		@make -C $(MINILIBX_DIR) 2> output.txt
+		@rm output.txt
 		@echo minilibx has been compiled!
-		@rm -rf output.txt
 		@$(CC) $(OBJS) $(IFLAGS) -o $(NAME)
 
 $(OBJ_DIR)%.o:	$(SRC_DIR)%.c
@@ -92,18 +92,19 @@ $(OBJ_BONUS_DIR):
 		@echo obj/ has been created!
 
 $(NAME_BONUS):	$(OBJS_BONUS)
-		@make -C $(MINILIBX_DIR) &> output.txt
+		@make -C $(MINILIBX_DIR) 2> output.txt
+		@rm output.txt
 		@echo minilibx has been compiled!
-		@rm -rf output.txt
 		@$(CC) $(OBJS_BONUS) $(IFLAGS) -o $(NAME_BONUS)
 
 $(OBJ_BONUS_DIR)%.o:	$(SRC_BONUS_DIR)%.c
 		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
 
 run:	bonus
-		./$(NAME_BONUS) maps/$(MAP)
+		@./$(NAME_BONUS) maps/$(MAP) 2> output.txt
+		@rm output.txt
 clean:
-		@make -C $(MINILIBX_DIR) clean &> output.txt
+		@make -C $(MINILIBX_DIR) clean 2> output.txt
 		@echo cleaned minilibx!
 		@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR) output.txt
 		@echo cleaned objects!

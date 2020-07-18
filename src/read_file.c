@@ -12,7 +12,7 @@
 
 #include "cub3d.h"
 
-static void	manage_map(char *line, int len, int fd, t_file *file)
+static void		manage_map(char *line, int len, int fd, t_file *file)
 {
 	all_parameters(file->params);
 	read_map(line, fd, len, file->map);
@@ -53,7 +53,7 @@ static short	parse_colors(int it, char *line, t_file *file)
 	return (1);
 }
 
-void		parse_parameters(char *line, int len, int fd, t_file *file)
+void			parse_parameters(char *line, int len, int fd, t_file *file)
 {
 	int	it;
 
@@ -75,7 +75,7 @@ void		parse_parameters(char *line, int len, int fd, t_file *file)
 	free(line);
 }
 
-t_file		*read_file(const char *file_name)
+t_file			*read_file(const char *file_name)
 {
 	t_file	*file;
 	char	*line;
