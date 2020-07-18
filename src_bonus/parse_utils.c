@@ -74,18 +74,18 @@ t_color	get_color(char *line, int it)
 	digits = 0;
 	while (++digits && line[it++] >= '0' && line[it - 1] <= '9')
 		ret.r = ret.r * 10 + line[it - 1] - '0';
-	digits = (digits > 1 && digits < 5) ? 0 : -1;
+	digits = (digits > 0 && digits < 5) ? 0 : -1;
 	if (digits == -1)
 		ft_exit_fail("Invalid rgb");
 	while (++digits && line[it++] >= '0' && line[it - 1] <= '9')
 		ret.g = ret.g * 10 + line[it - 1] - '0';
-	digits = (digits > 1 && digits < 5) ? 0 : -1;
+	digits = (digits > 0 && digits < 5) ? 0 : -1;
 	if (digits == -1)
 		ft_exit_fail("Invalid rgb");
 	while (++digits && line[it++] >= '0' && line[it - 1] <= '9')
 		ret.b = ret.b * 10 + line[it - 1] - '0';
-	digits = (digits > 1 && digits < 5) ? 0 : -1;
-	if (digits == -1 || line[it] != '\0')
+	digits = (digits > 0 && digits < 5) ? 0 : -1;
+	if (digits == -1 || line[it - 1] != '\0')
 		ft_exit_fail("Invalid rgb");
 	return (ret);
 }

@@ -30,6 +30,7 @@ void	game_option(t_var *var)
 
 void	screenshot_option(t_var *var)
 {
+	init_values_render(var);
 	render(var->file, var->ray, var->images, var->spr_ray);
 	order_sprites(var->spr_ray->sprite_order, var->file->map);
 	render_sprites(var);

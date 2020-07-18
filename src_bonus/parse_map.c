@@ -90,15 +90,15 @@ void			valid_map(t_map *map, int y, int x)
 		ft_exit_fail("Invalid map");
 	map->map[y][x] = map->map[y][x] == 0 ? 3 : 1;
 	if (y != (map->y - 1))
-		if (map->map[y + 1][x] == 0)
+		if (map->map[y + 1][x] == 0 || map->map[y + 1][x] == 4)
 			valid_map(map, y + 1, x);
 	if (y != 0)
-		if (map->map[y - 1][x] == 0)
+		if (map->map[y - 1][x] == 0 || map->map[y - 1][x] == 4)
 			valid_map(map, y - 1, x);
 	if (x != (map->x - 1))
-		if (map->map[y][x + 1] == 0)
+		if (map->map[y][x + 1] == 0 || map->map[y][x + 1] == 4)
 			valid_map(map, y, x + 1);
 	if (x != 0)
-		if (map->map[y][x - 1] == 0)
+		if (map->map[y][x - 1] == 0 || map->map[y][x - 1] == 4)
 			valid_map(map, y, x - 1);
 }
