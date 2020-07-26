@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/06/30 10:58:32 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/17 20:12:59 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/07/26 11:50:06 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	game_option(t_var *var)
 	mlx_hook(var->id->win, 2, 1L << 0, &key_pressed, var->key);
 	mlx_hook(var->id->win, 3, 1L << 1, &key_released, var->key);
 	mlx_loop_hook(var->id->mlx, &actualize, var);
-	system(PLAY "music/minecraft.wav &");
+	system(PLAY "music/pokemon.wav &");
 	mlx_loop(var->id->mlx);
 }
 
