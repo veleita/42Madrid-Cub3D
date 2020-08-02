@@ -6,7 +6,7 @@
 /*   By: mzomeno- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/13 10:24:09 by mzomeno-          #+#    #+#             */
-/*   Updated: 2020/07/26 11:51:43 by mzomeno-         ###   ########.fr       */
+/*   Updated: 2020/08/02 09:02:44 by mzomeno-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,11 @@ t_color	get_color(char *line, int it)
 	digits = (digits > 0 && digits < 4) ? 0 : -1;
 	if (digits == -1)
 		ft_exit_fail("Invalid rgb");
-	it++;
 	while (line[it++] >= '0' && line[it - 1] <= '9' && ++digits)
 		ret.g = ret.g * 10 + line[it - 1] - '0';
 	digits = (digits > 0 && digits < 4) ? 0 : -1;
 	if (digits == -1)
 		ft_exit_fail("Invalid rgb");
-	it++;
 	while (line[it++] >= '0' && line[it - 1] <= '9' && ++digits)
 		ret.b = ret.b * 10 + line[it - 1] - '0';
 	digits = (digits > 0 && digits < 4) ? 0 : -1;

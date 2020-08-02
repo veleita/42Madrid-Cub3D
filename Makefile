@@ -77,7 +77,7 @@ $(OBJ_DIR):
 		@echo obj/ has been created!
 
 $(NAME):	$(OBJS)
-		@make -C $(MINILIBX_DIR) 2> output.txt
+		@make -C $(MINILIBX_DIR) &> output.txt
 		@rm output.txt
 		@echo minilibx has been compiled!
 		@$(CC) $(OBJS) $(IFLAGS) -o $(NAME)
@@ -92,7 +92,7 @@ $(OBJ_BONUS_DIR):
 		@echo obj/ has been created!
 
 $(NAME_BONUS):	$(OBJS_BONUS)
-		@make -C $(MINILIBX_DIR) 2> output.txt
+		@make -C $(MINILIBX_DIR) &> output.txt
 		@rm output.txt
 		@echo minilibx has been compiled!
 		@$(CC) $(OBJS_BONUS) $(IFLAGS) -o $(NAME_BONUS)
@@ -101,10 +101,10 @@ $(OBJ_BONUS_DIR)%.o:	$(SRC_BONUS_DIR)%.c
 		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
 
 run:	bonus
-		@./$(NAME_BONUS) maps/$(MAP) 2> output.txt
+		@./$(NAME_BONUS) maps/$(MAP) &> output.txt
 		@rm output.txt
 clean:
-		@make -C $(MINILIBX_DIR) clean 2> output.txt
+		@make -C $(MINILIBX_DIR) clean &> output.txt
 		@echo cleaned minilibx!
 		@rm -rf $(OBJ_DIR) $(OBJ_BONUS_DIR) output.txt
 		@echo cleaned objects!
