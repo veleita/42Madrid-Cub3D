@@ -101,7 +101,7 @@ $(OBJ_BONUS_DIR)%.o:	$(SRC_BONUS_DIR)%.c
 		@$(CC) $(GDB) $(INCLUDES) -c $< -o $@
 
 run:	bonus
-		@./$(NAME_BONUS) maps/$(MAP) &> output.txt
+		@./$(NAME_BONUS) maps/$(MAP) 2> output.txt
 		@rm output.txt
 clean:
 		@make -C $(MINILIBX_DIR) clean &> output.txt
