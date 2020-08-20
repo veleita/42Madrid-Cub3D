@@ -1,2 +1,2 @@
 # 42Madrid-Cub3D
-I am rearranging my cub3D from the old one.
+Sixth project from the 42 cursus. Succeeded with 114%.
